@@ -1,0 +1,16 @@
+name: NASA
+description: >-
+  APIs for NASA (National Aeronautics and Space Administration),
+  providing access to space, earth science, and aeronautics data
+  and services.
+url: https://www.nasa.gov
+created: "2025-01-01"
+modified: "2025-01-01"
+specificationVersion: "0.18"
+tags:
+- NASA
+- Space
+- Science
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
