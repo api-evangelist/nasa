@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/camera.json",
+  "title": "Rover Camera",
+  "description": "A camera mounted on a NASA Mars rover.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the camera."
+    },
+    "name": {
+      "type": "string",
+      "description": "Abbreviated name of the camera (e.g. FHAZ, RHAZ, MAST)."
+    },
+    "rover_id": {
+      "type": "integer",
+      "description": "ID of the rover this camera belongs to."
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Full descriptive name of the camera."
+    }
+  },
+  "required": ["id", "name", "full_name"]
+}

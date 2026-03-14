@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/coronal-mass-ejection.json",
+  "title": "Coronal Mass Ejection",
+  "description": "A coronal mass ejection event from NASA's DONKI space weather database.",
+  "type": "object",
+  "properties": {
+    "activityID": {
+      "type": "string",
+      "description": "Unique identifier for the CME event."
+    },
+    "catalog": {
+      "type": "string",
+      "description": "Source catalog for the event."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start time of the CME event."
+    },
+    "sourceLocation": {
+      "type": "string",
+      "description": "Location on the Sun where the CME originated."
+    },
+    "activeRegionNum": {
+      "type": "integer",
+      "description": "Active region number on the Sun."
+    },
+    "note": {
+      "type": "string",
+      "description": "Additional notes about the event."
+    },
+    "instruments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "displayName": { "type": "string" }
+        }
+      }
+    },
+    "cmeAnalyses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "time21_5": { "type": "string", "format": "date-time" },
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "halfAngle": { "type": "number" },
+          "speed": { "type": "number" },
+          "type": { "type": "string" },
+          "isMostAccurate": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "required": ["activityID", "startTime"]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/epic-image.json",
+  "title": "EPIC Image",
+  "description": "An Earth image from NASA's EPIC (Earth Polychromatic Imaging Camera) on DSCOVR.",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique identifier for the image."
+    },
+    "caption": {
+      "type": "string",
+      "description": "Caption describing the image."
+    },
+    "image": {
+      "type": "string",
+      "description": "Image filename without extension."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version identifier."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the image was taken."
+    },
+    "centroid_coordinates": {
+      "type": "object",
+      "properties": {
+        "lat": { "type": "number" },
+        "lon": { "type": "number" }
+      },
+      "description": "Geographic coordinates of the image center."
+    },
+    "dscovr_j2000_position": {
+      "$ref": "#/$defs/position"
+    },
+    "lunar_j2000_position": {
+      "$ref": "#/$defs/position"
+    },
+    "sun_j2000_position": {
+      "$ref": "#/$defs/position"
+    },
+    "attitude_quaternions": {
+      "type": "object",
+      "properties": {
+        "q0": { "type": "number" },
+        "q1": { "type": "number" },
+        "q2": { "type": "number" },
+        "q3": { "type": "number" }
+      }
+    }
+  },
+  "required": ["identifier", "image", "date"],
+  "$defs": {
+    "position": {
+      "type": "object",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    }
+  }
+}

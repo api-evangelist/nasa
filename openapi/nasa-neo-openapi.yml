@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: NASA NeoWs (Near Earth Object Web Service) API
+  description: >-
+    NeoWs is a RESTful web service for near-Earth asteroid information.
+    Data is sourced from the NASA JPL Asteroid team. Users can search for
+    asteroids based on closest approach date, look up specific asteroids,
+    and browse the dataset.
+  version: 1.0.0
+  contact:
+    name: NASA API Support
+    url: https://api.nasa.gov
+servers:
+  - url: https://api.nasa.gov
+paths:
+  /neo/rest/v1/feed:
+    get:
+      operationId: getNeoFeed
+      summary: Get near-Earth objects by date range
+      description: >-
+        Returns a list of near-Earth objects with closest approach dates
+        within a given date range. Maximum range is 7 days.
+      parameters:
+        - name: start_date
+          in: query
+          required: false
+          description: Start date for the search (YYYY-MM-DD). Defaults to today.
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          required: false
+          description: End date for the search (YYYY-MM-DD). Defaults to 7 days after start.
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NeoFeed'
+  /neo/rest/v1/neo/{asteroid_id}:
+    get:
+      operationId: getNeoById
+      summary: Look up a specific near-Earth object
+      description: Returns detailed information about a specific asteroid by its ID.
+      parameters:
+        - name: asteroid_id
+          in: path
+          required: true
+          description: The SPK-ID of the asteroid.
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearEarthObject'
+  /neo/rest/v1/neo/browse:
+    get:
+      operationId: browseNeos
+      summary: Browse the overall asteroid dataset
+      description: Returns a paginated list of all near-Earth objects.
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  near_earth_objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NearEarthObject'
+                  page:
+                    type: object
+                    properties:
+                      size:
+                        type: integer
+                      total_elements:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      number:
+                        type: integer
+components:
+  schemas:
+    NeoFeed:
+      type: object
+      properties:
+        element_count:
+          type: integer
+          description: Total number of NEOs returned.
+        near_earth_objects:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/NearEarthObject'
+          description: NEOs keyed by closest approach date.
+    NearEarthObject:
+      type: object
+      properties:
+        id:
+          type: string
+        neo_reference_id:
+          type: string
+        name:
+          type: string
+        nasa_jpl_url:
+          type: string
+          format: uri
+        absolute_magnitude_h:
+          type: number
+        estimated_diameter:
+          type: object
+          properties:
+            kilometers:
+              $ref: '#/components/schemas/DiameterRange'
+            meters:
+              $ref: '#/components/schemas/DiameterRange'
+            miles:
+              $ref: '#/components/schemas/DiameterRange'
+            feet:
+              $ref: '#/components/schemas/DiameterRange'
+        is_potentially_hazardous_asteroid:
+          type: boolean
+        close_approach_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CloseApproach'
+        is_sentry_object:
+          type: boolean
+    DiameterRange:
+      type: object
+      properties:
+        estimated_diameter_min:
+          type: number
+        estimated_diameter_max:
+          type: number
+    CloseApproach:
+      type: object
+      properties:
+        close_approach_date:
+          type: string
+          format: date
+        close_approach_date_full:
+          type: string
+        epoch_date_close_approach:
+          type: integer
+          format: int64
+        relative_velocity:
+          type: object
+          properties:
+            kilometers_per_second:
+              type: string
+            kilometers_per_hour:
+              type: string
+            miles_per_hour:
+              type: string
+        miss_distance:
+          type: object
+          properties:
+            astronomical:
+              type: string
+            lunar:
+              type: string
+            kilometers:
+              type: string
+            miles:
+              type: string
+        orbiting_body:
+          type: string

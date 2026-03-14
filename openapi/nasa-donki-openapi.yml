@@ -1,0 +1,459 @@
+openapi: 3.0.3
+info:
+  title: NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API
+  description: >-
+    The DONKI API provides access to space weather events and notifications
+    from NASA's Space Weather Database Of Notifications, Knowledge, Information.
+    It covers coronal mass ejections, geomagnetic storms, solar flares,
+    solar energetic particles, magnetopause crossings, radiation belt
+    enhancements, high-speed streams, and interplanetary shocks.
+  version: 1.0.0
+  contact:
+    name: NASA API Support
+    url: https://api.nasa.gov
+servers:
+  - url: https://api.nasa.gov
+paths:
+  /DONKI/CME:
+    get:
+      operationId: getCoronalMassEjections
+      summary: Get coronal mass ejection events
+      description: Returns coronal mass ejection (CME) events within a date range.
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          description: Start date (YYYY-MM-DD). Defaults to 30 days prior.
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          description: End date (YYYY-MM-DD). Defaults to today.
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoronalMassEjection'
+  /DONKI/CMEAnalysis:
+    get:
+      operationId: getCmeAnalysis
+      summary: Get CME analysis data
+      description: Returns analysis data for coronal mass ejection events.
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: mostAccurateOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+        - name: speed
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: halfAngle
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: catalog
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ALL
+              - SWRC_CATALOG
+              - JANG_ET_AL_CATALOG
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CmeAnalysis'
+  /DONKI/GST:
+    get:
+      operationId: getGeomagneticStorms
+      summary: Get geomagnetic storm events
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeomagneticStorm'
+  /DONKI/FLR:
+    get:
+      operationId: getSolarFlares
+      summary: Get solar flare events
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SolarFlare'
+  /DONKI/SEP:
+    get:
+      operationId: getSolarEnergeticParticles
+      summary: Get solar energetic particle events
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SolarEnergeticParticle'
+  /DONKI/MPC:
+    get:
+      operationId: getMagnetopauseCrossings
+      summary: Get magnetopause crossing events
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /DONKI/IPS:
+    get:
+      operationId: getInterplanetaryShocks
+      summary: Get interplanetary shock events
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: location
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - Earth
+              - MESSENGER
+              - STEREO A
+              - STEREO B
+        - name: catalog
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ALL
+              - SWRC_CATALOG
+              - WINSLOW_MESSENGER_ICME_CATALOG
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /DONKI/notifications:
+    get:
+      operationId: getDonkiNotifications
+      summary: Get space weather notifications
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - all
+              - FLR
+              - SEP
+              - CME
+              - IPS
+              - MPC
+              - GST
+              - RBE
+              - report
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+            default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+components:
+  schemas:
+    CoronalMassEjection:
+      type: object
+      properties:
+        activityID:
+          type: string
+        catalog:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        sourceLocation:
+          type: string
+        activeRegionNum:
+          type: integer
+        note:
+          type: string
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+        cmeAnalyses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CmeAnalysis'
+    CmeAnalysis:
+      type: object
+      properties:
+        time21_5:
+          type: string
+          format: date-time
+        latitude:
+          type: number
+        longitude:
+          type: number
+        halfAngle:
+          type: number
+        speed:
+          type: number
+        type:
+          type: string
+        isMostAccurate:
+          type: boolean
+    GeomagneticStorm:
+      type: object
+      properties:
+        gstID:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        allKpIndex:
+          type: array
+          items:
+            type: object
+            properties:
+              observedTime:
+                type: string
+                format: date-time
+              kpIndex:
+                type: number
+              source:
+                type: string
+    SolarFlare:
+      type: object
+      properties:
+        flrID:
+          type: string
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+        beginTime:
+          type: string
+          format: date-time
+        peakTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        classType:
+          type: string
+        sourceLocation:
+          type: string
+        activeRegionNum:
+          type: integer
+    SolarEnergeticParticle:
+      type: object
+      properties:
+        sepID:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+    Notification:
+      type: object
+      properties:
+        messageType:
+          type: string
+        messageID:
+          type: string
+        messageURL:
+          type: string
+          format: uri
+        messageIssueTime:
+          type: string
+          format: date-time
+        messageBody:
+          type: string

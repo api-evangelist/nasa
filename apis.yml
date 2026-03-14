@@ -1,16 +1,182 @@
+aid: nasa
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/apis.yml
+apis:
+  - aid: nasa:apod
+    name: NASA Astronomy Picture of the Day (APOD) API
+    tags:
+      - Space
+      - Astronomy
+      - Images
+    humanURL: https://api.nasa.gov/#apod
+    properties:
+      - url: https://api.nasa.gov/#apod
+        type: Documentation
+      - url: openapi/nasa-apod-openapi.yml
+        type: OpenAPI
+      - url: json-schema/apod-image.json
+        type: JSONSchema
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      The Astronomy Picture of the Day API provides access to NASA's popular
+      APOD service, returning the astronomy picture or video of the day along
+      with an explanation written by a professional astronomer. It supports
+      retrieving by specific date, date range, or random selection.
+  - aid: nasa:mars-rover-photos
+    name: NASA Mars Rover Photos API
+    tags:
+      - Space
+      - Mars
+      - Rovers
+      - Images
+    humanURL: https://api.nasa.gov/#MarsPhotos
+    properties:
+      - url: https://api.nasa.gov/#MarsPhotos
+        type: Documentation
+      - url: openapi/nasa-mars-rover-photos-openapi.yml
+        type: OpenAPI
+      - url: json-schema/rover-photo.json
+        type: JSONSchema
+      - url: json-schema/rover.json
+        type: JSONSchema
+      - url: json-schema/camera.json
+        type: JSONSchema
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      The Mars Rover Photos API provides access to images collected by NASA's
+      Curiosity, Opportunity, and Spirit rovers on Mars. Photos can be filtered
+      by Martian sol, Earth date, and camera. Mission manifests and latest
+      photos endpoints are also available.
+  - aid: nasa:neo
+    name: NASA NeoWs (Near Earth Object Web Service) API
+    tags:
+      - Space
+      - Asteroids
+      - Near Earth Objects
+    humanURL: https://api.nasa.gov/#NeoWS
+    properties:
+      - url: https://api.nasa.gov/#NeoWS
+        type: Documentation
+      - url: openapi/nasa-neo-openapi.yml
+        type: OpenAPI
+      - url: json-schema/near-earth-object.json
+        type: JSONSchema
+      - url: json-schema/close-approach.json
+        type: JSONSchema
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      NeoWs is a RESTful web service for near-Earth asteroid information sourced
+      from the NASA JPL Asteroid team. Users can search for asteroids by closest
+      approach date, look up specific asteroids by SPK-ID, and browse the full
+      dataset with pagination.
+  - aid: nasa:donki
+    name: NASA DONKI (Space Weather) API
+    tags:
+      - Space
+      - Space Weather
+      - Solar
+    humanURL: https://api.nasa.gov/#DONKI
+    properties:
+      - url: https://api.nasa.gov/#DONKI
+        type: Documentation
+      - url: openapi/nasa-donki-openapi.yml
+        type: OpenAPI
+      - url: json-schema/coronal-mass-ejection.json
+        type: JSONSchema
+      - url: json-schema/solar-flare.json
+        type: JSONSchema
+      - url: json-schema/geomagnetic-storm.json
+        type: JSONSchema
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      The DONKI API provides access to space weather events and notifications
+      from NASA's Space Weather Database Of Notifications, Knowledge,
+      Information. It covers coronal mass ejections, geomagnetic storms, solar
+      flares, solar energetic particles, magnetopause crossings, radiation belt
+      enhancements, interplanetary shocks, and space weather notifications.
+  - aid: nasa:epic
+    name: NASA EPIC (Earth Polychromatic Imaging Camera) API
+    tags:
+      - Space
+      - Earth
+      - Images
+      - Satellite
+    humanURL: https://api.nasa.gov/#EPIC
+    properties:
+      - url: https://api.nasa.gov/#EPIC
+        type: Documentation
+      - url: openapi/nasa-epic-openapi.yml
+        type: OpenAPI
+      - url: json-schema/epic-image.json
+        type: JSONSchema
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      The EPIC API provides access to imagery from NASA's Earth Polychromatic
+      Imaging Camera onboard the DSCOVR spacecraft. EPIC captures full-disc
+      images of the Earth in multiple wavelengths including natural and
+      enhanced color. Metadata includes spacecraft position, centroid
+      coordinates, and attitude quaternions.
+  - aid: nasa:image-and-video-library
+    name: NASA Image and Video Library API
+    tags:
+      - Space
+      - Images
+      - Video
+      - Media
+    humanURL: https://api.nasa.gov/#Images
+    properties:
+      - url: https://api.nasa.gov/#Images
+        type: Documentation
+      - url: openapi/nasa-nasa-image-and-video-library-openapi.yml
+        type: OpenAPI
+      - url: json-ld/nasa-context.jsonld
+        type: JSONLD
+    description: >-
+      The NASA Image and Video Library API provides access to NASA's media
+      archive including images, videos, and audio. Users can search by keywords,
+      center, media type, date range, and more. Asset manifests, metadata
+      locations, and video captions are also accessible.
 name: NASA
-description: >-
-  APIs for NASA (National Aeronautics and Space Administration),
-  providing access to space, earth science, and aeronautics data
-  and services.
-url: https://www.nasa.gov
-created: "2025-01-01"
-modified: "2025-01-01"
-specificationVersion: "0.18"
 tags:
-- NASA
-- Space
-- Science
+  - Space
+  - Science
+  - Government
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: Public
+common:
+  - url: https://api.nasa.gov
+    name: NASA Open APIs
+    type: Portal
+    description: 'null'
+  - url: https://www.nasa.gov
+    name: NASA
+    type: Website
+    description: 'null'
+  - url: https://data.nasa.gov
+    name: NASA Open Data
+    type: Documentation
+    description: 'null'
+  - url: https://github.com/nasa
+    name: NASA GitHub
+    type: GitHub
+    description: 'null'
+created: '2025-01-01'
+modified: '2026-03-14'
+position: Consumer
+description: >-
+  NASA (National Aeronautics and Space Administration) provides a suite of
+  public APIs at api.nasa.gov offering access to space, Earth science, and
+  aeronautics data. Key APIs include Astronomy Picture of the Day (APOD),
+  Mars Rover Photos, Near Earth Object Web Service (NeoWs), DONKI space
+  weather events, EPIC Earth imagery, and the NASA Image and Video Library.
+  All APIs are free and accessible with an API key.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+specificationVersion: '0.19'

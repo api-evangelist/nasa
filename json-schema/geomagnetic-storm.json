@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/geomagnetic-storm.json",
+  "title": "Geomagnetic Storm",
+  "description": "A geomagnetic storm event from NASA's DONKI space weather database.",
+  "type": "object",
+  "properties": {
+    "gstID": {
+      "type": "string",
+      "description": "Unique identifier for the geomagnetic storm."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start time of the geomagnetic storm."
+    },
+    "allKpIndex": {
+      "type": "array",
+      "description": "Kp index observations for this storm.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "observedTime": { "type": "string", "format": "date-time" },
+          "kpIndex": { "type": "number" },
+          "source": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["gstID", "startTime"]
+}

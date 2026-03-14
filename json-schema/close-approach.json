@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/close-approach.json",
+  "title": "Close Approach",
+  "description": "A close approach event for a near-Earth object.",
+  "type": "object",
+  "properties": {
+    "close_approach_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the close approach (YYYY-MM-DD)."
+    },
+    "close_approach_date_full": {
+      "type": "string",
+      "description": "Full date and time of close approach."
+    },
+    "epoch_date_close_approach": {
+      "type": "integer",
+      "description": "Epoch timestamp of the close approach."
+    },
+    "relative_velocity": {
+      "type": "object",
+      "properties": {
+        "kilometers_per_second": { "type": "string" },
+        "kilometers_per_hour": { "type": "string" },
+        "miles_per_hour": { "type": "string" }
+      }
+    },
+    "miss_distance": {
+      "type": "object",
+      "properties": {
+        "astronomical": { "type": "string" },
+        "lunar": { "type": "string" },
+        "kilometers": { "type": "string" },
+        "miles": { "type": "string" }
+      }
+    },
+    "orbiting_body": {
+      "type": "string",
+      "description": "The orbiting body for the close approach (e.g. Earth)."
+    }
+  },
+  "required": ["close_approach_date", "orbiting_body"]
+}

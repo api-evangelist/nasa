@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/apod-image.json",
+  "title": "APOD Image",
+  "description": "An Astronomy Picture of the Day entry from NASA's APOD service.",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date of the APOD image (YYYY-MM-DD)."
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Explanation of the image written by a professional astronomer."
+    },
+    "hdurl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the high-resolution image."
+    },
+    "media_type": {
+      "type": "string",
+      "enum": ["image", "video"],
+      "description": "The type of media returned."
+    },
+    "service_version": {
+      "type": "string",
+      "description": "The version of the APOD service."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the APOD image."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the image or video."
+    },
+    "copyright": {
+      "type": "string",
+      "description": "Copyright holder of the image, if not public domain."
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the video thumbnail when media_type is video."
+    }
+  },
+  "required": ["date", "explanation", "media_type", "title", "url"]
+}

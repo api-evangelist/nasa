@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/near-earth-object.json",
+  "title": "Near Earth Object",
+  "description": "A near-Earth asteroid tracked by NASA's NeoWs service.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the NEO."
+    },
+    "neo_reference_id": {
+      "type": "string",
+      "description": "NEO reference identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name or designation of the asteroid."
+    },
+    "nasa_jpl_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the NASA JPL page for this object."
+    },
+    "absolute_magnitude_h": {
+      "type": "number",
+      "description": "Absolute magnitude (H) of the asteroid."
+    },
+    "estimated_diameter": {
+      "type": "object",
+      "description": "Estimated diameter in various units.",
+      "properties": {
+        "kilometers": { "$ref": "#/$defs/diameterRange" },
+        "meters": { "$ref": "#/$defs/diameterRange" },
+        "miles": { "$ref": "#/$defs/diameterRange" },
+        "feet": { "$ref": "#/$defs/diameterRange" }
+      }
+    },
+    "is_potentially_hazardous_asteroid": {
+      "type": "boolean",
+      "description": "Whether the asteroid is classified as potentially hazardous."
+    },
+    "close_approach_data": {
+      "type": "array",
+      "items": { "$ref": "close-approach.json" },
+      "description": "List of close approach events."
+    },
+    "is_sentry_object": {
+      "type": "boolean",
+      "description": "Whether this object is tracked by the Sentry impact monitoring system."
+    }
+  },
+  "required": ["id", "name", "is_potentially_hazardous_asteroid"],
+  "$defs": {
+    "diameterRange": {
+      "type": "object",
+      "properties": {
+        "estimated_diameter_min": { "type": "number" },
+        "estimated_diameter_max": { "type": "number" }
+      }
+    }
+  }
+}

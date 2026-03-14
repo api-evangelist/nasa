@@ -1,0 +1,241 @@
+openapi: 3.0.3
+info:
+  title: NASA Image and Video Library API
+  description: >-
+    The NASA Image and Video Library API provides access to NASA's media
+    archive including images, videos, and audio. Users can search,
+    retrieve metadata, captions, and asset manifests.
+  version: 1.0.0
+  contact:
+    name: NASA API Support
+    url: https://api.nasa.gov
+servers:
+  - url: https://images-api.nasa.gov
+paths:
+  /search:
+    get:
+      operationId: searchMedia
+      summary: Search the NASA media library
+      description: Perform a search across the NASA Image and Video Library.
+      parameters:
+        - name: q
+          in: query
+          required: false
+          description: Free text search terms.
+          schema:
+            type: string
+        - name: center
+          in: query
+          required: false
+          description: NASA center that published the media.
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: keywords
+          in: query
+          required: false
+          description: Comma-separated list of keywords.
+          schema:
+            type: string
+        - name: media_type
+          in: query
+          required: false
+          description: Filter by media type.
+          schema:
+            type: string
+            enum:
+              - image
+              - video
+              - audio
+        - name: nasa_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: photographer
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: year_start
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: year_end
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+  /asset/{nasa_id}:
+    get:
+      operationId: getAsset
+      summary: Get media asset manifest
+      description: Returns a manifest of available media files for a NASA ID.
+      parameters:
+        - name: nasa_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            href:
+                              type: string
+                              format: uri
+  /metadata/{nasa_id}:
+    get:
+      operationId: getMetadata
+      summary: Get media metadata location
+      description: Returns the metadata location for a NASA media asset.
+      parameters:
+        - name: nasa_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    format: uri
+  /captions/{nasa_id}:
+    get:
+      operationId: getCaptions
+      summary: Get video captions location
+      description: Returns the captions file location for a video asset.
+      parameters:
+        - name: nasa_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    format: uri
+components:
+  schemas:
+    SearchResult:
+      type: object
+      properties:
+        collection:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/MediaItem'
+            metadata:
+              type: object
+              properties:
+                total_hits:
+                  type: integer
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  rel:
+                    type: string
+                  prompt:
+                    type: string
+                  href:
+                    type: string
+                    format: uri
+    MediaItem:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              center:
+                type: string
+              title:
+                type: string
+              nasa_id:
+                type: string
+              date_created:
+                type: string
+                format: date-time
+              keywords:
+                type: array
+                items:
+                  type: string
+              media_type:
+                type: string
+              description:
+                type: string
+              description_508:
+                type: string
+              photographer:
+                type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              href:
+                type: string
+                format: uri
+              rel:
+                type: string
+              render:
+                type: string

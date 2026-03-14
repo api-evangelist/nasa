@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/solar-flare.json",
+  "title": "Solar Flare",
+  "description": "A solar flare event from NASA's DONKI space weather database.",
+  "type": "object",
+  "properties": {
+    "flrID": {
+      "type": "string",
+      "description": "Unique identifier for the solar flare event."
+    },
+    "instruments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "displayName": { "type": "string" }
+        }
+      }
+    },
+    "beginTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start time of the solar flare."
+    },
+    "peakTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Peak time of the solar flare."
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End time of the solar flare."
+    },
+    "classType": {
+      "type": "string",
+      "description": "Classification of the flare (e.g. X, M, C, B, A)."
+    },
+    "sourceLocation": {
+      "type": "string",
+      "description": "Location on the Sun where the flare originated."
+    },
+    "activeRegionNum": {
+      "type": "integer",
+      "description": "Active region number on the Sun."
+    }
+  },
+  "required": ["flrID", "beginTime", "classType"]
+}

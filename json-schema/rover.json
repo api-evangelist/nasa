@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/nasa/blob/main/json-schema/rover.json",
+  "title": "Mars Rover",
+  "description": "A NASA Mars rover.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the rover."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the rover (e.g. Curiosity, Opportunity, Spirit)."
+    },
+    "landing_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the rover landed on Mars."
+    },
+    "launch_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the rover was launched from Earth."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "complete"],
+      "description": "Current mission status."
+    }
+  },
+  "required": ["id", "name", "status"]
+}
