@@ -48,6 +48,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NeoFeed'
+      tags:
+        - Neo
   /neo/rest/v1/neo/{asteroid_id}:
     get:
       operationId: getNeoById
@@ -73,6 +75,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NearEarthObject'
+      tags:
+        - Neo
   /neo/rest/v1/neo/browse:
     get:
       operationId: browseNeos
@@ -120,6 +124,8 @@ paths:
                         type: integer
                       number:
                         type: integer
+      tags:
+        - Neo
 components:
   schemas:
     NeoFeed:
@@ -208,3 +214,5 @@ components:
               type: string
         orbiting_body:
           type: string
+tags:
+  - name: Neo

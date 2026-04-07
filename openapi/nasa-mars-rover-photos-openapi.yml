@@ -84,6 +84,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/RoverPhoto'
+      tags:
+        - Mars Photos
   /mars-photos/api/v1/rovers/{rover}/latest_photos:
     get:
       operationId: getLatestRoverPhotos
@@ -117,6 +119,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/RoverPhoto'
+      tags:
+        - Mars Photos
   /mars-photos/api/v1/manifests/{rover}:
     get:
       operationId: getRoverManifest
@@ -148,6 +152,8 @@ paths:
                 properties:
                   photo_manifest:
                     $ref: '#/components/schemas/RoverManifest'
+      tags:
+        - Mars Photos
 components:
   schemas:
     RoverPhoto:
@@ -236,3 +242,5 @@ components:
                 type: array
                 items:
                   type: string
+tags:
+  - name: Mars Photos

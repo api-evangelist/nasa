@@ -76,6 +76,8 @@ paths:
           description: Bad request
         '403':
           description: Forbidden - invalid API key
+      tags:
+        - Planetary
 components:
   schemas:
     ApodImage:
@@ -115,3 +117,5 @@ components:
           type: string
           format: uri
           description: URL of the video thumbnail (if applicable).
+tags:
+  - name: Planetary

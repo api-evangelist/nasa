@@ -14,16 +14,16 @@ created: '2025-01-01'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
-  - Space
-  - Science
   - Government
+  - Science
+  - Space
 apis:
   - aid: nasa:apod
     name: NASA Astronomy Picture of the Day (APOD) API
     tags:
-      - Space
       - Astronomy
       - Images
+      - Space
     humanURL: https://api.nasa.gov/#apod
     properties:
       - url: https://api.nasa.gov/#apod
@@ -35,10 +35,10 @@ apis:
   - aid: nasa:mars-rover-photos
     name: NASA Mars Rover Photos API
     tags:
-      - Space
+      - Images
       - Mars
       - Rovers
-      - Images
+      - Space
     humanURL: https://api.nasa.gov/#MarsPhotos
     properties:
       - url: https://api.nasa.gov/#MarsPhotos
@@ -49,9 +49,9 @@ apis:
   - aid: nasa:neo
     name: NASA NeoWs (Near Earth Object Web Service) API
     tags:
-      - Space
       - Asteroids
       - Near Earth Objects
+      - Space
     humanURL: https://api.nasa.gov/#NeoWS
     properties:
       - url: https://api.nasa.gov/#NeoWS
@@ -62,9 +62,9 @@ apis:
   - aid: nasa:donki
     name: NASA DONKI (Space Weather) API
     tags:
+      - Solar
       - Space
       - Space Weather
-      - Solar
     humanURL: https://api.nasa.gov/#DONKI
     properties:
       - url: https://api.nasa.gov/#DONKI
@@ -75,9 +75,9 @@ apis:
   - aid: nasa:epic
     name: NASA EPIC (Earth Polychromatic Imaging Camera) API
     tags:
-      - Space
       - Earth
       - Images
+      - Space
     humanURL: https://api.nasa.gov/#EPIC
     properties:
       - url: https://api.nasa.gov/#EPIC
@@ -88,10 +88,10 @@ apis:
   - aid: nasa:image-and-video-library
     name: NASA Image and Video Library API
     tags:
-      - Space
       - Images
-      - Video
       - Media
+      - Space
+      - Video
     humanURL: https://api.nasa.gov/#Images
     properties:
       - url: https://api.nasa.gov/#Images

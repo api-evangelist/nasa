@@ -89,6 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchResult'
+      tags:
+        - Search
   /asset/{nasa_id}:
     get:
       operationId: getAsset
@@ -119,6 +121,8 @@ paths:
                             href:
                               type: string
                               format: uri
+      tags:
+        - Asset
   /metadata/{nasa_id}:
     get:
       operationId: getMetadata
@@ -141,6 +145,8 @@ paths:
                   location:
                     type: string
                     format: uri
+      tags:
+        - Metadata
   /captions/{nasa_id}:
     get:
       operationId: getCaptions
@@ -163,6 +169,8 @@ paths:
                   location:
                     type: string
                     format: uri
+      tags:
+        - Captions
 components:
   schemas:
     SearchResult:
@@ -239,3 +247,8 @@ components:
                 type: string
               render:
                 type: string
+tags:
+  - name: Asset
+  - name: Captions
+  - name: Metadata
+  - name: Search

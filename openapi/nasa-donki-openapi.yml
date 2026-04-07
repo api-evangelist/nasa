@@ -49,6 +49,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CoronalMassEjection'
+      tags:
+        - DONKI
   /DONKI/CMEAnalysis:
     get:
       operationId: getCmeAnalysis
@@ -107,6 +109,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CmeAnalysis'
+      tags:
+        - DONKI
   /DONKI/GST:
     get:
       operationId: getGeomagneticStorms
@@ -139,6 +143,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GeomagneticStorm'
+      tags:
+        - DONKI
   /DONKI/FLR:
     get:
       operationId: getSolarFlares
@@ -171,6 +177,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SolarFlare'
+      tags:
+        - DONKI
   /DONKI/SEP:
     get:
       operationId: getSolarEnergeticParticles
@@ -203,6 +211,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SolarEnergeticParticle'
+      tags:
+        - DONKI
   /DONKI/MPC:
     get:
       operationId: getMagnetopauseCrossings
@@ -235,6 +245,8 @@ paths:
                 type: array
                 items:
                   type: object
+      tags:
+        - DONKI
   /DONKI/IPS:
     get:
       operationId: getInterplanetaryShocks
@@ -286,6 +298,8 @@ paths:
                 type: array
                 items:
                   type: object
+      tags:
+        - DONKI
   /DONKI/notifications:
     get:
       operationId: getDonkiNotifications
@@ -333,6 +347,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Notification'
+      tags:
+        - DONKI
 components:
   schemas:
     CoronalMassEjection:
@@ -457,3 +473,5 @@ components:
           format: date-time
         messageBody:
           type: string
+tags:
+  - name: DONKI
