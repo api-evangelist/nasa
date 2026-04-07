@@ -15,7 +15,7 @@ paths:
   /planetary/apod:
     get:
       operationId: getApod
-      summary: Get Astronomy Picture of the Day
+      summary: NASA Get Astronomy Picture of the Day
       description: >-
         Returns the astronomy picture of the day. Can retrieve a specific
         date, a date range, or random images.

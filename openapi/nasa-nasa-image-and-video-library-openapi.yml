@@ -92,7 +92,7 @@ paths:
   /asset/{nasa_id}:
     get:
       operationId: getAsset
-      summary: Get media asset manifest
+      summary: NASA Get media asset manifest
       description: Returns a manifest of available media files for a NASA ID.
       parameters:
         - name: nasa_id
@@ -122,7 +122,7 @@ paths:
   /metadata/{nasa_id}:
     get:
       operationId: getMetadata
-      summary: Get media metadata location
+      summary: NASA Get media metadata location
       description: Returns the metadata location for a NASA media asset.
       parameters:
         - name: nasa_id
@@ -144,7 +144,7 @@ paths:
   /captions/{nasa_id}:
     get:
       operationId: getCaptions
-      summary: Get video captions location
+      summary: NASA Get video captions location
       description: Returns the captions file location for a video asset.
       parameters:
         - name: nasa_id

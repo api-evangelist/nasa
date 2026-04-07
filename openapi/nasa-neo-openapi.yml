@@ -16,7 +16,7 @@ paths:
   /neo/rest/v1/feed:
     get:
       operationId: getNeoFeed
-      summary: Get near-Earth objects by date range
+      summary: NASA Get near-Earth objects by date range
       description: >-
         Returns a list of near-Earth objects with closest approach dates
         within a given date range. Maximum range is 7 days.
@@ -51,7 +51,7 @@ paths:
   /neo/rest/v1/neo/{asteroid_id}:
     get:
       operationId: getNeoById
-      summary: Look up a specific near-Earth object
+      summary: NASA Look up a specific near-Earth object
       description: Returns detailed information about a specific asteroid by its ID.
       parameters:
         - name: asteroid_id
@@ -76,7 +76,7 @@ paths:
   /neo/rest/v1/neo/browse:
     get:
       operationId: browseNeos
-      summary: Browse the overall asteroid dataset
+      summary: NASA Browse the overall asteroid dataset
       description: Returns a paginated list of all near-Earth objects.
       parameters:
         - name: page

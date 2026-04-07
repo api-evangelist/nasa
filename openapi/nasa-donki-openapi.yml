@@ -17,7 +17,7 @@ paths:
   /DONKI/CME:
     get:
       operationId: getCoronalMassEjections
-      summary: Get coronal mass ejection events
+      summary: NASA Get coronal mass ejection events
       description: Returns coronal mass ejection (CME) events within a date range.
       parameters:
         - name: startDate
@@ -52,7 +52,7 @@ paths:
   /DONKI/CMEAnalysis:
     get:
       operationId: getCmeAnalysis
-      summary: Get CME analysis data
+      summary: NASA Get CME analysis data
       description: Returns analysis data for coronal mass ejection events.
       parameters:
         - name: startDate
@@ -110,7 +110,7 @@ paths:
   /DONKI/GST:
     get:
       operationId: getGeomagneticStorms
-      summary: Get geomagnetic storm events
+      summary: NASA Get geomagnetic storm events
       parameters:
         - name: startDate
           in: query
@@ -142,7 +142,7 @@ paths:
   /DONKI/FLR:
     get:
       operationId: getSolarFlares
-      summary: Get solar flare events
+      summary: NASA Get solar flare events
       parameters:
         - name: startDate
           in: query
@@ -174,7 +174,7 @@ paths:
   /DONKI/SEP:
     get:
       operationId: getSolarEnergeticParticles
-      summary: Get solar energetic particle events
+      summary: NASA Get solar energetic particle events
       parameters:
         - name: startDate
           in: query
@@ -206,7 +206,7 @@ paths:
   /DONKI/MPC:
     get:
       operationId: getMagnetopauseCrossings
-      summary: Get magnetopause crossing events
+      summary: NASA Get magnetopause crossing events
       parameters:
         - name: startDate
           in: query
@@ -238,7 +238,7 @@ paths:
   /DONKI/IPS:
     get:
       operationId: getInterplanetaryShocks
-      summary: Get interplanetary shock events
+      summary: NASA Get interplanetary shock events
       parameters:
         - name: startDate
           in: query
@@ -289,7 +289,7 @@ paths:
   /DONKI/notifications:
     get:
       operationId: getDonkiNotifications
-      summary: Get space weather notifications
+      summary: NASA Get space weather notifications
       parameters:
         - name: startDate
           in: query

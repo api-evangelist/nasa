@@ -15,7 +15,7 @@ paths:
   /mars-photos/api/v1/rovers/{rover}/photos:
     get:
       operationId: getRoverPhotos
-      summary: Get photos from a Mars rover
+      summary: NASA Get photos from a Mars rover
       description: >-
         Returns photos taken by the specified Mars rover, filtered by sol
         or Earth date and optionally by camera.
@@ -87,7 +87,7 @@ paths:
   /mars-photos/api/v1/rovers/{rover}/latest_photos:
     get:
       operationId: getLatestRoverPhotos
-      summary: Get the latest photos from a Mars rover
+      summary: NASA Get the latest photos from a Mars rover
       description: Returns the most recently available photos for a rover.
       parameters:
         - name: rover
@@ -120,7 +120,7 @@ paths:
   /mars-photos/api/v1/manifests/{rover}:
     get:
       operationId: getRoverManifest
-      summary: Get mission manifest for a rover
+      summary: NASA Get mission manifest for a rover
       description: Returns the mission manifest including sol and photo counts.
       parameters:
         - name: rover

@@ -15,7 +15,7 @@ paths:
   /EPIC/api/natural:
     get:
       operationId: getEpicNatural
-      summary: Get most recent natural color imagery metadata
+      summary: NASA Get most recent natural color imagery metadata
       description: Returns metadata for the most recent natural color images.
       parameters:
         - name: api_key
@@ -36,7 +36,7 @@ paths:
   /EPIC/api/natural/date/{date}:
     get:
       operationId: getEpicNaturalByDate
-      summary: Get natural color imagery metadata for a specific date
+      summary: NASA Get natural color imagery metadata for a specific date
       parameters:
         - name: date
           in: path
@@ -62,7 +62,7 @@ paths:
   /EPIC/api/natural/all:
     get:
       operationId: getEpicNaturalDates
-      summary: Get all available natural color imagery dates
+      summary: NASA Get all available natural color imagery dates
       parameters:
         - name: api_key
           in: query
@@ -86,7 +86,7 @@ paths:
   /EPIC/api/enhanced:
     get:
       operationId: getEpicEnhanced
-      summary: Get most recent enhanced color imagery metadata
+      summary: NASA Get most recent enhanced color imagery metadata
       parameters:
         - name: api_key
           in: query
@@ -106,7 +106,7 @@ paths:
   /EPIC/api/enhanced/date/{date}:
     get:
       operationId: getEpicEnhancedByDate
-      summary: Get enhanced color imagery metadata for a specific date
+      summary: NASA Get enhanced color imagery metadata for a specific date
       parameters:
         - name: date
           in: path
