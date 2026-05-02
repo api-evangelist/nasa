@@ -5,9 +5,9 @@ NASA (National Aeronautics and Space Administration) provides a suite of public 
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
 ## Tags:
 
@@ -15,8 +15,8 @@ NASA (National Aeronautics and Space Administration) provides a suite of public 
 
 ## Timestamps
 
-- **Created:** 2025-01-01 
-- **Modified:** 2026-03-16 
+- **Created:** 2025-01-01
+- **Modified:** 2026-04-28
 
 ## APIs
 
@@ -25,7 +25,6 @@ The Astronomy Picture of the Day API provides access to NASA's popular APOD serv
 
 **Human URL:** [https://api.nasa.gov/#apod](https://api.nasa.gov/#apod)
 
-
 #### Tags:
 
  - Space, Astronomy, Images
@@ -33,12 +32,12 @@ The Astronomy Picture of the Day API provides access to NASA's popular APOD serv
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#apod)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-apod-openapi.yml)
 
 ### NASA Mars Rover Photos API
 The Mars Rover Photos API provides access to images collected by NASA's Curiosity, Opportunity, and Spirit rovers on Mars.
 
 **Human URL:** [https://api.nasa.gov/#MarsPhotos](https://api.nasa.gov/#MarsPhotos)
-
 
 #### Tags:
 
@@ -47,12 +46,12 @@ The Mars Rover Photos API provides access to images collected by NASA's Curiosit
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#MarsPhotos)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-mars-rover-photos-openapi.yml)
 
 ### NASA NeoWs (Near Earth Object Web Service) API
 NeoWs is a RESTful web service for near-Earth asteroid information sourced from the NASA JPL Asteroid team.
 
 **Human URL:** [https://api.nasa.gov/#NeoWS](https://api.nasa.gov/#NeoWS)
-
 
 #### Tags:
 
@@ -61,12 +60,12 @@ NeoWs is a RESTful web service for near-Earth asteroid information sourced from 
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#NeoWS)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-neo-openapi.yml)
 
 ### NASA DONKI (Space Weather) API
 The DONKI API provides access to space weather events and notifications from NASA's Space Weather Database Of Notifications, Knowledge, Information.
 
 **Human URL:** [https://api.nasa.gov/#DONKI](https://api.nasa.gov/#DONKI)
-
 
 #### Tags:
 
@@ -75,12 +74,12 @@ The DONKI API provides access to space weather events and notifications from NAS
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#DONKI)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-donki-openapi.yml)
 
 ### NASA EPIC (Earth Polychromatic Imaging Camera) API
 The EPIC API provides access to imagery from NASA's Earth Polychromatic Imaging Camera onboard the DSCOVR spacecraft.
 
 **Human URL:** [https://api.nasa.gov/#EPIC](https://api.nasa.gov/#EPIC)
-
 
 #### Tags:
 
@@ -89,12 +88,12 @@ The EPIC API provides access to imagery from NASA's Earth Polychromatic Imaging 
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#EPIC)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-epic-openapi.yml)
 
 ### NASA Image and Video Library API
 The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio.
 
 **Human URL:** [https://api.nasa.gov/#Images](https://api.nasa.gov/#Images)
-
 
 #### Tags:
 
@@ -103,6 +102,7 @@ The NASA Image and Video Library API provides access to NASA's media archive inc
 #### Properties
 
 - [Documentation](https://api.nasa.gov/#Images)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-nasa-image-and-video-library-openapi.yml)
 
 ## Common Properties
 
