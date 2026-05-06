@@ -1,0 +1,113 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA Astronomy Picture of the Day (APOD) API
+  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy
+    picture or video of the day along with a brief explanation written by a professional astronomer.
+  tags:
+  - Nasa
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: nasa
+    baseUri: https://api.nasa.gov
+    description: NASA Astronomy Picture of the Day (APOD) API HTTP API.
+    resources:
+    - name: planetary-apod
+      path: /planetary/apod
+      operations:
+      - name: getapod
+        method: GET
+        description: NASA Get Astronomy Picture of the Day
+        inputParameters:
+        - name: api_key
+          in: query
+          type: string
+          required: true
+          description: API key for authentication. Use DEMO_KEY for testing.
+        - name: date
+          in: query
+          type: string
+          description: The date of the APOD image to retrieve (YYYY-MM-DD).
+        - name: start_date
+          in: query
+          type: string
+          description: The start of a date range for multiple APOD images.
+        - name: end_date
+          in: query
+          type: string
+          description: The end of a date range. Defaults to today.
+        - name: count
+          in: query
+          type: integer
+          description: Return a specified number of random APOD images.
+        - name: thumbs
+          in: query
+          type: boolean
+          description: Return URL of video thumbnail if media type is video.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: nasa-rest
+    description: REST adapter for NASA Astronomy Picture of the Day (APOD) API.
+    resources:
+    - path: /planetary/apod
+      name: getapod
+      operations:
+      - method: GET
+        name: getapod
+        description: NASA Get Astronomy Picture of the Day
+        call: nasa.getapod
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: nasa-mcp
+    transport: http
+    description: MCP adapter for NASA Astronomy Picture of the Day (APOD) API for AI agent use.
+    tools:
+    - name: getapod
+      description: NASA Get Astronomy Picture of the Day
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasa.getapod
+      with:
+        api_key: tools.api_key
+        date: tools.date
+        start_date: tools.start_date
+        end_date: tools.end_date
+        count: tools.count
+        thumbs: tools.thumbs
+      inputParameters:
+      - name: api_key
+        type: string
+        description: API key for authentication. Use DEMO_KEY for testing.
+        required: true
+      - name: date
+        type: string
+        description: The date of the APOD image to retrieve (YYYY-MM-DD).
+      - name: start_date
+        type: string
+        description: The start of a date range for multiple APOD images.
+      - name: end_date
+        type: string
+        description: The end of a date range. Defaults to today.
+      - name: count
+        type: integer
+        description: Return a specified number of random APOD images.
+      - name: thumbs
+        type: boolean
+        description: Return URL of video thumbnail if media type is video.
+      outputParameters:
+      - type: object
+        mapping: $.
