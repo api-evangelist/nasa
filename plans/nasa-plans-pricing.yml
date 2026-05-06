@@ -4,150 +4,88 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: NASA
 providerId: nasa
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Government
   - Science
   - Space
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Open Data
+description: NASA Open APIs at api.nasa.gov are free of charge to all consumers. There are no paid tiers
+  or commercial plans; access is governed by a single signed-up API key tier (1,000 requests per hour)
+  and a shared DEMO_KEY for evaluation (30 per hour, 50 per day per IP). Higher limits require contacting
+  api@nasa.gov.
+sources:
+  - https://api.nasa.gov/
+  - https://api.nasa.gov/assets/html/authentication.html
 plans:
-  - id: nasa-free
-    name: Free
+  - id: nasa-demo-key
+    name: DEMO_KEY
     type: freemium
-    description: Free entry tier for the NASA API surface. Intended for evaluation, prototyping, and low-volume
-      integrations. Real limits and pricing must be reconciled with the provider's published plan documentation.
+    description: Shared evaluation key for trying the APIs without signup. Strict per-IP throttling.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Hourly limit (per IP)
+        name: demo_hourly
         type: quota
-        metric: requests
+        metric: request
+        limit: 30
+        timeFrame: hour
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Daily limit (per IP)
+        name: demo_daily
+        type: quota
+        metric: request
+        limit: 50
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All NASA Open APIs (APOD, Mars Rover Photos, NeoWs, DONKI, EPIC, Image and Video Library)
+      - name: No signup required
+  - id: nasa-signed-up
+    name: Signed-up API Key
+    type: freemium
+    description: Free personal API key obtained via the api.nasa.gov signup form. Default rate cap of
+      1,000 requests per hour per key.
+    entries:
+      - label: Hourly limit (per key)
+        name: keyed_hourly
+        type: quota
+        metric: request
         limit: 1000
-        timeFrame: month
+        timeFrame: hour
         geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: NASA Astronomy Picture of the Day (APOD) API
-      - name: NASA Mars Rover Photos API
-      - name: NASA NeoWs (Near Earth Object Web Service) API
-      - name: NASA DONKI (Space Weather) API
-      - name: NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - name: NASA Image and Video Library API
-  - id: nasa-pro
-    name: Professional
-    type: paid
-    description: Production tier for NASA. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: NASA Astronomy Picture of the Day (APOD) API
-      - name: NASA Mars Rover Photos API
-      - name: NASA NeoWs (Near Earth Object Web Service) API
-      - name: NASA DONKI (Space Weather) API
-      - name: NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - name: NASA Image and Video Library API
-  - id: nasa-enterprise
-    name: Enterprise
+      - name: All NASA Open APIs
+      - name: Free signup with name + email
+      - name: api.data.gov shared infrastructure
+  - id: nasa-higher-limits
+    name: Custom Higher Limits
     type: enterprise
-    description: Custom-negotiated tier for NASA. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Researchers and integrations needing more than 1,000 requests/hour contact NASA directly.
+      No published price; access is government-funded and free.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+      - label: Negotiated limit
+        name: custom_limit
         type: quota
-        metric: requests
+        metric: request
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
+        timeFrame: hour
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
+        price: 'free (contact api@nasa.gov)'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: NASA Astronomy Picture of the Day (APOD) API
-      - name: NASA Mars Rover Photos API
-      - name: NASA NeoWs (Near Earth Object Web Service) API
-      - name: NASA DONKI (Space Weather) API
-      - name: NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - name: NASA Image and Video Library API
+      - name: Coordinated allowlist or upstream API-specific access
+      - name: All NASA Open APIs
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

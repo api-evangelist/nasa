@@ -4,109 +4,59 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: NASA
 providerId: nasa
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - Rate Limiting
   - Government
   - Science
   - Space
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the NASA API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
+description: NASA Open APIs run on the api.data.gov shared gateway. Rate limits are scoped per-API-key
+  for signed-up keys and per-IP for the shared DEMO_KEY. There are no separate live/sandbox modes; higher
+  limits require contacting api@nasa.gov. Counters reset on a rolling hourly basis.
+sources:
+  - https://api.nasa.gov/
+  - https://api.nasa.gov/assets/html/authentication.html
+  - https://api.data.gov/docs/rate-limits/
 headers:
   limit: X-RateLimit-Limit
   remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - NASA Astronomy Picture of the Day (APOD) API
-      - NASA Mars Rover Photos API
-      - NASA NeoWs (Near Earth Object Web Service) API
-      - NASA DONKI (Space Weather) API
-      - NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - NASA Image and Video Library API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+  - name: Signed-up API key (default)
+    scope: key
+    metric: requests_per_hour
     limit: 1000
-    timeFrame: month
-    applies:
-      - NASA Astronomy Picture of the Day (APOD) API
-      - NASA Mars Rover Photos API
-      - NASA NeoWs (Near Earth Object Web Service) API
-      - NASA DONKI (Space Weather) API
-      - NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - NASA Image and Video Library API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - NASA Astronomy Picture of the Day (APOD) API
-      - NASA Mars Rover Photos API
-      - NASA NeoWs (Near Earth Object Web Service) API
-      - NASA DONKI (Space Weather) API
-      - NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - NASA Image and Video Library API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - NASA Astronomy Picture of the Day (APOD) API
-      - NASA Mars Rover Photos API
-      - NASA NeoWs (Near Earth Object Web Service) API
-      - NASA DONKI (Space Weather) API
-      - NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - NASA Image and Video Library API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - NASA Astronomy Picture of the Day (APOD) API
-      - NASA Mars Rover Photos API
-      - NASA NeoWs (Near Earth Object Web Service) API
-      - NASA DONKI (Space Weather) API
-      - NASA EPIC (Earth Polychromatic Imaging Camera) API
-      - NASA Image and Video Library API
+    timeFrame: hour
+    notes: Default for all signed-up keys across every NASA API at api.nasa.gov.
+  - name: DEMO_KEY hourly
+    scope: IP
+    metric: requests_per_hour
+    limit: 30
+    timeFrame: hour
+    notes: Shared demo key — limit is per IP address, not per key.
+  - name: DEMO_KEY daily
+    scope: IP
+    metric: requests_per_day
+    limit: 50
+    timeFrame: day
+    notes: Shared demo key daily ceiling per IP.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Rolling window
+    description: The hourly window resets on a rolling basis rather than at a fixed clock minute. After
+      a block, access resumes within an hour without intervention.
+  - name: Demo key vs signed key
+    description: DEMO_KEY is intended only for tutorials and exploration; production traffic should use
+      a signed-up key. DEMO_KEY limits are enforced per IP and shared across all consumers from that IP.
+  - name: Higher limits via email
+    description: Consumers needing more than 1,000 requests/hour are directed to email api@nasa.gov to
+      request an allowlist; some upstream APIs (e.g. Earthdata, NASA POWER) have their own rate-limit
+      policies documented separately.
+  - name: Backoff
+    description: On 429, wait at least the remainder of the hour before resuming. There is no Retry-After
+      header documented.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
