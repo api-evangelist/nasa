@@ -120,6 +120,15 @@ common:
     type: Documentation
   - url: https://github.com/nasa
     type: GitHub Organization
+  - type: Integrations
+    url: https://www.nasa.gov/apps/
+integrations:
+  - name: NASA
+  - name: Tracy Arm’s Post-Tsunami Landscape
+  - name: A Sea of Spinning Clouds
+  - name: Melting Snow Off Shivelyuch
+  - name: Hubble Spots a Starry Spiral
+  - name: D-Site
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
