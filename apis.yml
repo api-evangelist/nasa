@@ -119,7 +119,7 @@ common:
   - url: https://data.nasa.gov
     type: Documentation
   - url: https://github.com/nasa
-    type: GitHub Organization
+    type: GitHubOrganization
   - type: Integrations
     url: https://www.nasa.gov/apps/
 integrations:
