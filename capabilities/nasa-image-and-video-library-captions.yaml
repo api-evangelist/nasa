@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA Image and Video Library API — Captions
+  description: 'NASA Image and Video Library API — Captions. 1 operations. Lead operation: NASA Get video captions location.
+    Self-contained Naftiko capability covering one Nasa business surface.'
+  tags:
+  - Nasa
+  - Captions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nasa-image-and-video-library-captions
+    baseUri: https://images-api.nasa.gov
+    description: NASA Image and Video Library API — Captions business capability. Self-contained, no shared references.
+    resources:
+    - name: captions-nasa_id
+      path: /captions/{nasa_id}
+      operations:
+      - name: getcaptions
+        method: GET
+        description: NASA Get video captions location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nasa_id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: nasa-image-and-video-library-captions-rest
+    port: 8080
+    description: REST adapter for NASA Image and Video Library API — Captions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/captions/{nasa-id}
+      name: captions-nasa-id
+      description: REST surface for captions-nasa_id.
+      operations:
+      - method: GET
+        name: getcaptions
+        description: NASA Get video captions location
+        call: nasa-image-and-video-library-captions.getcaptions
+        with:
+          nasa_id: rest.nasa_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nasa-image-and-video-library-captions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASA Image and Video Library API — Captions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: nasa-get-video-captions-location
+      description: NASA Get video captions location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasa-image-and-video-library-captions.getcaptions
+      with:
+        nasa_id: tools.nasa_id
+      outputParameters:
+      - type: object
+        mapping: $.

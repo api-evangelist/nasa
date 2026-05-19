@@ -1,0 +1,253 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA EPIC (Earth Polychromatic Imaging Camera) API — EPIC
+  description: 'NASA EPIC (Earth Polychromatic Imaging Camera) API — EPIC. 5 operations. Lead operation: NASA Get most recent
+    enhanced color imagery metadata. Self-contained Naftiko capability covering one Nasa business surface.'
+  tags:
+  - Nasa
+  - EPIC
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: epic-epic
+    baseUri: https://api.nasa.gov
+    description: NASA EPIC (Earth Polychromatic Imaging Camera) API — EPIC business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: EPIC-api-enhanced
+      path: /EPIC/api/enhanced
+      operations:
+      - name: getepicenhanced
+        method: GET
+        description: NASA Get most recent enhanced color imagery metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: EPIC-api-enhanced-date-date
+      path: /EPIC/api/enhanced/date/{date}
+      operations:
+      - name: getepicenhancedbydate
+        method: GET
+        description: NASA Get enhanced color imagery metadata for a specific date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+          required: true
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: EPIC-api-natural
+      path: /EPIC/api/natural
+      operations:
+      - name: getepicnatural
+        method: GET
+        description: NASA Get most recent natural color imagery metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: EPIC-api-natural-all
+      path: /EPIC/api/natural/all
+      operations:
+      - name: getepicnaturaldates
+        method: GET
+        description: NASA Get all available natural color imagery dates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: EPIC-api-natural-date-date
+      path: /EPIC/api/natural/date/{date}
+      operations:
+      - name: getepicnaturalbydate
+        method: GET
+        description: NASA Get natural color imagery metadata for a specific date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+          required: true
+        - name: api_key
+          in: query
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: epic-epic-rest
+    port: 8080
+    description: REST adapter for NASA EPIC (Earth Polychromatic Imaging Camera) API — EPIC. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/epic/api/enhanced
+      name: epic-api-enhanced
+      description: REST surface for EPIC-api-enhanced.
+      operations:
+      - method: GET
+        name: getepicenhanced
+        description: NASA Get most recent enhanced color imagery metadata
+        call: epic-epic.getepicenhanced
+        with:
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/epic/api/enhanced/date/{date}
+      name: epic-api-enhanced-date-date
+      description: REST surface for EPIC-api-enhanced-date-date.
+      operations:
+      - method: GET
+        name: getepicenhancedbydate
+        description: NASA Get enhanced color imagery metadata for a specific date
+        call: epic-epic.getepicenhancedbydate
+        with:
+          date: rest.date
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/epic/api/natural
+      name: epic-api-natural
+      description: REST surface for EPIC-api-natural.
+      operations:
+      - method: GET
+        name: getepicnatural
+        description: NASA Get most recent natural color imagery metadata
+        call: epic-epic.getepicnatural
+        with:
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/epic/api/natural/all
+      name: epic-api-natural-all
+      description: REST surface for EPIC-api-natural-all.
+      operations:
+      - method: GET
+        name: getepicnaturaldates
+        description: NASA Get all available natural color imagery dates
+        call: epic-epic.getepicnaturaldates
+        with:
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/epic/api/natural/date/{date}
+      name: epic-api-natural-date-date
+      description: REST surface for EPIC-api-natural-date-date.
+      operations:
+      - method: GET
+        name: getepicnaturalbydate
+        description: NASA Get natural color imagery metadata for a specific date
+        call: epic-epic.getepicnaturalbydate
+        with:
+          date: rest.date
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: epic-epic-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASA EPIC (Earth Polychromatic Imaging Camera) API — EPIC. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: nasa-get-most-recent-enhanced
+      description: NASA Get most recent enhanced color imagery metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epic-epic.getepicenhanced
+      with:
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-enhanced-color-imagery
+      description: NASA Get enhanced color imagery metadata for a specific date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epic-epic.getepicenhancedbydate
+      with:
+        date: tools.date
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-most-recent-natural
+      description: NASA Get most recent natural color imagery metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epic-epic.getepicnatural
+      with:
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-all-available-natural
+      description: NASA Get all available natural color imagery dates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epic-epic.getepicnaturaldates
+      with:
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-natural-color-imagery
+      description: NASA Get natural color imagery metadata for a specific date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epic-epic.getepicnaturalbydate
+      with:
+        date: tools.date
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.

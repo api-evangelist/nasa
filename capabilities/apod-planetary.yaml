@@ -1,19 +1,23 @@
 naftiko: 1.0.0-alpha2
 info:
-  label: NASA Astronomy Picture of the Day (APOD) API
-  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy
-    picture or video of the day along with a brief explanation written by a professional astronomer.
+  label: NASA Astronomy Picture of the Day (APOD) API — Planetary
+  description: 'NASA Astronomy Picture of the Day (APOD) API — Planetary. 1 operations. Lead operation: NASA Get Astronomy
+    Picture of the Day. Self-contained Naftiko capability covering one Nasa business surface.'
   tags:
   - Nasa
-  - API
-  created: '2026-05-06'
-  modified: '2026-05-06'
+  - Planetary
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
 capability:
   consumes:
   - type: http
-    namespace: nasa
+    namespace: apod-planetary
     baseUri: https://api.nasa.gov
-    description: NASA Astronomy Picture of the Day (APOD) API HTTP API.
+    description: NASA Astronomy Picture of the Day (APOD) API — Planetary business capability. Self-contained, no shared references.
     resources:
     - name: planetary-apod
       path: /planetary/apod
@@ -21,12 +25,17 @@ capability:
       - name: getapod
         method: GET
         description: NASA Get Astronomy Picture of the Day
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: api_key
           in: query
           type: string
-          required: true
           description: API key for authentication. Use DEMO_KEY for testing.
+          required: true
         - name: date
           in: query
           type: string
@@ -47,40 +56,45 @@ capability:
           in: query
           type: boolean
           description: Return URL of video thumbnail if media type is video.
-        outputRawFormat: json
-        outputParameters:
-        - name: result
-          type: object
-          value: $.
   exposes:
   - type: rest
+    namespace: apod-planetary-rest
     port: 8080
-    namespace: nasa-rest
-    description: REST adapter for NASA Astronomy Picture of the Day (APOD) API.
+    description: REST adapter for NASA Astronomy Picture of the Day (APOD) API — Planetary. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
     resources:
-    - path: /planetary/apod
-      name: getapod
+    - path: /v1/planetary/apod
+      name: planetary-apod
+      description: REST surface for planetary-apod.
       operations:
       - method: GET
         name: getapod
         description: NASA Get Astronomy Picture of the Day
-        call: nasa.getapod
+        call: apod-planetary.getapod
+        with:
+          api_key: rest.api_key
+          date: rest.date
+          start_date: rest.start_date
+          end_date: rest.end_date
+          count: rest.count
+          thumbs: rest.thumbs
         outputParameters:
         - type: object
           mapping: $.
   - type: mcp
+    namespace: apod-planetary-mcp
     port: 9090
-    namespace: nasa-mcp
     transport: http
-    description: MCP adapter for NASA Astronomy Picture of the Day (APOD) API for AI agent use.
+    description: MCP adapter for NASA Astronomy Picture of the Day (APOD) API — Planetary. One tool per consumed operation,
+      routed inline through this capability's consumes block.
     tools:
-    - name: getapod
+    - name: nasa-get-astronomy-picture-day
       description: NASA Get Astronomy Picture of the Day
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: nasa.getapod
+      call: apod-planetary.getapod
       with:
         api_key: tools.api_key
         date: tools.date
@@ -88,26 +102,6 @@ capability:
         end_date: tools.end_date
         count: tools.count
         thumbs: tools.thumbs
-      inputParameters:
-      - name: api_key
-        type: string
-        description: API key for authentication. Use DEMO_KEY for testing.
-        required: true
-      - name: date
-        type: string
-        description: The date of the APOD image to retrieve (YYYY-MM-DD).
-      - name: start_date
-        type: string
-        description: The start of a date range for multiple APOD images.
-      - name: end_date
-        type: string
-        description: The end of a date range. Defaults to today.
-      - name: count
-        type: integer
-        description: Return a specified number of random APOD images.
-      - name: thumbs
-        type: boolean
-        description: Return URL of video thumbnail if media type is video.
       outputParameters:
       - type: object
         mapping: $.

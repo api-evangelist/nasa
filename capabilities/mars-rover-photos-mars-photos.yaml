@@ -1,0 +1,201 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA Mars Rover Photos API — Mars Photos
+  description: 'NASA Mars Rover Photos API — Mars Photos. 3 operations. Lead operation: NASA Get mission manifest for a rover.
+    Self-contained Naftiko capability covering one Nasa business surface.'
+  tags:
+  - Nasa
+  - Mars Photos
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mars-rover-photos-mars-photos
+    baseUri: https://api.nasa.gov
+    description: NASA Mars Rover Photos API — Mars Photos business capability. Self-contained, no shared references.
+    resources:
+    - name: mars-photos-api-v1-manifests-rover
+      path: /mars-photos/api/v1/manifests/{rover}
+      operations:
+      - name: getrovermanifest
+        method: GET
+        description: NASA Get mission manifest for a rover
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rover
+          in: path
+          type: string
+          required: true
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: mars-photos-api-v1-rovers-rover-latest_photos
+      path: /mars-photos/api/v1/rovers/{rover}/latest_photos
+      operations:
+      - name: getlatestroverphotos
+        method: GET
+        description: NASA Get the latest photos from a Mars rover
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rover
+          in: path
+          type: string
+          required: true
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: mars-photos-api-v1-rovers-rover-photos
+      path: /mars-photos/api/v1/rovers/{rover}/photos
+      operations:
+      - name: getroverphotos
+        method: GET
+        description: NASA Get photos from a Mars rover
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rover
+          in: path
+          type: string
+          description: The name of the rover.
+          required: true
+        - name: sol
+          in: query
+          type: integer
+          description: Martian sol (day) on which photos were taken.
+        - name: earth_date
+          in: query
+          type: string
+          description: Earth date on which photos were taken (YYYY-MM-DD).
+        - name: camera
+          in: query
+          type: string
+          description: Abbreviation of the camera used to take the photo.
+        - name: page
+          in: query
+          type: integer
+          description: Page number for paginated results (25 items per page).
+        - name: api_key
+          in: query
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: mars-rover-photos-mars-photos-rest
+    port: 8080
+    description: REST adapter for NASA Mars Rover Photos API — Mars Photos. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/mars-photos/api/v1/manifests/{rover}
+      name: mars-photos-api-v1-manifests-rover
+      description: REST surface for mars-photos-api-v1-manifests-rover.
+      operations:
+      - method: GET
+        name: getrovermanifest
+        description: NASA Get mission manifest for a rover
+        call: mars-rover-photos-mars-photos.getrovermanifest
+        with:
+          rover: rest.rover
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/mars-photos/api/v1/rovers/{rover}/latest-photos
+      name: mars-photos-api-v1-rovers-rover-latest-photos
+      description: REST surface for mars-photos-api-v1-rovers-rover-latest_photos.
+      operations:
+      - method: GET
+        name: getlatestroverphotos
+        description: NASA Get the latest photos from a Mars rover
+        call: mars-rover-photos-mars-photos.getlatestroverphotos
+        with:
+          rover: rest.rover
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/mars-photos/api/v1/rovers/{rover}/photos
+      name: mars-photos-api-v1-rovers-rover-photos
+      description: REST surface for mars-photos-api-v1-rovers-rover-photos.
+      operations:
+      - method: GET
+        name: getroverphotos
+        description: NASA Get photos from a Mars rover
+        call: mars-rover-photos-mars-photos.getroverphotos
+        with:
+          rover: rest.rover
+          sol: rest.sol
+          earth_date: rest.earth_date
+          camera: rest.camera
+          page: rest.page
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mars-rover-photos-mars-photos-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASA Mars Rover Photos API — Mars Photos. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: nasa-get-mission-manifest-rover
+      description: NASA Get mission manifest for a rover
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mars-rover-photos-mars-photos.getrovermanifest
+      with:
+        rover: tools.rover
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-latest-photos-mars
+      description: NASA Get the latest photos from a Mars rover
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mars-rover-photos-mars-photos.getlatestroverphotos
+      with:
+        rover: tools.rover
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-photos-mars-rover
+      description: NASA Get photos from a Mars rover
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mars-rover-photos-mars-photos.getroverphotos
+      with:
+        rover: tools.rover
+        sol: tools.sol
+        earth_date: tools.earth_date
+        camera: tools.camera
+        page: tools.page
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.

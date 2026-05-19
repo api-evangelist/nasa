@@ -1,0 +1,481 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API — DONKI
+  description: 'NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API — DONKI. 8 operations. Lead
+    operation: NASA Get coronal mass ejection events. Self-contained Naftiko capability covering one Nasa business surface.'
+  tags:
+  - Nasa
+  - DONKI
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: donki-donki
+    baseUri: https://api.nasa.gov
+    description: NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API — DONKI business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: DONKI-CME
+      path: /DONKI/CME
+      operations:
+      - name: getcoronalmassejections
+        method: GET
+        description: NASA Get coronal mass ejection events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+          description: Start date (YYYY-MM-DD). Defaults to 30 days prior.
+        - name: endDate
+          in: query
+          type: string
+          description: End date (YYYY-MM-DD). Defaults to today.
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-CMEAnalysis
+      path: /DONKI/CMEAnalysis
+      operations:
+      - name: getcmeanalysis
+        method: GET
+        description: NASA Get CME analysis data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: mostAccurateOnly
+          in: query
+          type: boolean
+        - name: speed
+          in: query
+          type: integer
+        - name: halfAngle
+          in: query
+          type: integer
+        - name: catalog
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-FLR
+      path: /DONKI/FLR
+      operations:
+      - name: getsolarflares
+        method: GET
+        description: NASA Get solar flare events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-GST
+      path: /DONKI/GST
+      operations:
+      - name: getgeomagneticstorms
+        method: GET
+        description: NASA Get geomagnetic storm events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-IPS
+      path: /DONKI/IPS
+      operations:
+      - name: getinterplanetaryshocks
+        method: GET
+        description: NASA Get interplanetary shock events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: location
+          in: query
+          type: string
+        - name: catalog
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-MPC
+      path: /DONKI/MPC
+      operations:
+      - name: getmagnetopausecrossings
+        method: GET
+        description: NASA Get magnetopause crossing events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-SEP
+      path: /DONKI/SEP
+      operations:
+      - name: getsolarenergeticparticles
+        method: GET
+        description: NASA Get solar energetic particle events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+    - name: DONKI-notifications
+      path: /DONKI/notifications
+      operations:
+      - name: getdonkinotifications
+        method: GET
+        description: NASA Get space weather notifications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: type
+          in: query
+          type: string
+        - name: api_key
+          in: query
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: donki-donki-rest
+    port: 8080
+    description: REST adapter for NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API — DONKI.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/donki/cme
+      name: donki-cme
+      description: REST surface for DONKI-CME.
+      operations:
+      - method: GET
+        name: getcoronalmassejections
+        description: NASA Get coronal mass ejection events
+        call: donki-donki.getcoronalmassejections
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/cmeanalysis
+      name: donki-cmeanalysis
+      description: REST surface for DONKI-CMEAnalysis.
+      operations:
+      - method: GET
+        name: getcmeanalysis
+        description: NASA Get CME analysis data
+        call: donki-donki.getcmeanalysis
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          mostAccurateOnly: rest.mostAccurateOnly
+          speed: rest.speed
+          halfAngle: rest.halfAngle
+          catalog: rest.catalog
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/flr
+      name: donki-flr
+      description: REST surface for DONKI-FLR.
+      operations:
+      - method: GET
+        name: getsolarflares
+        description: NASA Get solar flare events
+        call: donki-donki.getsolarflares
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/gst
+      name: donki-gst
+      description: REST surface for DONKI-GST.
+      operations:
+      - method: GET
+        name: getgeomagneticstorms
+        description: NASA Get geomagnetic storm events
+        call: donki-donki.getgeomagneticstorms
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/ips
+      name: donki-ips
+      description: REST surface for DONKI-IPS.
+      operations:
+      - method: GET
+        name: getinterplanetaryshocks
+        description: NASA Get interplanetary shock events
+        call: donki-donki.getinterplanetaryshocks
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          location: rest.location
+          catalog: rest.catalog
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/mpc
+      name: donki-mpc
+      description: REST surface for DONKI-MPC.
+      operations:
+      - method: GET
+        name: getmagnetopausecrossings
+        description: NASA Get magnetopause crossing events
+        call: donki-donki.getmagnetopausecrossings
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/sep
+      name: donki-sep
+      description: REST surface for DONKI-SEP.
+      operations:
+      - method: GET
+        name: getsolarenergeticparticles
+        description: NASA Get solar energetic particle events
+        call: donki-donki.getsolarenergeticparticles
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/donki/notifications
+      name: donki-notifications
+      description: REST surface for DONKI-notifications.
+      operations:
+      - method: GET
+        name: getdonkinotifications
+        description: NASA Get space weather notifications
+        call: donki-donki.getdonkinotifications
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          type: rest.type
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: donki-donki-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API — DONKI.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: nasa-get-coronal-mass-ejection
+      description: NASA Get coronal mass ejection events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getcoronalmassejections
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-cme-analysis-data
+      description: NASA Get CME analysis data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getcmeanalysis
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        mostAccurateOnly: tools.mostAccurateOnly
+        speed: tools.speed
+        halfAngle: tools.halfAngle
+        catalog: tools.catalog
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-solar-flare-events
+      description: NASA Get solar flare events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getsolarflares
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-geomagnetic-storm-events
+      description: NASA Get geomagnetic storm events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getgeomagneticstorms
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-interplanetary-shock-events
+      description: NASA Get interplanetary shock events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getinterplanetaryshocks
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        location: tools.location
+        catalog: tools.catalog
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-magnetopause-crossing-events
+      description: NASA Get magnetopause crossing events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getmagnetopausecrossings
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-solar-energetic-particle
+      description: NASA Get solar energetic particle events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getsolarenergeticparticles
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nasa-get-space-weather-notifications
+      description: NASA Get space weather notifications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: donki-donki.getdonkinotifications
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        type: tools.type
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.

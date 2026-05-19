@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASA Image and Video Library API — Search
+  description: 'NASA Image and Video Library API — Search. 1 operations. Lead operation: Search the NASA media library. Self-contained
+    Naftiko capability covering one Nasa business surface.'
+  tags:
+  - Nasa
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASA_API_KEY: NASA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nasa-image-and-video-library-search
+    baseUri: https://images-api.nasa.gov
+    description: NASA Image and Video Library API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: search
+      path: /search
+      operations:
+      - name: searchmedia
+        method: GET
+        description: Search the NASA media library
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Free text search terms.
+        - name: center
+          in: query
+          type: string
+          description: NASA center that published the media.
+        - name: description
+          in: query
+          type: string
+        - name: keywords
+          in: query
+          type: string
+          description: Comma-separated list of keywords.
+        - name: media_type
+          in: query
+          type: string
+          description: Filter by media type.
+        - name: nasa_id
+          in: query
+          type: string
+        - name: page
+          in: query
+          type: integer
+        - name: photographer
+          in: query
+          type: string
+        - name: title
+          in: query
+          type: string
+        - name: year_start
+          in: query
+          type: string
+        - name: year_end
+          in: query
+          type: string
+  exposes:
+  - type: rest
+    namespace: nasa-image-and-video-library-search-rest
+    port: 8080
+    description: REST adapter for NASA Image and Video Library API — Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/search
+      name: search
+      description: REST surface for search.
+      operations:
+      - method: GET
+        name: searchmedia
+        description: Search the NASA media library
+        call: nasa-image-and-video-library-search.searchmedia
+        with:
+          q: rest.q
+          center: rest.center
+          description: rest.description
+          keywords: rest.keywords
+          media_type: rest.media_type
+          nasa_id: rest.nasa_id
+          page: rest.page
+          photographer: rest.photographer
+          title: rest.title
+          year_start: rest.year_start
+          year_end: rest.year_end
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nasa-image-and-video-library-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASA Image and Video Library API — Search. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-nasa-media-library
+      description: Search the NASA media library
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasa-image-and-video-library-search.searchmedia
+      with:
+        q: tools.q
+        center: tools.center
+        description: tools.description
+        keywords: tools.keywords
+        media_type: tools.media_type
+        nasa_id: tools.nasa_id
+        page: tools.page
+        photographer: tools.photographer
+        title: tools.title
+        year_start: tools.year_start
+        year_end: tools.year_end
+      outputParameters:
+      - type: object
+        mapping: $.
