@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA NeoWs (Near Earth Object Web Service) API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Neo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get near-Earth objects by date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/neo/rest/v1/feed",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the search (YYYY-MM-DD). Defaults to today."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date for the search (YYYY-MM-DD). Defaults to 7 days after start."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of near-Earth objects with closest approach dates within a given date range. Maximum range is 7 days."
+        },
+        {
+          "info": {
+            "name": "NASA Look up a specific near-Earth object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/neo/rest/v1/neo/:asteroid_id",
+            "params": [
+              {
+                "name": "asteroid_id",
+                "value": "",
+                "type": "path",
+                "description": "The SPK-ID of the asteroid."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific asteroid by its ID."
+        },
+        {
+          "info": {
+            "name": "NASA Browse the overall asteroid dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/neo/rest/v1/neo/browse",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all near-Earth objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

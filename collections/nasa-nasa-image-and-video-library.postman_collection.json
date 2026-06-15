@@ -1,0 +1,504 @@
+{
+  "item": [
+    {
+      "id": "fd94d6cb-19e1-4c2f-8d73-519c083e3ac3",
+      "name": "Asset",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88212552-b14c-4e71-ae5d-176480f15c85",
+          "name": "NASA Get media asset manifest",
+          "request": {
+            "name": "NASA Get media asset manifest",
+            "description": {
+              "content": "Returns a manifest of available media files for a NASA ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "asset",
+                ":nasa_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nasa_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6710a4b5-9b7c-48a4-a2ae-290984ddc1f3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":nasa_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nasa_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collection\": {\n    \"items\": [\n      {\n        \"href\": \"https://P.kvwwWIU+ZgaUMyXtRag6TuxepqtsMQtizKNRlVkBzcVbaYRTV1gxBBbl1L0+sWvpLa9\"\n      },\n      {\n        \"href\": \"http://ayRnbXzhfkzg.qblB86M,h2homq,9jSrr96WbfA.q\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0a629577-899c-4b8a-bb52-f2ec29e5b74b",
+      "name": "Captions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04588133-9e90-4750-b497-a41ac6386ce9",
+          "name": "NASA Get video captions location",
+          "request": {
+            "name": "NASA Get video captions location",
+            "description": {
+              "content": "Returns the captions file location for a video asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "captions",
+                ":nasa_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nasa_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76958835-6105-4cbe-a0b2-9f18c9c5615c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "captions",
+                    ":nasa_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nasa_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"http://OFDpMHvmyisHFUZXZobuVAjpIZbN.oflYAavJOM\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aacdf2a4-5b62-40d5-88ef-196506ce0235",
+      "name": "Metadata",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f94995df-e49a-4aa6-b5c9-9042cd1558e7",
+          "name": "NASA Get media metadata location",
+          "request": {
+            "name": "NASA Get media metadata location",
+            "description": {
+              "content": "Returns the metadata location for a NASA media asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metadata",
+                ":nasa_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nasa_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d7cf6db-4e81-4212-bc7f-64b8622713a8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metadata",
+                    ":nasa_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nasa_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"http://OFDpMHvmyisHFUZXZobuVAjpIZbN.oflYAavJOM\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cd73b353-e9c9-4f20-8561-f47c6cdc9e5c",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "855462ec-ab05-47e1-af82-1e6561d00bc6",
+          "name": "Search the NASA media library",
+          "request": {
+            "name": "Search the NASA media library",
+            "description": {
+              "content": "Perform a search across the NASA Image and Video Library.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free text search terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "center",
+                  "value": "<string>",
+                  "description": "NASA center that published the media."
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>",
+                  "description": "Comma-separated list of keywords."
+                },
+                {
+                  "disabled": false,
+                  "key": "media_type",
+                  "value": "<string>",
+                  "description": "Filter by media type."
+                },
+                {
+                  "disabled": false,
+                  "key": "nasa_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "photographer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year_start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year_end",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74b9e6a8-e019-4d1c-ba94-b544e6729f7f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "center",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "media_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nasa_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "photographer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year_end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collection\": {\n    \"href\": \"http://gQODXiQMPdfqaBtkedYAzmzBfuxjAoCDt.tcste\",\n    \"items\": [\n      {\n        \"href\": \"http://KLdYcDVCIdSkvaKcHRkZ.iqClv-CDb8uJffik+EJ6YxZxEAtflaDJqft7+UofNud7rMbD1JAwhBnftp35zVewT0sFJ\",\n        \"data\": [\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"2014-04-22T05:29:28.212Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          },\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1986-09-20T19:27:20.400Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          }\n        ],\n        \"links\": [\n          {\n            \"href\": \"http://YOt.zrwtyqyA0z6\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          },\n          {\n            \"href\": \"http://WhOXYVOhkBCpqVcDCoUCZIFioCQy.tyyqIet76we6dndMFrX8SD1QyWD9NvE.a-qX84ukAdeph8K0PtEbbnMweuPB4ABP\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          }\n        ]\n      },\n      {\n        \"href\": \"http://KNhNbZczJRNcbIReDwtMK.yya++AcABTDt4WDZEXfcAH6OzJbcNWGLO1YUDHMJHG9Zc8FkS+7K\",\n        \"data\": [\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1972-04-19T16:32:40.662Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          },\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1974-05-06T11:06:41.341Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          }\n        ],\n        \"links\": [\n          {\n            \"href\": \"https://tfUNIhdAdLdfyJmEkjwjwiAPuNfG.iyPbDCcqV4EYgAD5AeZKFE9bVe9ay5.jdbj1Abv0jWK,taO\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          },\n          {\n            \"href\": \"https://FSLISohefffD.ihbjAD+C2ONK.6TjW40lclbzmdB8DmNCPN,GQ3ensUJ9j\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"total_hits\": 8969\n    },\n    \"links\": [\n      {\n        \"rel\": \"string\",\n        \"prompt\": \"string\",\n        \"href\": \"https://v.coSwAFl2lG5Znzh5DfBgSC16+k6UMerhqcwuar.0Tp.\"\n      },\n      {\n        \"rel\": \"string\",\n        \"prompt\": \"string\",\n        \"href\": \"https://VAGqmsGesfWlvxXgfbMewqS.jxFGTTxG6mDt,slMPtad9xkywiobzwrg2fch90fMuWxo\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://images-api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d54af5a6-a2ba-4f4a-b137-6f3265d1327d",
+    "name": "NASA Image and Video Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio. Users can search, retrieve metadata, captions, and asset manifests.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

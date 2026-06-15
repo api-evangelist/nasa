@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Planetary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get Astronomy Picture of the Day",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/planetary/apod",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication. Use DEMO_KEY for testing."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "The date of the APOD image to retrieve (YYYY-MM-DD)."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start of a date range for multiple APOD images."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end of a date range. Defaults to today."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Return a specified number of random APOD images."
+              },
+              {
+                "name": "thumbs",
+                "value": "",
+                "type": "query",
+                "description": "Return URL of video thumbnail if media type is video."
+              }
+            ]
+          },
+          "docs": "Returns the astronomy picture of the day. Can retrieve a specific date, a date range, or random images."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

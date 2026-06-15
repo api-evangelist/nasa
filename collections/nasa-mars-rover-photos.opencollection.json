@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Mars Rover Photos API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mars Photos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get photos from a Mars rover",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/mars-photos/api/v1/rovers/:rover/photos",
+            "params": [
+              {
+                "name": "rover",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rover."
+              },
+              {
+                "name": "sol",
+                "value": "",
+                "type": "query",
+                "description": "Martian sol (day) on which photos were taken."
+              },
+              {
+                "name": "earth_date",
+                "value": "",
+                "type": "query",
+                "description": "Earth date on which photos were taken (YYYY-MM-DD)."
+              },
+              {
+                "name": "camera",
+                "value": "",
+                "type": "query",
+                "description": "Abbreviation of the camera used to take the photo."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results (25 items per page)."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns photos taken by the specified Mars rover, filtered by sol or Earth date and optionally by camera."
+        },
+        {
+          "info": {
+            "name": "NASA Get the latest photos from a Mars rover",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/mars-photos/api/v1/rovers/:rover/latest_photos",
+            "params": [
+              {
+                "name": "rover",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the most recently available photos for a rover."
+        },
+        {
+          "info": {
+            "name": "NASA Get mission manifest for a rover",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/mars-photos/api/v1/manifests/:rover",
+            "params": [
+              {
+                "name": "rover",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the mission manifest including sol and photo counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

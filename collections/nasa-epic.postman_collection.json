@@ -1,0 +1,492 @@
+{
+  "item": [
+    {
+      "id": "27d0cf35-ff74-491a-974d-a3ef6f79b378",
+      "name": "EPIC",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c8f71f5-3917-4b7c-8edf-b78d3d1f3625",
+          "name": "NASA Get most recent natural color imagery metadata",
+          "request": {
+            "name": "NASA Get most recent natural color imagery metadata",
+            "description": {
+              "content": "Returns metadata for the most recent natural color images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "EPIC",
+                "api",
+                "natural"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae1c763e-ca1b-40e7-82ee-95dca12af420",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EPIC",
+                    "api",
+                    "natural"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1967-01-03T20:44:20.582Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 2032.5166047890718,\n      \"lon\": 3353.3687202497663\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 4449.901719148554,\n      \"y\": 5068.611876851355,\n      \"z\": 2468.2927165807523\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 5268.79996262525,\n      \"y\": 1173.3027084349567,\n      \"z\": 1604.92354627908\n    },\n    \"sun_j2000_position\": {\n      \"x\": 1388.7470821530012,\n      \"y\": 9405.306379211626,\n      \"z\": 912.6416176452445\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 5101.296829954623,\n      \"q1\": 8358.780197834454,\n      \"q2\": 8329.338974761951,\n      \"q3\": 5890.920080226842\n    }\n  },\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1965-03-29T15:43:19.653Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 3312.1632764390597,\n      \"lon\": 5513.809524297144\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 5812.3305953943745,\n      \"y\": 3686.9975990944813,\n      \"z\": 1271.837294340812\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 7994.977729903306,\n      \"y\": 199.87811410910328,\n      \"z\": 8093.740067310477\n    },\n    \"sun_j2000_position\": {\n      \"x\": 9238.256285760484,\n      \"y\": 6645.962752079341,\n      \"z\": 84.07490043367937\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 4588.757400263881,\n      \"q1\": 9003.75491443112,\n      \"q2\": 6490.312440227693,\n      \"q3\": 7406.218156987484\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62ceb329-0cb8-4f3e-b7ae-c87e603cc8ce",
+          "name": "NASA Get natural color imagery metadata for a specific date",
+          "request": {
+            "name": "NASA Get natural color imagery metadata for a specific date",
+            "description": {},
+            "url": {
+              "path": [
+                "EPIC",
+                "api",
+                "natural",
+                "date",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93a2aad1-cb24-4e3e-bea3-773789162762",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EPIC",
+                    "api",
+                    "natural",
+                    "date",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1967-01-03T20:44:20.582Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 2032.5166047890718,\n      \"lon\": 3353.3687202497663\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 4449.901719148554,\n      \"y\": 5068.611876851355,\n      \"z\": 2468.2927165807523\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 5268.79996262525,\n      \"y\": 1173.3027084349567,\n      \"z\": 1604.92354627908\n    },\n    \"sun_j2000_position\": {\n      \"x\": 1388.7470821530012,\n      \"y\": 9405.306379211626,\n      \"z\": 912.6416176452445\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 5101.296829954623,\n      \"q1\": 8358.780197834454,\n      \"q2\": 8329.338974761951,\n      \"q3\": 5890.920080226842\n    }\n  },\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1965-03-29T15:43:19.653Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 3312.1632764390597,\n      \"lon\": 5513.809524297144\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 5812.3305953943745,\n      \"y\": 3686.9975990944813,\n      \"z\": 1271.837294340812\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 7994.977729903306,\n      \"y\": 199.87811410910328,\n      \"z\": 8093.740067310477\n    },\n    \"sun_j2000_position\": {\n      \"x\": 9238.256285760484,\n      \"y\": 6645.962752079341,\n      \"z\": 84.07490043367937\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 4588.757400263881,\n      \"q1\": 9003.75491443112,\n      \"q2\": 6490.312440227693,\n      \"q3\": 7406.218156987484\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f48e3e8a-eb3d-402e-842b-76768c508885",
+          "name": "NASA Get all available natural color imagery dates",
+          "request": {
+            "name": "NASA Get all available natural color imagery dates",
+            "description": {},
+            "url": {
+              "path": [
+                "EPIC",
+                "api",
+                "natural",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d1f214a-d8e5-4f42-b142-7c14020633f0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EPIC",
+                    "api",
+                    "natural",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1973-08-16\"\n  },\n  {\n    \"date\": \"2021-07-06\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d44c229e-9bd6-4bbd-8150-0ef15bf30f00",
+          "name": "NASA Get most recent enhanced color imagery metadata",
+          "request": {
+            "name": "NASA Get most recent enhanced color imagery metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "EPIC",
+                "api",
+                "enhanced"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cd465b8-c066-471e-94d9-b64bd3c85b9c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EPIC",
+                    "api",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1967-01-03T20:44:20.582Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 2032.5166047890718,\n      \"lon\": 3353.3687202497663\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 4449.901719148554,\n      \"y\": 5068.611876851355,\n      \"z\": 2468.2927165807523\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 5268.79996262525,\n      \"y\": 1173.3027084349567,\n      \"z\": 1604.92354627908\n    },\n    \"sun_j2000_position\": {\n      \"x\": 1388.7470821530012,\n      \"y\": 9405.306379211626,\n      \"z\": 912.6416176452445\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 5101.296829954623,\n      \"q1\": 8358.780197834454,\n      \"q2\": 8329.338974761951,\n      \"q3\": 5890.920080226842\n    }\n  },\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1965-03-29T15:43:19.653Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 3312.1632764390597,\n      \"lon\": 5513.809524297144\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 5812.3305953943745,\n      \"y\": 3686.9975990944813,\n      \"z\": 1271.837294340812\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 7994.977729903306,\n      \"y\": 199.87811410910328,\n      \"z\": 8093.740067310477\n    },\n    \"sun_j2000_position\": {\n      \"x\": 9238.256285760484,\n      \"y\": 6645.962752079341,\n      \"z\": 84.07490043367937\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 4588.757400263881,\n      \"q1\": 9003.75491443112,\n      \"q2\": 6490.312440227693,\n      \"q3\": 7406.218156987484\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82a92b39-dfd3-463b-b242-0915babdcc3a",
+          "name": "NASA Get enhanced color imagery metadata for a specific date",
+          "request": {
+            "name": "NASA Get enhanced color imagery metadata for a specific date",
+            "description": {},
+            "url": {
+              "path": [
+                "EPIC",
+                "api",
+                "enhanced",
+                "date",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "531824e1-e45e-41bd-a381-fd8620bd53df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EPIC",
+                    "api",
+                    "enhanced",
+                    "date",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1967-01-03T20:44:20.582Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 2032.5166047890718,\n      \"lon\": 3353.3687202497663\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 4449.901719148554,\n      \"y\": 5068.611876851355,\n      \"z\": 2468.2927165807523\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 5268.79996262525,\n      \"y\": 1173.3027084349567,\n      \"z\": 1604.92354627908\n    },\n    \"sun_j2000_position\": {\n      \"x\": 1388.7470821530012,\n      \"y\": 9405.306379211626,\n      \"z\": 912.6416176452445\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 5101.296829954623,\n      \"q1\": 8358.780197834454,\n      \"q2\": 8329.338974761951,\n      \"q3\": 5890.920080226842\n    }\n  },\n  {\n    \"identifier\": \"string\",\n    \"caption\": \"string\",\n    \"image\": \"string\",\n    \"version\": \"string\",\n    \"date\": \"1965-03-29T15:43:19.653Z\",\n    \"centroid_coordinates\": {\n      \"lat\": 3312.1632764390597,\n      \"lon\": 5513.809524297144\n    },\n    \"dscovr_j2000_position\": {\n      \"x\": 5812.3305953943745,\n      \"y\": 3686.9975990944813,\n      \"z\": 1271.837294340812\n    },\n    \"lunar_j2000_position\": {\n      \"x\": 7994.977729903306,\n      \"y\": 199.87811410910328,\n      \"z\": 8093.740067310477\n    },\n    \"sun_j2000_position\": {\n      \"x\": 9238.256285760484,\n      \"y\": 6645.962752079341,\n      \"z\": 84.07490043367937\n    },\n    \"attitude_quaternions\": {\n      \"q0\": 4588.757400263881,\n      \"q1\": 9003.75491443112,\n      \"q2\": 6490.312440227693,\n      \"q3\": 7406.218156987484\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "94b13d6a-2222-49fe-8563-4b8742e2c931",
+    "name": "NASA EPIC (Earth Polychromatic Imaging Camera) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The EPIC API provides access to imagery from NASA's Earth Polychromatic Imaging Camera onboard the DSCOVR spacecraft. EPIC captures full-disc images of the Earth in multiple wavelengths.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

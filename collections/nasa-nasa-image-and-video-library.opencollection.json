@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Image and Video Library API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the NASA media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://images-api.nasa.gov/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free text search terms."
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query",
+                "description": "NASA center that published the media."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of keywords."
+              },
+              {
+                "name": "media_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by media type."
+              },
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "photographer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year_end",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Perform a search across the NASA Image and Video Library."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Asset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get media asset manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://images-api.nasa.gov/asset/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a manifest of available media files for a NASA ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get media metadata location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://images-api.nasa.gov/metadata/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the metadata location for a NASA media asset."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Captions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get video captions location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://images-api.nasa.gov/captions/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the captions file location for a video asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
