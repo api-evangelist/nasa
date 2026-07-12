@@ -107,6 +107,8 @@ apis:
         type: OpenAPI
     description: The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio.
 common:
+  - type: DomainSecurity
+    url: security/nasa-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/nasa
   - url: https://api.nasa.gov
@@ -119,6 +121,8 @@ common:
     type: GitHubOrganization
   - type: Integrations
     url: https://www.nasa.gov/apps/
+  - url: https://www.nasa.gov/feed/
+    type: Blog
 integrations:
   - name: NASA
   - name: Tracy Arm’s Post-Tsunami Landscape
