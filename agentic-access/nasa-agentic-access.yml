@@ -1,0 +1,256 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/nasa-apod-openapi.yml, openapi/nasa-donki-openapi.yml, openapi/nasa-epic-openapi.yml,
+  openapi/nasa-mars-rover-photos-openapi.yml, openapi/nasa-nasa-image-and-video-library-openapi.yml,
+  openapi/nasa-neo-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 24
+  by_action_class:
+    connected: 24
+  by_consequence:
+    read: 24
+  human_in_the_loop_required: 0
+operations:
+- path: /planetary/apod
+  method: get
+  operationId: getApod
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/CME
+  method: get
+  operationId: getCoronalMassEjections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/CMEAnalysis
+  method: get
+  operationId: getCmeAnalysis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/GST
+  method: get
+  operationId: getGeomagneticStorms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/FLR
+  method: get
+  operationId: getSolarFlares
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/SEP
+  method: get
+  operationId: getSolarEnergeticParticles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/MPC
+  method: get
+  operationId: getMagnetopauseCrossings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/IPS
+  method: get
+  operationId: getInterplanetaryShocks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /DONKI/notifications
+  method: get
+  operationId: getDonkiNotifications
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EPIC/api/natural
+  method: get
+  operationId: getEpicNatural
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EPIC/api/natural/date/{date}
+  method: get
+  operationId: getEpicNaturalByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EPIC/api/natural/all
+  method: get
+  operationId: getEpicNaturalDates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EPIC/api/enhanced
+  method: get
+  operationId: getEpicEnhanced
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /EPIC/api/enhanced/date/{date}
+  method: get
+  operationId: getEpicEnhancedByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /mars-photos/api/v1/rovers/{rover}/photos
+  method: get
+  operationId: getRoverPhotos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /mars-photos/api/v1/rovers/{rover}/latest_photos
+  method: get
+  operationId: getLatestRoverPhotos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /mars-photos/api/v1/manifests/{rover}
+  method: get
+  operationId: getRoverManifest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /search
+  method: get
+  operationId: searchMedia
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /asset/{nasa_id}
+  method: get
+  operationId: getAsset
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /metadata/{nasa_id}
+  method: get
+  operationId: getMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /captions/{nasa_id}
+  method: get
+  operationId: getCaptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /neo/rest/v1/feed
+  method: get
+  operationId: getNeoFeed
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /neo/rest/v1/neo/{asteroid_id}
+  method: get
+  operationId: getNeoById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /neo/rest/v1/neo/browse
+  method: get
+  operationId: browseNeos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

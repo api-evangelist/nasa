@@ -107,6 +107,8 @@ apis:
         type: OpenAPI
     description: The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio.
 common:
+  - type: AgenticAccess
+    url: agentic-access/nasa-agentic-access.yml
   - type: DomainSecurity
     url: security/nasa-domain-security.yml
   - type: LinkedIn
