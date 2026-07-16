@@ -9,7 +9,7 @@ type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/apis.yml
 created: '2025-01-01'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 tags:
   - Government
@@ -111,6 +111,42 @@ common:
     url: agentic-access/nasa-agentic-access.yml
   - type: DomainSecurity
     url: security/nasa-domain-security.yml
+  - type: VulnerabilityDisclosure
+    url: security/nasa-vulnerability-disclosure.yml
+  - type: Authentication
+    url: authentication/nasa-authentication.yml
+  - type: Packages
+    url: packages/nasa-packages.yml
+  - type: WellKnown
+    url: well-known/nasa-well-known.yml
+  - type: MCPServer
+    url: mcp/nasa-mcp.yml
+  - type: LLMsTxt
+    url: llms/nasa-llms.txt
+  - type: Conformance
+    url: conformance/nasa-conformance.yml
+  - type: ErrorCatalog
+    url: errors/nasa-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/nasa-lifecycle.yml
+  - type: Conventions
+    url: conventions/nasa-conventions.yml
+  - type: DataModel
+    url: data-model/nasa-data-model.yml
+  - type: Sandbox
+    url: sandbox/nasa-sandbox.yml
+  - type: Overlay
+    url: overlays/nasa-apod-overlay.yaml
+  - type: Overlay
+    url: overlays/nasa-donki-overlay.yaml
+  - type: Overlay
+    url: overlays/nasa-epic-overlay.yaml
+  - type: Overlay
+    url: overlays/nasa-mars-rover-photos-overlay.yaml
+  - type: Overlay
+    url: overlays/nasa-nasa-image-and-video-library-overlay.yaml
+  - type: Overlay
+    url: overlays/nasa-neo-overlay.yaml
   - type: LinkedIn
     url: https://www.linkedin.com/company/nasa
   - url: https://api.nasa.gov

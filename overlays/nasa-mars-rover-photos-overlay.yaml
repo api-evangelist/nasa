@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for NASA Mars Rover Photos API
+  version: 1.0.0
+extends: openapi/nasa-mars-rover-photos-openapi.yml
+x-provenance:
+  generated: '2026-06-20'
+  method: generated
+  source: openapi/nasa-mars-rover-photos-openapi.yml
+actions:
+  - target: $.info
+    description: Tag this spec with API Evangelist provenance and the shared auth/rate-limit model.
+    update:
+      x-apievangelist-provider: nasa
+      x-apievangelist-gateway: https://api.data.gov/
+      x-authentication: api_key query parameter (see authentication/nasa-authentication.yml)
+      x-rate-limit: 1000/hour signed key; DEMO_KEY 30/hour, 50/day per IP
+  - target: $.components.securitySchemes
+    description: Formalize the api_key query parameter as an apiKey security scheme (the specs model it as a plain query param).
+    update:
+      ApiKeyQuery:
+        type: apiKey
+        in: query
+        name: api_key
+        description: NASA api.nasa.gov API key. Use DEMO_KEY to explore.

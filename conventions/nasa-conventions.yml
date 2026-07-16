@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml + https://api.nasa.gov/ + https://api.data.gov/docs/rate-limits/
+notes: >-
+  Cross-cutting request/response semantics for the NASA Open APIs, derived from
+  the captured OpenAPI and the api.data.gov gateway docs.
+authentication:
+  style: api-key
+  location: query
+  parameter: api_key
+  see: authentication/nasa-authentication.yml
+idempotency:
+  supported: false
+  reason: All operations are safe GET requests; no write endpoints, no idempotency keys.
+pagination:
+  styles:
+    - api: NeoWs
+      style: page-number
+      params: [page, size]
+      response_fields: [links, page, element_count]
+    - api: Image and Video Library
+      style: page-number
+      params: [page]
+      response_fields: [collection.links, collection.metadata.total_hits]
+    - api: EPIC / DONKI / APOD / Mars Photos
+      style: none
+      notes: Bounded by date, sol, or count parameters rather than cursor/page paging.
+field_expansion:
+  supported: false
+metadata:
+  supported: partial
+  notes: Image and Video Library responses wrap results in a collection object with metadata.total_hits and links.
+request_tracing:
+  request_id_header: null
+versioning:
+  style: uri-path
+  see: lifecycle/nasa-lifecycle.yml
+error_envelope:
+  format: plain-json
+  shape: '{ "error": { "code": "...", "message": "..." } }'
+  see: errors/nasa-problem-types.yml
+rate_limit_signaling:
+  headers: [X-RateLimit-Limit, X-RateLimit-Remaining]
+  exceeded_status: 429
+  see: rate-limits/nasa-rate-limits.yml

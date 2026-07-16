@@ -1,0 +1,40 @@
+generated: '2026-06-20'
+method: searched
+source: live probes of /.well-known/* on NASA API + website hosts
+notes: >-
+  No /.well-known discovery documents are published on any NASA host. All probes
+  returned 404 (the api.nasa.gov and www.nasa.gov 404s serve the standard site
+  shell). NASA uses api_key query authentication with no OAuth/OIDC surface, so
+  openid-configuration / oauth-authorization-server are expected absent. Recorded
+  as valid negative discovery data.
+hosts:
+  - host: https://api.nasa.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://www.nasa.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://images-api.nasa.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404

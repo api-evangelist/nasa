@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+source: https://api.nasa.gov/ + openapi/*.yml + https://api.data.gov/docs/rate-limits/
+notes: >-
+  NASA Open APIs carry no formal public versioning or deprecation policy. Version
+  is encoded in the URI path per service (NeoWs rest/v1, Mars Photos api/v1); APOD,
+  DONKI, and EPIC are unversioned in the path. No RFC 8594 Sunset/Deprecation
+  header support is documented, and no published SLA or dedicated status page for
+  api.nasa.gov was found. No operations are marked deprecated in the OpenAPI.
+versioning:
+  scheme: uri-path
+  per_service:
+    - {api: NeoWs, current: v1, path_prefix: /neo/rest/v1}
+    - {api: Mars Rover Photos, current: v1, path_prefix: /mars-photos/api/v1}
+    - {api: APOD, current: unversioned}
+    - {api: DONKI, current: unversioned}
+    - {api: EPIC, current: unversioned}
+    - {api: Image and Video Library, current: unversioned, host: images-api.nasa.gov}
+deprecation:
+  policy_url: null
+  sunset_header: false
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+gateway: https://api.data.gov/
+deprecated_operations: []

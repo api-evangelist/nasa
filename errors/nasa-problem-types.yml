@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: derived
+format: plain-json
+source: openapi/*.yml (4xx/5xx responses) + https://api.data.gov/docs/rate-limits/
+notes: >-
+  NASA Open APIs do not use RFC 9457 application/problem+json. Errors are plain
+  JSON with an "error" object (code + message) or a bare HTTP status. The APOD
+  spec documents 400/403 explicitly; the shared api.data.gov gateway returns 403
+  for a missing/invalid api_key and 429 when rate limits are exceeded. Titles and
+  remediation are enriched from the api.data.gov gateway docs.
+problems:
+  - status: 400
+    title: Bad request
+    detail: A required or malformed query parameter (e.g. an invalid date or date range).
+    remediation: Check parameter formats (dates are YYYY-MM-DD) and required fields.
+    source_operation: openapi/nasa-apod-openapi.yml#getApod
+  - status: 403
+    title: Forbidden - invalid API key
+    detail: The api_key query parameter is missing, invalid, or not authorized.
+    remediation: Sign up for a key at https://api.nasa.gov/ or pass DEMO_KEY for exploration.
+    envelope_field: error
+    source_operation: openapi/nasa-apod-openapi.yml#getApod
+  - status: 429
+    title: Over rate limit
+    detail: The per-key (1,000/hour) or DEMO_KEY per-IP (30/hour, 50/day) limit was exceeded.
+    remediation: Back off until the rolling hourly window resets; use a signed-up key for higher limits.
+    headers: [X-RateLimit-Limit, X-RateLimit-Remaining]
+    source: https://api.data.gov/docs/rate-limits/

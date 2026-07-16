@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: searched
+source: npm, PyPI registry search + api.nasa.gov docs
+notes: >-
+  NASA does not publish a first-party client SDK for the api.nasa.gov Open APIs;
+  the portal documents raw HTTP + api_key only. The libraries below are
+  community-maintained wrappers, marked official: false. No first-party package
+  was found on npm, PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist,
+  or crates.io.
+packages:
+  - language: python
+    registry: pypi
+    name: nasapy
+    url: https://pypi.org/project/nasapy/
+    install: pip install nasapy
+    official: false
+    source_code: https://github.com/aschleg/nasapy
+  - language: python
+    registry: pypi
+    name: python-nasa-api
+    url: https://pypi.org/project/python-nasa-api/
+    install: pip install python-nasa-api
+    official: false
+  - language: javascript
+    registry: npm
+    name: nasa-sdk
+    url: https://www.npmjs.com/package/nasa-sdk
+    install: npm install nasa-sdk
+    official: false
+    source_code: https://github.com/AJFunk/nasa-sdk

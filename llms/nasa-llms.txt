@@ -1,0 +1,33 @@
+# NASA Open APIs
+
+> NASA (National Aeronautics and Space Administration) provides a suite of free public APIs at api.nasa.gov offering access to space, Earth science, and aeronautics data. All APIs authenticate with a single `api_key` query parameter (use `DEMO_KEY` to explore). Signed-up keys allow 1,000 requests/hour; DEMO_KEY is limited to 30/hour and 50/day per IP.
+
+## APIs
+
+- [Astronomy Picture of the Day (APOD)](https://api.nasa.gov/#apod): The daily astronomy image or video with an expert explanation.
+- [Mars Rover Photos](https://api.nasa.gov/#MarsPhotos): Images from the Curiosity, Opportunity, and Spirit rovers, by sol/date and camera.
+- [NeoWs (Near Earth Object Web Service)](https://api.nasa.gov/#NeoWS): Near-Earth asteroid data from the NASA JPL Asteroid team.
+- [DONKI (Space Weather)](https://api.nasa.gov/#DONKI): Space weather events and notifications (CME, solar flares, geomagnetic storms, and more).
+- [EPIC (Earth Polychromatic Imaging Camera)](https://api.nasa.gov/#EPIC): Full-disk Earth imagery from the DSCOVR spacecraft.
+- [Image and Video Library](https://api.nasa.gov/#Images): NASA's media archive of images, video, and audio (images-api.nasa.gov).
+
+## Specs
+
+- [APOD OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-apod-openapi.yml)
+- [Mars Rover Photos OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-mars-rover-photos-openapi.yml)
+- [NeoWs OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-neo-openapi.yml)
+- [DONKI OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-donki-openapi.yml)
+- [EPIC OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-epic-openapi.yml)
+- [Image and Video Library OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-nasa-image-and-video-library-openapi.yml)
+
+## Docs
+
+- [NASA Open APIs Portal](https://api.nasa.gov)
+- [NASA Open Data Portal](https://data.nasa.gov)
+- [NASA GitHub Organization](https://github.com/nasa)
+- [api.data.gov Rate Limits](https://api.data.gov/docs/rate-limits/)
+
+## Security
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/authentication/nasa-authentication.yml): api_key query parameter.
+- [Vulnerability Disclosure Policy](https://www.nasa.gov/vulnerability-disclosure-policy/): NASA VDP via Bugcrowd.

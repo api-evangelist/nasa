@@ -1,0 +1,65 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*.yml component schemas + json-schema/*.json
+notes: >-
+  Entity-relationship graph derived from the NASA OpenAPI component schemas and
+  the repo's json-schema/ files. NASA is a read-only data API with no shared
+  identifiers across products; relationships exist within each product family
+  (Mars Photos, DONKI, NeoWs) rather than across them.
+entities:
+  - name: ApodImage
+    api: APOD
+    schema: json-schema/apod-image.json
+    id_field: date
+  - name: RoverPhoto
+    api: Mars Rover Photos
+    schema: json-schema/rover-photo.json
+    id_field: id
+  - name: Rover
+    api: Mars Rover Photos
+    schema: json-schema/rover.json
+    id_field: id
+  - name: Camera
+    api: Mars Rover Photos
+    schema: json-schema/camera.json
+    id_field: id
+  - name: NearEarthObject
+    api: NeoWs
+    schema: json-schema/near-earth-object.json
+    id_field: neo_reference_id
+  - name: CloseApproach
+    api: NeoWs
+    schema: json-schema/close-approach.json
+  - name: CoronalMassEjection
+    api: DONKI
+    schema: json-schema/coronal-mass-ejection.json
+    id_field: activityID
+  - name: SolarFlare
+    api: DONKI
+    schema: json-schema/solar-flare.json
+    id_field: flrID
+  - name: GeomagneticStorm
+    api: DONKI
+    schema: json-schema/geomagnetic-storm.json
+    id_field: gstID
+  - name: EpicImage
+    api: EPIC
+    schema: json-schema/epic-image.json
+    id_field: identifier
+relationships:
+  - from: RoverPhoto
+    to: Rover
+    kind: belongs_to
+    via: rover
+  - from: RoverPhoto
+    to: Camera
+    kind: has_one
+    via: camera
+  - from: Rover
+    to: RoverPhoto
+    kind: has_many
+    via: photos
+  - from: NearEarthObject
+    to: CloseApproach
+    kind: has_many
+    via: close_approach_data

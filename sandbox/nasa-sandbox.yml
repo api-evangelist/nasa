@@ -1,0 +1,24 @@
+generated: '2026-06-20'
+method: searched
+source: https://api.nasa.gov/ + https://api.data.gov/docs/rate-limits/
+notes: >-
+  NASA has no separate sandbox host or test/live key modes. Instead it publishes
+  a single shared demonstration key, DEMO_KEY, that works against every endpoint
+  with tighter, per-IP rate limits. This is the published verbatim test value —
+  the OpenAPI specs default the api_key parameter to DEMO_KEY. Production traffic
+  should use a signed-up key.
+test_vs_live:
+  model: shared-demo-key
+  live: signed-up api_key (per-key limits)
+  test: DEMO_KEY (per-IP limits, no signup)
+magic_values:
+  - name: DEMO_KEY
+    kind: demo_api_key
+    value: DEMO_KEY
+    usage: Pass as api_key query parameter, e.g. https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+    limits:
+      per_ip_hourly: 30
+      per_ip_daily: 50
+    verbatim: true
+test_clocks: none
+fixtures: none

@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: openapi/*.yml (api_key query parameter) + https://api.nasa.gov/ auth docs
+docs: https://api.nasa.gov/
+summary:
+  types: [apiKey]
+  api_key_in: [query]
+  oauth2_flows: []
+notes: >-
+  Every NASA Open API is authenticated with a single api_key query parameter on
+  api.nasa.gov (and images-api.nasa.gov for the Image and Video Library, whose
+  read endpoints are open). The specs model api_key as a required query parameter
+  rather than a formal OpenAPI securityScheme, so mechanical derivation finds no
+  scheme; this profile is authored from the parameter + published docs. There is
+  no OAuth, OIDC, mTLS, or scope surface. DEMO_KEY is a shared public key for
+  exploration (see sandbox/). Higher rate limits require emailing api@nasa.gov.
+schemes:
+  - name: api_key
+    type: apiKey
+    in: query
+    parameter: api_key
+    sources:
+      - openapi/nasa-apod-openapi.yml
+      - openapi/nasa-donki-openapi.yml
+      - openapi/nasa-epic-openapi.yml
+      - openapi/nasa-mars-rover-photos-openapi.yml
+      - openapi/nasa-neo-openapi.yml
+    demo_key: DEMO_KEY
+    signup: https://api.nasa.gov/
