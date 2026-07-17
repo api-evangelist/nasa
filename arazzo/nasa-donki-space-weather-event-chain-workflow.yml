@@ -1,0 +1,184 @@
+arazzo: 1.0.1
+info:
+  title: NASA DONKI Space Weather Event Chain
+  summary: Walk one space weather window end to end — solar flare, coronal mass ejection, CME analysis, interplanetary shock, geomagnetic storm.
+  description: >-
+    Space weather is a causal chain: an active region flares, the flare drives a
+    coronal mass ejection, the CME is analyzed for speed and direction to
+    forecast arrival, the ejection registers as an interplanetary shock when it
+    reaches Earth, and the impact shows up as a geomagnetic storm with a Kp
+    index. DONKI exposes each link as a separate endpoint over the same date
+    window, and this workflow walks all five in order so a single run reconstructs
+    the whole sequence for one window instead of leaving a caller to correlate
+    five disconnected pulls. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaDonkiApi
+  url: ../openapi/nasa-donki-openapi.yml
+  type: openapi
+workflows:
+- workflowId: donki-space-weather-event-chain
+  summary: Reconstruct the flare to geomagnetic storm chain across a single date window.
+  description: >-
+    Pulls solar flares, coronal mass ejections, CME analysis, interplanetary
+    shocks at Earth, and geomagnetic storms for one date window, following the
+    physical sequence from solar event to terrestrial impact.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+      startDate:
+        type: string
+        format: date
+        description: Start of the space weather window (YYYY-MM-DD). DONKI defaults to 30 days prior.
+      endDate:
+        type: string
+        format: date
+        description: End of the space weather window (YYYY-MM-DD). DONKI defaults to today.
+  steps:
+  - stepId: listSolarFlares
+    description: >-
+      Start at the origin of the chain. Solar flares report the active region
+      number, the class type that grades the flare's X-ray intensity, and the
+      begin, peak, and end times that anchor everything downstream.
+    operationId: getSolarFlares
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      flares: $response.body
+      firstFlareId: $response.body#/0/flrID
+      firstFlareClass: $response.body#/0/classType
+      firstFlarePeakTime: $response.body#/0/peakTime
+      firstFlareSourceLocation: $response.body#/0/sourceLocation
+      firstFlareActiveRegion: $response.body#/0/activeRegionNum
+  - stepId: listCoronalMassEjections
+    description: >-
+      Pull the coronal mass ejections recorded over the same window. Each CME
+      carries the activity ID, its start time, the source location on the solar
+      disc, and the instruments that observed it.
+    operationId: getCoronalMassEjections
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      coronalMassEjections: $response.body
+      firstCmeActivityId: $response.body#/0/activityID
+      firstCmeStartTime: $response.body#/0/startTime
+      firstCmeSourceLocation: $response.body#/0/sourceLocation
+      firstCmeActiveRegion: $response.body#/0/activeRegionNum
+  - stepId: analyzeCoronalMassEjections
+    description: >-
+      Retrieve the CME analysis records, restricted to the most accurate
+      measurement per event across all catalogs. Speed, half angle, latitude,
+      and longitude are what turn an observed ejection into an arrival forecast.
+    operationId: getCmeAnalysis
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: mostAccurateOnly
+      in: query
+      value: true
+    - name: catalog
+      in: query
+      value: ALL
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      analyses: $response.body
+      firstAnalysisSpeed: $response.body#/0/speed
+      firstAnalysisType: $response.body#/0/type
+      firstAnalysisHalfAngle: $response.body#/0/halfAngle
+      firstAnalysisLatitude: $response.body#/0/latitude
+      firstAnalysisLongitude: $response.body#/0/longitude
+      firstAnalysisTime21_5: $response.body#/0/time21_5
+  - stepId: checkInterplanetaryShocks
+    description: >-
+      Check whether anything from this window actually arrived, by pulling
+      interplanetary shocks detected at Earth across all catalogs. A shock at
+      Earth is the observational confirmation that a CME reached us.
+    operationId: getInterplanetaryShocks
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: location
+      in: query
+      value: Earth
+    - name: catalog
+      in: query
+      value: ALL
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      interplanetaryShocks: $response.body
+  - stepId: checkGeomagneticStorms
+    description: >-
+      Close the chain with the terrestrial impact. Geomagnetic storms report a
+      storm ID, start time, and the observed Kp index series that quantifies how
+      hard Earth's magnetic field was disturbed.
+    operationId: getGeomagneticStorms
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      geomagneticStorms: $response.body
+      firstStormId: $response.body#/0/gstID
+      firstStormStartTime: $response.body#/0/startTime
+      firstStormKpIndex: $response.body#/0/allKpIndex/0/kpIndex
+      firstStormObservedTime: $response.body#/0/allKpIndex/0/observedTime
+  outputs:
+    flares: $steps.listSolarFlares.outputs.flares
+    coronalMassEjections: $steps.listCoronalMassEjections.outputs.coronalMassEjections
+    analyses: $steps.analyzeCoronalMassEjections.outputs.analyses
+    interplanetaryShocks: $steps.checkInterplanetaryShocks.outputs.interplanetaryShocks
+    geomagneticStorms: $steps.checkGeomagneticStorms.outputs.geomagneticStorms
+    firstFlareClass: $steps.listSolarFlares.outputs.firstFlareClass
+    firstCmeSpeed: $steps.analyzeCoronalMassEjections.outputs.firstAnalysisSpeed
+    firstStormKpIndex: $steps.checkGeomagneticStorms.outputs.firstStormKpIndex

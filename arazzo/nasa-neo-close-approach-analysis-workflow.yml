@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: NASA Near Earth Object Close Approach Analysis
+  summary: Page the asteroid catalog, look up a specific near-Earth object, and pull every other object approaching on the same date.
+  description: >-
+    The three-stage pattern behind any NeoWs integration that maintains a local
+    asteroid catalog. The browse endpoint paginates the full dataset and is how
+    a catalog is built or refreshed; the lookup endpoint returns the orbital and
+    close-approach detail that the browse listing summarizes; and the feed
+    endpoint answers the question the detail raises, which is what else is
+    passing Earth on that same close-approach date. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaNeoApi
+  url: ../openapi/nasa-neo-openapi.yml
+  type: openapi
+workflows:
+- workflowId: neo-close-approach-analysis
+  summary: Browse the near-Earth object catalog, resolve one object in detail, and survey its close-approach date.
+  description: >-
+    Pages the near-Earth object dataset, looks up the first object on the page
+    for full close-approach detail, and then pulls the feed for that object's
+    next close-approach date to see everything else arriving in the same window.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+      page:
+        type: integer
+        description: Zero-indexed page of the asteroid catalog to browse.
+        default: 0
+      size:
+        type: integer
+        description: Number of near-Earth objects to return per catalog page.
+        default: 20
+  steps:
+  - stepId: browseCatalog
+    description: >-
+      Page the overall near-Earth object dataset. The response carries a page
+      block with total_pages and total_elements, which is what drives a catalog
+      sync loop, plus the summary record for each object on the page.
+    operationId: browseNeos
+    parameters:
+    - name: page
+      in: query
+      value: $inputs.page
+    - name: size
+      in: query
+      value: $inputs.size
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      nearEarthObjects: $response.body#/near_earth_objects
+      firstAsteroidId: $response.body#/near_earth_objects/0/id
+      firstAsteroidName: $response.body#/near_earth_objects/0/name
+      totalPages: $response.body#/page/total_pages
+      totalElements: $response.body#/page/total_elements
+      currentPage: $response.body#/page/number
+  - stepId: lookupAsteroid
+    description: >-
+      Look up the first asteroid from the catalog page by its SPK-ID. The
+      lookup returns the full record including estimated diameter, the
+      potentially hazardous flag, and the close-approach data that the next step
+      keys off of.
+    operationId: getNeoById
+    parameters:
+    - name: asteroid_id
+      in: path
+      value: $steps.browseCatalog.outputs.firstAsteroidId
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      asteroidId: $response.body#/id
+      asteroidName: $response.body#/name
+      jplUrl: $response.body#/nasa_jpl_url
+      absoluteMagnitude: $response.body#/absolute_magnitude_h
+      isPotentiallyHazardous: $response.body#/is_potentially_hazardous_asteroid
+      isSentryObject: $response.body#/is_sentry_object
+      estimatedDiameterMinKm: $response.body#/estimated_diameter/kilometers/estimated_diameter_min
+      estimatedDiameterMaxKm: $response.body#/estimated_diameter/kilometers/estimated_diameter_max
+      closeApproachDate: $response.body#/close_approach_data/0/close_approach_date
+      missDistanceKm: $response.body#/close_approach_data/0/miss_distance/kilometers
+      relativeVelocityKph: $response.body#/close_approach_data/0/relative_velocity/kilometers_per_hour
+      orbitingBody: $response.body#/close_approach_data/0/orbiting_body
+  - stepId: surveyApproachDate
+    description: >-
+      Pull the near-Earth object feed for the asteroid's close-approach date,
+      using that date as both the start and end of the window, to see every
+      other object making a close approach the same day. The feed accepts a
+      maximum range of seven days.
+    operationId: getNeoFeed
+    parameters:
+    - name: start_date
+      in: query
+      value: $steps.lookupAsteroid.outputs.closeApproachDate
+    - name: end_date
+      in: query
+      value: $steps.lookupAsteroid.outputs.closeApproachDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      elementCount: $response.body#/element_count
+      objectsByDate: $response.body#/near_earth_objects
+  outputs:
+    totalElements: $steps.browseCatalog.outputs.totalElements
+    totalPages: $steps.browseCatalog.outputs.totalPages
+    asteroidId: $steps.lookupAsteroid.outputs.asteroidId
+    asteroidName: $steps.lookupAsteroid.outputs.asteroidName
+    isPotentiallyHazardous: $steps.lookupAsteroid.outputs.isPotentiallyHazardous
+    closeApproachDate: $steps.lookupAsteroid.outputs.closeApproachDate
+    missDistanceKm: $steps.lookupAsteroid.outputs.missDistanceKm
+    sameDayApproachCount: $steps.surveyApproachDate.outputs.elementCount

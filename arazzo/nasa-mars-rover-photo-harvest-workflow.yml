@@ -1,0 +1,154 @@
+arazzo: 1.0.1
+info:
+  title: NASA Mars Rover Photo Harvest
+  summary: Read a rover's mission manifest to find a sol that actually has photos, then harvest that sol's images.
+  description: >-
+    The manifest-first pattern that keeps a Mars Rover Photos integration from
+    blind-polling. Rovers do not photograph every sol, so requesting an
+    arbitrary sol frequently returns an empty photo array. This workflow reads
+    the mission manifest first, which reports the rover's status, its most
+    recent sol, and its total photo count, harvests photos from that sol, and
+    falls back to the dedicated latest_photos endpoint if the manifest sol still
+    yields nothing. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaMarsRoverPhotosApi
+  url: ../openapi/nasa-mars-rover-photos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: mars-rover-photo-harvest
+  summary: Harvest photos from a Mars rover using its mission manifest to pick a productive sol.
+  description: >-
+    Reads a rover's mission manifest, uses the manifest's most recent sol to
+    request photos, and falls back to the latest photos endpoint when that sol
+    returns no images.
+  inputs:
+    type: object
+    required:
+    - rover
+    - apiKey
+    properties:
+      rover:
+        type: string
+        description: The Mars rover to harvest photos from.
+        enum:
+        - curiosity
+        - opportunity
+        - spirit
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+      camera:
+        type: string
+        description: Optional camera abbreviation to filter photos by.
+        enum:
+        - FHAZ
+        - RHAZ
+        - MAST
+        - CHEMCAM
+        - MAHLI
+        - MARDI
+        - NAVCAM
+        - PANCAM
+        - MINITES
+      page:
+        type: integer
+        description: Page of photo results to harvest, 25 photos per page.
+        default: 1
+  steps:
+  - stepId: readMissionManifest
+    description: >-
+      Read the rover's mission manifest. This reports whether the rover is still
+      active, the highest sol for which imagery exists, the corresponding Earth
+      date, and the total photo count, which is the only reliable way to pick a
+      sol that will return photos.
+    operationId: getRoverManifest
+    parameters:
+    - name: rover
+      in: path
+      value: $inputs.rover
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      roverName: $response.body#/photo_manifest/name
+      roverStatus: $response.body#/photo_manifest/status
+      maxSol: $response.body#/photo_manifest/max_sol
+      maxDate: $response.body#/photo_manifest/max_date
+      totalPhotos: $response.body#/photo_manifest/total_photos
+      landingDate: $response.body#/photo_manifest/landing_date
+  - stepId: harvestPhotosForSol
+    description: >-
+      Request photos for the most recent sol reported by the manifest,
+      optionally narrowed to a single camera. Results are paginated at 25 photos
+      per page.
+    operationId: getRoverPhotos
+    parameters:
+    - name: rover
+      in: path
+      value: $inputs.rover
+    - name: sol
+      in: query
+      value: $steps.readMissionManifest.outputs.maxSol
+    - name: camera
+      in: query
+      value: $inputs.camera
+    - name: page
+      in: query
+      value: $inputs.page
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      photos: $response.body#/photos
+      firstPhotoId: $response.body#/photos/0/id
+      firstPhotoUrl: $response.body#/photos/0/img_src
+      firstPhotoEarthDate: $response.body#/photos/0/earth_date
+      firstPhotoCamera: $response.body#/photos/0/camera/full_name
+    onSuccess:
+    - name: photosHarvested
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.photos.length > 0
+        type: jsonpath
+    - name: solReturnedNothing
+      type: goto
+      stepId: fallbackToLatestPhotos
+      criteria:
+      - context: $response.body
+        condition: $.photos.length == 0
+        type: jsonpath
+  - stepId: fallbackToLatestPhotos
+    description: >-
+      When the manifest sol returns no photos for the requested camera or page,
+      fall back to the rover's dedicated latest photos endpoint, which always
+      returns the most recently available imagery without needing a sol.
+    operationId: getLatestRoverPhotos
+    parameters:
+    - name: rover
+      in: path
+      value: $inputs.rover
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latestPhotos: $response.body#/latest_photos
+      latestPhotoUrl: $response.body#/latest_photos/0/img_src
+      latestPhotoSol: $response.body#/latest_photos/0/sol
+      latestPhotoEarthDate: $response.body#/latest_photos/0/earth_date
+  outputs:
+    roverName: $steps.readMissionManifest.outputs.roverName
+    roverStatus: $steps.readMissionManifest.outputs.roverStatus
+    maxSol: $steps.readMissionManifest.outputs.maxSol
+    totalPhotos: $steps.readMissionManifest.outputs.totalPhotos
+    photos: $steps.harvestPhotosForSol.outputs.photos
+    fallbackPhotos: $steps.fallbackToLatestPhotos.outputs.latestPhotos

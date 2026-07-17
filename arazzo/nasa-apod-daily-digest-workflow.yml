@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: NASA APOD Daily Digest
+  summary: Pull the Astronomy Picture of the Day and enrich it with related assets from the NASA Image and Video Library.
+  description: >-
+    The content-pipeline pattern behind most NASA-powered feeds, newsletters,
+    and displays. The Astronomy Picture of the Day API is a single-operation
+    service, so on its own it cannot support a multi-step flow. This workflow
+    crosses two NASA APIs: it retrieves the APOD entry for a date, then uses the
+    APOD title as a search term against the NASA Image and Video Library to find
+    related archive media, and resolves the top related item into its
+    downloadable asset manifest. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaApodApi
+  url: ../openapi/nasa-apod-openapi.yml
+  type: openapi
+- name: nasaImageAndVideoLibraryApi
+  url: ../openapi/nasa-nasa-image-and-video-library-openapi.yml
+  type: openapi
+workflows:
+- workflowId: apod-daily-digest
+  summary: Retrieve the Astronomy Picture of the Day and related NASA archive media.
+  description: >-
+    Fetches the APOD entry for a given date and enriches it with a related
+    asset drawn from the NASA Image and Video Library, producing a digest entry
+    with both the picture of the day and supporting archive media.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+      date:
+        type: string
+        format: date
+        description: The APOD date to retrieve (YYYY-MM-DD). Defaults to today when omitted.
+  steps:
+  - stepId: getPictureOfTheDay
+    description: >-
+      Retrieve the Astronomy Picture of the Day entry. thumbs is requested so
+      that video entries still return a usable still image, which matters for
+      any digest that has to render a thumbnail regardless of media type.
+    operationId: getApod
+    parameters:
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    - name: date
+      in: query
+      value: $inputs.date
+    - name: thumbs
+      in: query
+      value: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      title: $response.body#/title
+      explanation: $response.body#/explanation
+      apodDate: $response.body#/date
+      mediaUrl: $response.body#/url
+      hdUrl: $response.body#/hdurl
+      mediaType: $response.body#/media_type
+      thumbnailUrl: $response.body#/thumbnail_url
+      copyright: $response.body#/copyright
+  - stepId: findRelatedArchiveMedia
+    description: >-
+      Search the NASA Image and Video Library using the APOD title as the query
+      term to surface archive imagery covering the same subject. The search is
+      restricted to images so the digest gets a directly renderable companion.
+    operationId: searchMedia
+    parameters:
+    - name: q
+      in: query
+      value: $steps.getPictureOfTheDay.outputs.title
+    - name: media_type
+      in: query
+      value: image
+    - name: page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      relatedNasaId: $response.body#/collection/items/0/data/0/nasa_id
+      relatedTitle: $response.body#/collection/items/0/data/0/title
+      relatedDescription: $response.body#/collection/items/0/data/0/description
+      totalHits: $response.body#/collection/metadata/total_hits
+    onSuccess:
+    - name: noRelatedMedia
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.collection.metadata.total_hits == 0
+        type: jsonpath
+    - name: relatedMediaFound
+      type: goto
+      stepId: resolveRelatedAsset
+      criteria:
+      - context: $response.body
+        condition: $.collection.metadata.total_hits > 0
+        type: jsonpath
+  - stepId: resolveRelatedAsset
+    description: >-
+      Resolve the related archive item into its asset manifest so the digest
+      can link or download an actual file rather than a collection reference.
+    operationId: getAsset
+    parameters:
+    - name: nasa_id
+      in: path
+      value: $steps.findRelatedArchiveMedia.outputs.relatedNasaId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      relatedAssetHref: $response.body#/collection/items/0/href
+  outputs:
+    title: $steps.getPictureOfTheDay.outputs.title
+    explanation: $steps.getPictureOfTheDay.outputs.explanation
+    apodDate: $steps.getPictureOfTheDay.outputs.apodDate
+    mediaUrl: $steps.getPictureOfTheDay.outputs.mediaUrl
+    mediaType: $steps.getPictureOfTheDay.outputs.mediaType
+    relatedNasaId: $steps.findRelatedArchiveMedia.outputs.relatedNasaId
+    relatedAssetHref: $steps.resolveRelatedAsset.outputs.relatedAssetHref

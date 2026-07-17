@@ -147,6 +147,27 @@ common:
     url: overlays/nasa-nasa-image-and-video-library-overlay.yaml
   - type: Overlay
     url: overlays/nasa-neo-overlay.yaml
+  - type: Arazzo
+    url: arazzo/nasa-apod-daily-digest-workflow.yml
+    name: NASA APOD Daily Digest
+  - type: Arazzo
+    url: arazzo/nasa-media-asset-retrieval-workflow.yml
+    name: NASA Media Asset Retrieval
+  - type: Arazzo
+    url: arazzo/nasa-mars-rover-photo-harvest-workflow.yml
+    name: NASA Mars Rover Photo Harvest
+  - type: Arazzo
+    url: arazzo/nasa-neo-close-approach-analysis-workflow.yml
+    name: NASA Near Earth Object Close Approach Analysis
+  - type: Arazzo
+    url: arazzo/nasa-epic-earth-imagery-workflow.yml
+    name: NASA EPIC Earth Imagery Retrieval
+  - type: Arazzo
+    url: arazzo/nasa-donki-space-weather-event-chain-workflow.yml
+    name: NASA DONKI Space Weather Event Chain
+  - type: Arazzo
+    url: arazzo/nasa-donki-notification-triage-workflow.yml
+    name: NASA DONKI Notification Triage
   - type: LinkedIn
     url: https://www.linkedin.com/company/nasa
   - url: https://api.nasa.gov

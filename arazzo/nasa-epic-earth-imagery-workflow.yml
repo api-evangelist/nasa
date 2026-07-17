@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: NASA EPIC Earth Imagery Retrieval
+  summary: List the dates EPIC actually has imagery for, then pull both natural and enhanced color metadata for one of them.
+  description: >-
+    The date-catalog-first pattern for the Earth Polychromatic Imaging Camera.
+    DSCOVR does not return full-disc imagery every day, so requesting an
+    arbitrary date is a coin flip. EPIC publishes a dedicated endpoint listing
+    every date it holds natural color imagery for, and this workflow reads that
+    catalog first, selects a date from it, and then pulls both the natural color
+    and enhanced color metadata for that same date so a caller can compare the
+    two renderings of an identical capture. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaEpicApi
+  url: ../openapi/nasa-epic-openapi.yml
+  type: openapi
+workflows:
+- workflowId: epic-earth-imagery-retrieval
+  summary: Resolve an available EPIC date and retrieve its natural and enhanced color imagery metadata.
+  description: >-
+    Reads the catalog of dates for which EPIC holds natural color imagery,
+    takes the first available date, and retrieves both the natural color and
+    enhanced color image metadata for that date.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+  steps:
+  - stepId: listAvailableDates
+    description: >-
+      Read the catalog of every date for which EPIC holds natural color
+      imagery. This is the only reliable way to pick a date that will actually
+      return images, since DSCOVR does not capture usable full-disc imagery
+      every day.
+    operationId: getEpicNaturalDates
+    parameters:
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      availableDates: $response.body
+      selectedDate: $response.body#/0/date
+  - stepId: getNaturalColorImagery
+    description: >-
+      Retrieve natural color image metadata for the selected date. Each entry
+      carries the image filename, the caption, the centroid coordinates of the
+      Earth disc, and the spacecraft, lunar, and solar J2000 positions at
+      capture time.
+    operationId: getEpicNaturalByDate
+    parameters:
+    - name: date
+      in: path
+      value: $steps.listAvailableDates.outputs.selectedDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      naturalImages: $response.body
+      naturalIdentifier: $response.body#/0/identifier
+      naturalImageName: $response.body#/0/image
+      naturalCaption: $response.body#/0/caption
+      naturalCaptureDate: $response.body#/0/date
+      centroidLat: $response.body#/0/centroid_coordinates/lat
+      centroidLon: $response.body#/0/centroid_coordinates/lon
+  - stepId: getEnhancedColorImagery
+    description: >-
+      Retrieve enhanced color image metadata for the same date so the caller
+      can pair each natural color capture with its contrast-enhanced rendering
+      of the same moment.
+    operationId: getEpicEnhancedByDate
+    parameters:
+    - name: date
+      in: path
+      value: $steps.listAvailableDates.outputs.selectedDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      enhancedImages: $response.body
+      enhancedIdentifier: $response.body#/0/identifier
+      enhancedImageName: $response.body#/0/image
+      enhancedCaptureDate: $response.body#/0/date
+  outputs:
+    selectedDate: $steps.listAvailableDates.outputs.selectedDate
+    naturalImageName: $steps.getNaturalColorImagery.outputs.naturalImageName
+    naturalCaption: $steps.getNaturalColorImagery.outputs.naturalCaption
+    centroidLat: $steps.getNaturalColorImagery.outputs.centroidLat
+    centroidLon: $steps.getNaturalColorImagery.outputs.centroidLon
+    enhancedImageName: $steps.getEnhancedColorImagery.outputs.enhancedImageName

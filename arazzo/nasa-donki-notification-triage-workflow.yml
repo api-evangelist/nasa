@@ -1,0 +1,154 @@
+arazzo: 1.0.1
+info:
+  title: NASA DONKI Notification Triage
+  summary: Poll DONKI space weather notifications and branch to the matching event endpoint for the detail the alert omits.
+  description: >-
+    The alert-then-detail pattern for a space weather monitor. DONKI
+    notifications are the human-readable feed: each message carries a type, an
+    issue time, and a prose body, but not the structured event record behind it.
+    This workflow polls the notification feed for a window and then branches on
+    the message type, pulling solar energetic particle records when the alert is
+    an SEP and magnetopause crossing records when it is an MPC, so the caller
+    ends up with both the alert and the machine-readable event data over the same
+    window. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaDonkiApi
+  url: ../openapi/nasa-donki-openapi.yml
+  type: openapi
+workflows:
+- workflowId: donki-notification-triage
+  summary: Poll space weather notifications and resolve SEP or MPC alerts into their structured event records.
+  description: >-
+    Retrieves DONKI notifications for a date window and branches on the type of
+    the first message, fetching solar energetic particle events for SEP alerts
+    or magnetopause crossing events for MPC alerts.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: NASA API key from api.nasa.gov. DEMO_KEY works for low-volume testing.
+        default: DEMO_KEY
+      startDate:
+        type: string
+        format: date
+        description: Start of the notification window (YYYY-MM-DD). DONKI defaults to 30 days prior.
+      endDate:
+        type: string
+        format: date
+        description: End of the notification window (YYYY-MM-DD). DONKI defaults to today.
+      notificationType:
+        type: string
+        description: Notification type to poll for. Use "all" to receive every message type.
+        default: all
+        enum:
+        - all
+        - FLR
+        - SEP
+        - CME
+        - IPS
+        - MPC
+        - GST
+        - RBE
+        - report
+  steps:
+  - stepId: pollNotifications
+    description: >-
+      Poll the DONKI notification feed for the window. Each message carries a
+      message type, a message ID, the issue time, a URL to the published
+      notification, and the prose body a human would read.
+    operationId: getDonkiNotifications
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: type
+      in: query
+      value: $inputs.notificationType
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notifications: $response.body
+      firstMessageType: $response.body#/0/messageType
+      firstMessageId: $response.body#/0/messageID
+      firstMessageUrl: $response.body#/0/messageURL
+      firstMessageIssueTime: $response.body#/0/messageIssueTime
+      firstMessageBody: $response.body#/0/messageBody
+    onSuccess:
+    - name: solarEnergeticParticleAlert
+      type: goto
+      stepId: resolveSolarEnergeticParticles
+      criteria:
+      - condition: $response.body#/0/messageType == 'SEP'
+    - name: magnetopauseCrossingAlert
+      type: goto
+      stepId: resolveMagnetopauseCrossings
+      criteria:
+      - condition: $response.body#/0/messageType == 'MPC'
+    - name: noStructuredEventToResolve
+      type: end
+      criteria:
+      - condition: $response.body#/0/messageType != 'SEP'
+      - condition: $response.body#/0/messageType != 'MPC'
+  - stepId: resolveSolarEnergeticParticles
+    description: >-
+      An SEP alert means energetic particles were detected. Pull the structured
+      solar energetic particle records for the same window, which report the
+      event ID, event time, and the instruments that made the detection.
+    operationId: getSolarEnergeticParticles
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      solarEnergeticParticles: $response.body
+      firstSepId: $response.body#/0/sepID
+      firstSepEventTime: $response.body#/0/eventTime
+      firstSepInstrument: $response.body#/0/instruments/0/displayName
+    onSuccess:
+    - name: sepResolved
+      type: end
+  - stepId: resolveMagnetopauseCrossings
+    description: >-
+      An MPC alert means the magnetopause was compressed inside geosynchronous
+      orbit. Pull the structured magnetopause crossing records for the same
+      window.
+    operationId: getMagnetopauseCrossings
+    parameters:
+    - name: startDate
+      in: query
+      value: $inputs.startDate
+    - name: endDate
+      in: query
+      value: $inputs.endDate
+    - name: api_key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      magnetopauseCrossings: $response.body
+  outputs:
+    notifications: $steps.pollNotifications.outputs.notifications
+    firstMessageType: $steps.pollNotifications.outputs.firstMessageType
+    firstMessageUrl: $steps.pollNotifications.outputs.firstMessageUrl
+    solarEnergeticParticles: $steps.resolveSolarEnergeticParticles.outputs.solarEnergeticParticles
+    magnetopauseCrossings: $steps.resolveMagnetopauseCrossings.outputs.magnetopauseCrossings

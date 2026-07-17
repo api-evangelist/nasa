@@ -1,0 +1,158 @@
+arazzo: 1.0.1
+info:
+  title: NASA Media Asset Retrieval
+  summary: Search the NASA Image and Video Library, then resolve the downloadable files, metadata, and captions for a match.
+  description: >-
+    The canonical NASA Image and Video Library integration pattern. A search
+    returns lightweight collection items carrying a nasa_id, but never the
+    actual media files. This workflow searches the archive, takes the nasa_id
+    off the first match, resolves the asset manifest that lists every rendition
+    of that media, pulls the metadata location, and then branches: video assets
+    additionally resolve their captions file, while images end the flow. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: nasaImageAndVideoLibraryApi
+  url: ../openapi/nasa-nasa-image-and-video-library-openapi.yml
+  type: openapi
+workflows:
+- workflowId: media-asset-retrieval
+  summary: Resolve a searchable NASA media item into its files, metadata, and captions.
+  description: >-
+    Searches the NASA Image and Video Library for a term, resolves the first
+    match into its asset manifest and metadata location, and fetches captions
+    when the match is a video.
+  inputs:
+    type: object
+    required:
+    - query
+    properties:
+      query:
+        type: string
+        description: Free text search terms (e.g. "apollo 11 landing").
+      mediaType:
+        type: string
+        description: Restrict the search to one media type.
+        enum:
+        - image
+        - video
+        - audio
+      center:
+        type: string
+        description: Optional NASA center that published the media (e.g. "JPL").
+      yearStart:
+        type: string
+        description: Optional earliest year to include in the search.
+      yearEnd:
+        type: string
+        description: Optional latest year to include in the search.
+  steps:
+  - stepId: searchArchive
+    description: >-
+      Search the NASA Image and Video Library. The response carries collection
+      items whose data blocks hold the nasa_id needed by every later step, plus
+      a total_hits count used to decide whether there is anything to resolve.
+    operationId: searchMedia
+    parameters:
+    - name: q
+      in: query
+      value: $inputs.query
+    - name: media_type
+      in: query
+      value: $inputs.mediaType
+    - name: center
+      in: query
+      value: $inputs.center
+    - name: year_start
+      in: query
+      value: $inputs.yearStart
+    - name: year_end
+      in: query
+      value: $inputs.yearEnd
+    - name: page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      nasaId: $response.body#/collection/items/0/data/0/nasa_id
+      title: $response.body#/collection/items/0/data/0/title
+      mediaType: $response.body#/collection/items/0/data/0/media_type
+      dateCreated: $response.body#/collection/items/0/data/0/date_created
+      totalHits: $response.body#/collection/metadata/total_hits
+    onSuccess:
+    - name: noMatches
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.collection.metadata.total_hits == 0
+        type: jsonpath
+    - name: haveMatch
+      type: goto
+      stepId: resolveAssetManifest
+      criteria:
+      - context: $response.body
+        condition: $.collection.metadata.total_hits > 0
+        type: jsonpath
+  - stepId: resolveAssetManifest
+    description: >-
+      Resolve the nasa_id from the search hit into its asset manifest. The
+      manifest lists an href for every rendition NASA holds for that media item
+      (thumbnail, small, medium, original), which is what a client actually
+      downloads.
+    operationId: getAsset
+    parameters:
+    - name: nasa_id
+      in: path
+      value: $steps.searchArchive.outputs.nasaId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      primaryAssetHref: $response.body#/collection/items/0/href
+      assetItems: $response.body#/collection/items
+  - stepId: resolveMetadata
+    description: >-
+      Fetch the metadata location for the same nasa_id. NASA returns a signed
+      URL pointing at the full metadata document rather than the metadata
+      itself, so the caller follows the returned location.
+    operationId: getMetadata
+    parameters:
+    - name: nasa_id
+      in: path
+      value: $steps.searchArchive.outputs.nasaId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      metadataLocation: $response.body#/location
+    onSuccess:
+    - name: videoNeedsCaptions
+      type: goto
+      stepId: resolveCaptions
+      criteria:
+      - condition: $steps.searchArchive.outputs.mediaType == 'video'
+    - name: notAVideo
+      type: end
+      criteria:
+      - condition: $steps.searchArchive.outputs.mediaType != 'video'
+  - stepId: resolveCaptions
+    description: >-
+      Video assets carry a separate captions file. Resolve its location so the
+      caller can attach captions alongside the downloaded video rendition.
+    operationId: getCaptions
+    parameters:
+    - name: nasa_id
+      in: path
+      value: $steps.searchArchive.outputs.nasaId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      captionsLocation: $response.body#/location
+  outputs:
+    nasaId: $steps.searchArchive.outputs.nasaId
+    title: $steps.searchArchive.outputs.title
+    mediaType: $steps.searchArchive.outputs.mediaType
+    totalHits: $steps.searchArchive.outputs.totalHits
+    primaryAssetHref: $steps.resolveAssetManifest.outputs.primaryAssetHref
+    metadataLocation: $steps.resolveMetadata.outputs.metadataLocation
+    captionsLocation: $steps.resolveCaptions.outputs.captionsLocation
