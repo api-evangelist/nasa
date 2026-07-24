@@ -1,16 +1,15 @@
 openapi: 3.0.3
 info:
-  title: NASA EPIC (Earth Polychromatic Imaging Camera) API
-  description: >-
-    The EPIC API provides access to imagery from NASA's Earth Polychromatic
-    Imaging Camera onboard the DSCOVR spacecraft. EPIC captures full-disc
-    images of the Earth in multiple wavelengths.
+  title: NASA Astronomy Picture of the Day (APOD) Asset EPIC API
+  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
   version: 1.0.0
   contact:
     name: NASA API Support
     url: https://api.nasa.gov
 servers:
-  - url: https://api.nasa.gov
+- url: https://api.nasa.gov
+tags:
+- name: EPIC
 paths:
   /EPIC/api/natural:
     get:
@@ -18,12 +17,12 @@ paths:
       summary: NASA Get most recent natural color imagery metadata
       description: Returns metadata for the most recent natural color images.
       parameters:
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-            default: DEMO_KEY
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful response
@@ -34,24 +33,24 @@ paths:
                 items:
                   $ref: '#/components/schemas/EpicImage'
       tags:
-        - EPIC
+      - EPIC
   /EPIC/api/natural/date/{date}:
     get:
       operationId: getEpicNaturalByDate
       summary: NASA Get natural color imagery metadata for a specific date
       parameters:
-        - name: date
-          in: path
-          required: true
-          schema:
-            type: string
-            format: date
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-            default: DEMO_KEY
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful response
@@ -62,18 +61,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/EpicImage'
       tags:
-        - EPIC
+      - EPIC
   /EPIC/api/natural/all:
     get:
       operationId: getEpicNaturalDates
       summary: NASA Get all available natural color imagery dates
       parameters:
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-            default: DEMO_KEY
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful response
@@ -88,18 +87,18 @@ paths:
                       type: string
                       format: date
       tags:
-        - EPIC
+      - EPIC
   /EPIC/api/enhanced:
     get:
       operationId: getEpicEnhanced
       summary: NASA Get most recent enhanced color imagery metadata
       parameters:
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-            default: DEMO_KEY
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful response
@@ -110,24 +109,24 @@ paths:
                 items:
                   $ref: '#/components/schemas/EpicImage'
       tags:
-        - EPIC
+      - EPIC
   /EPIC/api/enhanced/date/{date}:
     get:
       operationId: getEpicEnhancedByDate
       summary: NASA Get enhanced color imagery metadata for a specific date
       parameters:
-        - name: date
-          in: path
-          required: true
-          schema:
-            type: string
-            format: date
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-            default: DEMO_KEY
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful response
@@ -138,7 +137,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/EpicImage'
       tags:
-        - EPIC
+      - EPIC
 components:
   schemas:
     EpicImage:
@@ -187,9 +186,7 @@ components:
       properties:
         x:
           type: number
-        'y':
+        y:
           type: number
         z:
           type: number
-tags:
-  - name: EPIC

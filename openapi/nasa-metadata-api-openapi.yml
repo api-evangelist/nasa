@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: NASA Astronomy Picture of the Day (APOD) Asset Metadata API
+  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
+  version: 1.0.0
+  contact:
+    name: NASA API Support
+    url: https://api.nasa.gov
+servers:
+- url: https://api.nasa.gov
+tags:
+- name: Metadata
+paths:
+  /metadata/{nasa_id}:
+    get:
+      operationId: getMetadata
+      summary: NASA Get media metadata location
+      description: Returns the metadata location for a NASA media asset.
+      parameters:
+      - name: nasa_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    format: uri
+      tags:
+      - Metadata
