@@ -1,0 +1,30 @@
+{
+  "provider": "nasa",
+  "sources": [
+    "nasa-asset-api-openapi.yml",
+    "nasa-captions-api-openapi.yml",
+    "nasa-donki-api-openapi.yml",
+    "nasa-epic-api-openapi.yml",
+    "nasa-mars-photos-api-openapi.yml",
+    "nasa-metadata-api-openapi.yml",
+    "nasa-neo-api-openapi.yml",
+    "nasa-planetary-api-openapi.yml",
+    "nasa-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "nasa-asset-api-openapi.yml",
+    "nasa-captions-api-openapi.yml",
+    "nasa-donki-api-openapi.yml",
+    "nasa-epic-api-openapi.yml",
+    "nasa-mars-photos-api-openapi.yml",
+    "nasa-metadata-api-openapi.yml",
+    "nasa-neo-api-openapi.yml",
+    "nasa-planetary-api-openapi.yml",
+    "nasa-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
