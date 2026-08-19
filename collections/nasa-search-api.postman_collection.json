@@ -1,0 +1,207 @@
+{
+  "item": [
+    {
+      "id": "a90ec810-2bcb-402b-89b3-db5cc9894307",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c26fff5-f2d5-4860-81b0-a0594f8ea25e",
+          "name": "Search the NASA media library",
+          "request": {
+            "name": "Search the NASA media library",
+            "description": {
+              "content": "Perform a search across the NASA Image and Video Library.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free text search terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "center",
+                  "value": "<string>",
+                  "description": "NASA center that published the media."
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>",
+                  "description": "Comma-separated list of keywords."
+                },
+                {
+                  "disabled": false,
+                  "key": "media_type",
+                  "value": "<string>",
+                  "description": "Filter by media type."
+                },
+                {
+                  "disabled": false,
+                  "key": "nasa_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "photographer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year_start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year_end",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c096ec98-8d39-4c23-873c-4ad2b1e23344",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "center",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "media_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nasa_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "photographer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year_end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collection\": {\n    \"href\": \"https://H.omrndztbgIUXdhLUNgSuf04F\",\n    \"items\": [\n      {\n        \"href\": \"https://iPmfDwMCvaReDFhumKEy.lhiJRCxvawkomwOx5edXpVFL,EbkNWYHy1D,KYW4ADziOPIIAg\",\n        \"data\": [\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1983-04-16T10:01:19.155Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          },\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"2018-10-15T08:50:14.245Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          }\n        ],\n        \"links\": [\n          {\n            \"href\": \"http://mOOC.cxfvm9cCvGbpOzlftLMq3dXYJDw.KBeQHV+22KgtBv4fm-9SfQgZjF3k1VpHf\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          },\n          {\n            \"href\": \"http://wOXxWIdjXXiDA.ifekI,IT4iRLEVIYx3vVssCGVHdZFxgIjHkkvogWBdFnnAn1Qzi1qnZxaXbV.po33b6+DymKNcLV7SE,zl\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          }\n        ]\n      },\n      {\n        \"href\": \"https://WSsixAaLzpVL.hhoVwc1auWQS+T1JW,bAj5ipe5-ZN0dgPVY\",\n        \"data\": [\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1954-01-26T05:20:55.108Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          },\n          {\n            \"center\": \"string\",\n            \"title\": \"string\",\n            \"nasa_id\": \"string\",\n            \"date_created\": \"1948-11-18T22:10:44.466Z\",\n            \"keywords\": [\n              \"string\",\n              \"string\"\n            ],\n            \"media_type\": \"string\",\n            \"description\": \"string\",\n            \"description_508\": \"string\",\n            \"photographer\": \"string\"\n          }\n        ],\n        \"links\": [\n          {\n            \"href\": \"http://jRjmFzUhIKHEkpTGoaaOpo.heWn.SEkYaUN,NC7K8bsDYqQyYtPudiJ1xd48ZFKDiePCFYStbWG4EEcgxVraUp01xF.sCrNsxQM\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          },\n          {\n            \"href\": \"https://xJWCvRoiVtFZFGLCZ.cekExVdb5pGsLLyS9CyNOCgF7EdA3oMls57PpuFQm\",\n            \"rel\": \"string\",\n            \"render\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"total_hits\": 490\n    },\n    \"links\": [\n      {\n        \"rel\": \"string\",\n        \"prompt\": \"string\",\n        \"href\": \"https://ndpRBISjyeZkUzoXTUkYRklJP.hcjVm+nX8tIvlFG-0UjpngrPs\"\n      },\n      {\n        \"rel\": \"string\",\n        \"prompt\": \"string\",\n        \"href\": \"http://QLMmtfbkQzGdydnarMS.ffR292fRdoMWnsc-i.-heuSBgBpC6nWgYkZoK,vY7pOLnWl6JpzUS8PuNrnAF,k\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0ec8093d-960e-4543-97ae-20c8d8650428",
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

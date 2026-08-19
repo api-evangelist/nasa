@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Asset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get media asset manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/asset/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a manifest of available media files for a NASA ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

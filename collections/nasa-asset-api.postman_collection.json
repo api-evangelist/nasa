@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "99087656-05f4-42bf-bb76-75c39dbac272",
+      "name": "Asset",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6cd5c5df-0460-444d-bc34-b41bbded23b7",
+          "name": "NASA Get media asset manifest",
+          "request": {
+            "name": "NASA Get media asset manifest",
+            "description": {
+              "content": "Returns a manifest of available media files for a NASA ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "asset",
+                ":nasa_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nasa_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55042a1a-8cd5-44f9-88f0-58626745768f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "asset",
+                    ":nasa_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nasa_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collection\": {\n    \"items\": [\n      {\n        \"href\": \"http://qPvNZviZSdluG.slfAQdrOZX4wQ7fkZvUdg\"\n      },\n      {\n        \"href\": \"https://yEdMqRXMfeot.mwa1U4qhfHD\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b5ad563b-eeb5-4a35-b0aa-7e086c2f87e9",
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

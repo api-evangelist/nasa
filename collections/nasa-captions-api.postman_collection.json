@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "3878e10c-2ada-41fa-9728-1b7c77ba6d03",
+      "name": "Captions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "671cbd11-da37-42bc-840c-6cb9a1d85a27",
+          "name": "NASA Get video captions location",
+          "request": {
+            "name": "NASA Get video captions location",
+            "description": {
+              "content": "Returns the captions file location for a video asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "captions",
+                ":nasa_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nasa_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45ce5d71-a9cc-4cc4-9c76-fb0aedb9ee5a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "captions",
+                    ":nasa_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nasa_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"http://BWdVhtNruVSJFRDUTAvDkyHTbhzIRcj.htsjyE.41azcNoKa1eiykmJGjgfpgznMTyTEcxu09FY,gSFWzIofJTvZwC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5ac255e6-cfde-4156-97fd-2090ac203b8a",
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Captions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

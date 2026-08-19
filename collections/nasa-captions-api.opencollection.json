@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Captions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Captions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get video captions location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/captions/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the captions file location for a video asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

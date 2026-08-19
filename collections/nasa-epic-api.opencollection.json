@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset EPIC API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "EPIC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get most recent natural color imagery metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/EPIC/api/natural",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns metadata for the most recent natural color images."
+        },
+        {
+          "info": {
+            "name": "NASA Get natural color imagery metadata for a specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/EPIC/api/natural/date/:date",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NASA Get natural color imagery metadata for a specific date"
+        },
+        {
+          "info": {
+            "name": "NASA Get all available natural color imagery dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/EPIC/api/natural/all",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NASA Get all available natural color imagery dates"
+        },
+        {
+          "info": {
+            "name": "NASA Get most recent enhanced color imagery metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/EPIC/api/enhanced",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NASA Get most recent enhanced color imagery metadata"
+        },
+        {
+          "info": {
+            "name": "NASA Get enhanced color imagery metadata for a specific date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/EPIC/api/enhanced/date/:date",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "NASA Get enhanced color imagery metadata for a specific date"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

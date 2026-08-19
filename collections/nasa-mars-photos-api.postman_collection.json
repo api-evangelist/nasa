@@ -1,0 +1,394 @@
+{
+  "item": [
+    {
+      "id": "81f6c4d2-4c6c-49ba-98f8-513ae7afd81e",
+      "name": "Mars Photos",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e0f04a9-5d94-4d16-b84b-6245968258f7",
+          "name": "NASA Get photos from a Mars rover",
+          "request": {
+            "name": "NASA Get photos from a Mars rover",
+            "description": {
+              "content": "Returns photos taken by the specified Mars rover, filtered by sol or Earth date and optionally by camera.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mars-photos",
+                "api",
+                "v1",
+                "rovers",
+                ":rover",
+                "photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sol",
+                  "value": "<integer>",
+                  "description": "Martian sol (day) on which photos were taken."
+                },
+                {
+                  "disabled": false,
+                  "key": "earth_date",
+                  "value": "<date>",
+                  "description": "Earth date on which photos were taken (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "camera",
+                  "value": "<string>",
+                  "description": "Abbreviation of the camera used to take the photo."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated results (25 items per page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rover",
+                  "description": "(Required) The name of the rover."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a9c9441-e6ff-4889-a467-3e05c6f541a0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mars-photos",
+                    "api",
+                    "v1",
+                    "rovers",
+                    ":rover",
+                    "photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sol",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "earth_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "camera",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rover",
+                      "description": "(Required) The name of the rover."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"photos\": [\n    {\n      \"id\": 238,\n      \"sol\": 6040,\n      \"camera\": {\n        \"id\": 4630,\n        \"name\": \"string\",\n        \"rover_id\": 6604,\n        \"full_name\": \"string\"\n      },\n      \"img_src\": \"https://iecrKcDlvmQZhbVXfzWNsHblqcctwdYPI.ohrbeRFSjmun,3bDlA4uF+PVGkuc,opqhprD463WZBRreuOBNZjf2ZFgYW2WXx6+s3qm\",\n      \"earth_date\": \"1981-07-06\",\n      \"rover\": {\n        \"id\": 7011,\n        \"name\": \"string\",\n        \"landing_date\": \"1978-01-07\",\n        \"launch_date\": \"1964-12-24\",\n        \"status\": \"complete\"\n      }\n    },\n    {\n      \"id\": 8480,\n      \"sol\": 7470,\n      \"camera\": {\n        \"id\": 50,\n        \"name\": \"string\",\n        \"rover_id\": 6712,\n        \"full_name\": \"string\"\n      },\n      \"img_src\": \"https://BaZkwKJPLcHJPCfssaUEBjLahnoxB.chyflG8RbNT0-G9v0gtKMiujGHUl++22GRmhbqWTkvEYGP6Dzl2hYlYkqSWPD5\",\n      \"earth_date\": \"1953-02-06\",\n      \"rover\": {\n        \"id\": 7708,\n        \"name\": \"string\",\n        \"landing_date\": \"1977-10-15\",\n        \"launch_date\": \"2014-11-04\",\n        \"status\": \"complete\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cd5755b-ddf4-4f65-af9a-3e0653105c6f",
+          "name": "NASA Get the latest photos from a Mars rover",
+          "request": {
+            "name": "NASA Get the latest photos from a Mars rover",
+            "description": {
+              "content": "Returns the most recently available photos for a rover.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mars-photos",
+                "api",
+                "v1",
+                "rovers",
+                ":rover",
+                "latest_photos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rover",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37f189fb-c6d8-4124-9eb6-34cbbffb16a8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mars-photos",
+                    "api",
+                    "v1",
+                    "rovers",
+                    ":rover",
+                    "latest_photos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rover",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"latest_photos\": [\n    {\n      \"id\": 9104,\n      \"sol\": 6253,\n      \"camera\": {\n        \"id\": 2026,\n        \"name\": \"string\",\n        \"rover_id\": 7966,\n        \"full_name\": \"string\"\n      },\n      \"img_src\": \"http://xEUEmGcUKRuPSFlx.zvslewPKPrbo9V\",\n      \"earth_date\": \"1982-05-15\",\n      \"rover\": {\n        \"id\": 4668,\n        \"name\": \"string\",\n        \"landing_date\": \"2004-07-09\",\n        \"launch_date\": \"2001-08-11\",\n        \"status\": \"complete\"\n      }\n    },\n    {\n      \"id\": 9271,\n      \"sol\": 6304,\n      \"camera\": {\n        \"id\": 8026,\n        \"name\": \"string\",\n        \"rover_id\": 1048,\n        \"full_name\": \"string\"\n      },\n      \"img_src\": \"http://petLLsXABIFWLMyWkgHpxQfQxrPcfYSA.oxzLqkUfu6P4EHRPWIYhMqFOqXyVDB+ZUpGp.4PzAA30lTLMz29lGeSIJgUBx\",\n      \"earth_date\": \"1984-09-02\",\n      \"rover\": {\n        \"id\": 1534,\n        \"name\": \"string\",\n        \"landing_date\": \"1966-04-11\",\n        \"launch_date\": \"1961-04-22\",\n        \"status\": \"complete\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05c48781-8ff4-42cf-8ec2-ba5b5ffcee11",
+          "name": "NASA Get mission manifest for a rover",
+          "request": {
+            "name": "NASA Get mission manifest for a rover",
+            "description": {
+              "content": "Returns the mission manifest including sol and photo counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mars-photos",
+                "api",
+                "v1",
+                "manifests",
+                ":rover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rover",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e2903bf-b393-453a-ad14-6979cc572e14",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mars-photos",
+                    "api",
+                    "v1",
+                    "manifests",
+                    ":rover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rover",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"photo_manifest\": {\n    \"name\": \"string\",\n    \"landing_date\": \"1964-11-14\",\n    \"launch_date\": \"1989-08-12\",\n    \"status\": \"string\",\n    \"max_sol\": 4919,\n    \"max_date\": \"1993-12-28\",\n    \"total_photos\": 8398,\n    \"photos\": [\n      {\n        \"sol\": 4228,\n        \"earth_date\": \"1980-09-10\",\n        \"total_photos\": 3851,\n        \"cameras\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"sol\": 5045,\n        \"earth_date\": \"1978-01-28\",\n        \"total_photos\": 9740,\n        \"cameras\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e5ad5c5-c762-4b1a-beee-777817502ffc",
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Mars Photos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

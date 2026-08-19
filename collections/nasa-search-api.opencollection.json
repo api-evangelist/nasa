@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the NASA media library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free text search terms."
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query",
+                "description": "NASA center that published the media."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywords",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of keywords."
+              },
+              {
+                "name": "media_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by media type."
+              },
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "photographer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year_end",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Perform a search across the NASA Image and Video Library."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

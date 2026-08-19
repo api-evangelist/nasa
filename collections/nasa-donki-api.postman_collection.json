@@ -1,0 +1,895 @@
+{
+  "item": [
+    {
+      "id": "41ccf76b-a09e-4b59-bd5f-96250404c4e6",
+      "name": "DONKI",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa794b75-c2fe-4b9d-9eba-7c44d0236f48",
+          "name": "NASA Get coronal mass ejection events",
+          "request": {
+            "name": "NASA Get coronal mass ejection events",
+            "description": {
+              "content": "Returns coronal mass ejection (CME) events within a date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DONKI",
+                "CME"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start date (YYYY-MM-DD). Defaults to 30 days prior."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End date (YYYY-MM-DD). Defaults to today."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b83d81fa-59a1-4826-a0c7-acbfb44fbb88",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "CME"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"activityID\": \"string\",\n    \"catalog\": \"string\",\n    \"startTime\": \"2015-09-28T23:31:15.243Z\",\n    \"sourceLocation\": \"string\",\n    \"activeRegionNum\": 8065,\n    \"note\": \"string\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ],\n    \"cmeAnalyses\": [\n      {\n        \"time21_5\": \"2000-08-13T03:25:37.518Z\",\n        \"latitude\": 1518.8949617190206,\n        \"longitude\": 3868.585356484443,\n        \"halfAngle\": 6894.5636497090845,\n        \"speed\": 79.73918276333758,\n        \"type\": \"string\",\n        \"isMostAccurate\": true\n      },\n      {\n        \"time21_5\": \"2004-05-17T09:38:56.510Z\",\n        \"latitude\": 848.4003386753047,\n        \"longitude\": 3043.9026955124705,\n        \"halfAngle\": 1933.884255757543,\n        \"speed\": 4615.353031659415,\n        \"type\": \"string\",\n        \"isMostAccurate\": true\n      }\n    ]\n  },\n  {\n    \"activityID\": \"string\",\n    \"catalog\": \"string\",\n    \"startTime\": \"1951-08-18T08:32:02.020Z\",\n    \"sourceLocation\": \"string\",\n    \"activeRegionNum\": 2710,\n    \"note\": \"string\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ],\n    \"cmeAnalyses\": [\n      {\n        \"time21_5\": \"2014-01-27T05:31:42.688Z\",\n        \"latitude\": 8491.681467232498,\n        \"longitude\": 583.4553339715842,\n        \"halfAngle\": 1340.5686874641399,\n        \"speed\": 2620.775064118317,\n        \"type\": \"string\",\n        \"isMostAccurate\": false\n      },\n      {\n        \"time21_5\": \"1995-08-12T06:56:16.299Z\",\n        \"latitude\": 9928.113151014362,\n        \"longitude\": 5848.145208913475,\n        \"halfAngle\": 831.6936662897301,\n        \"speed\": 3867.3249985430057,\n        \"type\": \"string\",\n        \"isMostAccurate\": false\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3909647-e0af-4f71-9076-f87abe294341",
+          "name": "NASA Get CME analysis data",
+          "request": {
+            "name": "NASA Get CME analysis data",
+            "description": {
+              "content": "Returns analysis data for coronal mass ejection events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DONKI",
+                "CMEAnalysis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "mostAccurateOnly",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "speed",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "halfAngle",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "catalog",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9967eb79-fa03-481c-a965-f990395a7bb3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "CMEAnalysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "mostAccurateOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "speed",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "halfAngle",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "catalog",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"time21_5\": \"1959-08-27T17:32:43.510Z\",\n    \"latitude\": 9434.54957606205,\n    \"longitude\": 3038.1045614474165,\n    \"halfAngle\": 1395.049849462151,\n    \"speed\": 554.0602170091114,\n    \"type\": \"string\",\n    \"isMostAccurate\": false\n  },\n  {\n    \"time21_5\": \"1971-07-02T09:17:39.343Z\",\n    \"latitude\": 190.93883508209063,\n    \"longitude\": 9571.102821368393,\n    \"halfAngle\": 521.6377747044654,\n    \"speed\": 7057.160583704934,\n    \"type\": \"string\",\n    \"isMostAccurate\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f267008f-046d-4660-800a-ef5c3dbd985c",
+          "name": "NASA Get geomagnetic storm events",
+          "request": {
+            "name": "NASA Get geomagnetic storm events",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "GST"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01d95779-6a0e-40b1-b05b-5932fbcb259d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "GST"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"gstID\": \"string\",\n    \"startTime\": \"1976-02-28T17:24:08.368Z\",\n    \"allKpIndex\": [\n      {\n        \"observedTime\": \"2012-02-27T04:12:59.104Z\",\n        \"kpIndex\": 8259.754495834444,\n        \"source\": \"string\"\n      },\n      {\n        \"observedTime\": \"2001-01-12T06:18:52.967Z\",\n        \"kpIndex\": 9674.287576959357,\n        \"source\": \"string\"\n      }\n    ]\n  },\n  {\n    \"gstID\": \"string\",\n    \"startTime\": \"1991-12-29T07:11:42.558Z\",\n    \"allKpIndex\": [\n      {\n        \"observedTime\": \"2025-07-16T11:52:45.208Z\",\n        \"kpIndex\": 8345.15453857293,\n        \"source\": \"string\"\n      },\n      {\n        \"observedTime\": \"2026-03-19T09:02:20.307Z\",\n        \"kpIndex\": 7867.2366980243705,\n        \"source\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f88651f7-a66d-4652-9398-a47cf3a23294",
+          "name": "NASA Get solar flare events",
+          "request": {
+            "name": "NASA Get solar flare events",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "FLR"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6577cea8-7133-4ab6-b762-9beab7ac5b9e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "FLR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"flrID\": \"string\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ],\n    \"beginTime\": \"1959-04-30T20:10:32.915Z\",\n    \"peakTime\": \"2000-04-21T19:35:00.228Z\",\n    \"endTime\": \"1954-05-06T18:49:11.894Z\",\n    \"classType\": \"string\",\n    \"sourceLocation\": \"string\",\n    \"activeRegionNum\": 9287\n  },\n  {\n    \"flrID\": \"string\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ],\n    \"beginTime\": \"2018-04-21T21:28:12.568Z\",\n    \"peakTime\": \"1984-12-22T19:24:49.882Z\",\n    \"endTime\": \"2008-12-20T20:28:40.276Z\",\n    \"classType\": \"string\",\n    \"sourceLocation\": \"string\",\n    \"activeRegionNum\": 5995\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2461e909-698c-49a3-9e47-573f34f8ecdc",
+          "name": "NASA Get solar energetic particle events",
+          "request": {
+            "name": "NASA Get solar energetic particle events",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "SEP"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04945b9f-b172-43ac-91a4-9848c9305a96",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "SEP"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"sepID\": \"string\",\n    \"eventTime\": \"1975-02-12T13:20:07.413Z\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ]\n  },\n  {\n    \"sepID\": \"string\",\n    \"eventTime\": \"1962-01-02T14:21:44.174Z\",\n    \"instruments\": [\n      {\n        \"displayName\": \"string\"\n      },\n      {\n        \"displayName\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f888107a-e000-49d2-a5e2-5340c899dc7a",
+          "name": "NASA Get magnetopause crossing events",
+          "request": {
+            "name": "NASA Get magnetopause crossing events",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "MPC"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f8fe5ef-fba7-4efa-87eb-c8f3602e071f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "MPC"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cead15bb-c06c-4365-adca-f0b30e319a1b",
+          "name": "NASA Get interplanetary shock events",
+          "request": {
+            "name": "NASA Get interplanetary shock events",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "IPS"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "location",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "catalog",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f80f8dd-7cd3-42c4-a173-73deb6c9621a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "IPS"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "catalog",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "174e48c1-067b-4ec7-8cca-c304e376f272",
+          "name": "NASA Get space weather notifications",
+          "request": {
+            "name": "NASA Get space weather notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "DONKI",
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "DEMO_KEY",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38e59d60-3aa6-472d-a61a-8f0ef1682523",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DONKI",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "DEMO_KEY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"messageType\": \"string\",\n    \"messageID\": \"string\",\n    \"messageURL\": \"https://ckdphVEaeskLYhvyu.yisudr8wtgD49xZ7oixOJb4LHVY8kmr5YPg8ivxCF0qQuzstWku0Fg8,iltkAACCERZEAFES,+1nkgk.He3TqmF\",\n    \"messageIssueTime\": \"1956-03-02T04:50:28.796Z\",\n    \"messageBody\": \"string\"\n  },\n  {\n    \"messageType\": \"string\",\n    \"messageID\": \"string\",\n    \"messageURL\": \"https://FLKxYulNDbHYQaMRuKsBWgw.oxmbN004jUjsjXywDA.Usk1UJxAHdUrba.400IDc5uNVpqMb5YZLAd+ugZCgiXHYqW+,AD\",\n    \"messageIssueTime\": \"1984-01-27T20:53:07.136Z\",\n    \"messageBody\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.nasa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8b0faafb-5736-42bf-94ea-144abb50f346",
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset DONKI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.\n\nContact Support:\n Name: NASA API Support",
+      "type": "text/plain"
+    }
+  }
+}

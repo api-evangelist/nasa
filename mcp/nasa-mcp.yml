@@ -2,95 +2,99 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/*.yml (one candidate tool per operationId)
-notes: >-
-  NASA does not operate an official hosted/remote MCP server. Several community
-  MCP servers wrap the api.nasa.gov Open APIs (listed under community_servers).
-  The tools[] below are a candidate surface derived one-per-operation from the
-  captured OpenAPI, for building an MCP server over the NASA catalog.
+notes: NASA does not operate an official hosted/remote MCP server. Several community MCP servers wrap
+  the api.nasa.gov Open APIs (listed under community_servers). The tools[] below are a candidate surface
+  derived one-per-operation from the captured OpenAPI, for building an MCP server over the NASA catalog.
 community_servers:
-  - name: "@programcomputer/nasa-mcp-server"
-    repo: https://github.com/ProgramComputer/NASA-MCP-server
-    install: env NASA_API_KEY=YOUR_API_KEY npx -y @programcomputer/nasa-mcp-server@latest
-    official: false
-  - name: jezweb/nasa-mcp-server
-    repo: https://github.com/jezweb/nasa-mcp-server
-    official: false
-  - name: ancode666/nasa-mcp
-    repo: https://github.com/ancode666/nasa-mcp
-    official: false
+- name: '@programcomputer/nasa-mcp-server'
+  repo: https://github.com/ProgramComputer/NASA-MCP-server
+  install: env NASA_API_KEY=YOUR_API_KEY npx -y @programcomputer/nasa-mcp-server@latest
+  official: false
+- name: jezweb/nasa-mcp-server
+  repo: https://github.com/jezweb/nasa-mcp-server
+  official: false
+- name: ancode666/nasa-mcp
+  repo: https://github.com/ancode666/nasa-mcp
+  official: false
 server:
   name: nasa
   transport: stdio
 tools:
-  - name: get_apod
-    description: Astronomy Picture of the Day
-    source_operation: openapi/nasa-apod-openapi.yml#getApod
-  - name: get_coronal_mass_ejections
-    description: DONKI Coronal Mass Ejection events
-    source_operation: openapi/nasa-donki-openapi.yml#getCoronalMassEjections
-  - name: get_cme_analysis
-    description: DONKI CME analysis
-    source_operation: openapi/nasa-donki-openapi.yml#getCmeAnalysis
-  - name: get_geomagnetic_storms
-    description: DONKI Geomagnetic Storm events
-    source_operation: openapi/nasa-donki-openapi.yml#getGeomagneticStorms
-  - name: get_solar_flares
-    description: DONKI Solar Flare events
-    source_operation: openapi/nasa-donki-openapi.yml#getSolarFlares
-  - name: get_solar_energetic_particles
-    description: DONKI Solar Energetic Particle events
-    source_operation: openapi/nasa-donki-openapi.yml#getSolarEnergeticParticles
-  - name: get_magnetopause_crossings
-    description: DONKI Magnetopause Crossing events
-    source_operation: openapi/nasa-donki-openapi.yml#getMagnetopauseCrossings
-  - name: get_interplanetary_shocks
-    description: DONKI Interplanetary Shock events
-    source_operation: openapi/nasa-donki-openapi.yml#getInterplanetaryShocks
-  - name: get_donki_notifications
-    description: DONKI space weather notifications
-    source_operation: openapi/nasa-donki-openapi.yml#getDonkiNotifications
-  - name: get_epic_natural
-    description: EPIC natural color Earth imagery (most recent)
-    source_operation: openapi/nasa-epic-openapi.yml#getEpicNatural
-  - name: get_epic_natural_by_date
-    description: EPIC natural color imagery by date
-    source_operation: openapi/nasa-epic-openapi.yml#getEpicNaturalByDate
-  - name: get_epic_natural_dates
-    description: Available EPIC natural imagery dates
-    source_operation: openapi/nasa-epic-openapi.yml#getEpicNaturalDates
-  - name: get_epic_enhanced
-    description: EPIC enhanced color Earth imagery (most recent)
-    source_operation: openapi/nasa-epic-openapi.yml#getEpicEnhanced
-  - name: get_epic_enhanced_by_date
-    description: EPIC enhanced color imagery by date
-    source_operation: openapi/nasa-epic-openapi.yml#getEpicEnhancedByDate
-  - name: get_rover_photos
-    description: Mars rover photos by sol/date and camera
-    source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getRoverPhotos
-  - name: get_latest_rover_photos
-    description: Most recent Mars rover photos
-    source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getLatestRoverPhotos
-  - name: get_rover_manifest
-    description: Mars rover mission manifest
-    source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getRoverManifest
-  - name: search_media
-    description: Search the NASA Image and Video Library
-    source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#searchMedia
-  - name: get_asset
-    description: Get media asset manifest by NASA ID
-    source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getAsset
-  - name: get_metadata
-    description: Get media metadata by NASA ID
-    source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getMetadata
-  - name: get_captions
-    description: Get video captions by NASA ID
-    source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getCaptions
-  - name: get_neo_feed
-    description: Near Earth Object feed by date range
-    source_operation: openapi/nasa-neo-openapi.yml#getNeoFeed
-  - name: get_neo_by_id
-    description: Look up a Near Earth Object by asteroid ID
-    source_operation: openapi/nasa-neo-openapi.yml#getNeoById
-  - name: browse_neos
-    description: Browse the Near Earth Object dataset
-    source_operation: openapi/nasa-neo-openapi.yml#browseNeos
+- name: get_apod
+  description: Astronomy Picture of the Day
+  source_operation: openapi/nasa-apod-openapi.yml#getApod
+- name: get_coronal_mass_ejections
+  description: DONKI Coronal Mass Ejection events
+  source_operation: openapi/nasa-donki-openapi.yml#getCoronalMassEjections
+- name: get_cme_analysis
+  description: DONKI CME analysis
+  source_operation: openapi/nasa-donki-openapi.yml#getCmeAnalysis
+- name: get_geomagnetic_storms
+  description: DONKI Geomagnetic Storm events
+  source_operation: openapi/nasa-donki-openapi.yml#getGeomagneticStorms
+- name: get_solar_flares
+  description: DONKI Solar Flare events
+  source_operation: openapi/nasa-donki-openapi.yml#getSolarFlares
+- name: get_solar_energetic_particles
+  description: DONKI Solar Energetic Particle events
+  source_operation: openapi/nasa-donki-openapi.yml#getSolarEnergeticParticles
+- name: get_magnetopause_crossings
+  description: DONKI Magnetopause Crossing events
+  source_operation: openapi/nasa-donki-openapi.yml#getMagnetopauseCrossings
+- name: get_interplanetary_shocks
+  description: DONKI Interplanetary Shock events
+  source_operation: openapi/nasa-donki-openapi.yml#getInterplanetaryShocks
+- name: get_donki_notifications
+  description: DONKI space weather notifications
+  source_operation: openapi/nasa-donki-openapi.yml#getDonkiNotifications
+- name: get_epic_natural
+  description: EPIC natural color Earth imagery (most recent)
+  source_operation: openapi/nasa-epic-openapi.yml#getEpicNatural
+- name: get_epic_natural_by_date
+  description: EPIC natural color imagery by date
+  source_operation: openapi/nasa-epic-openapi.yml#getEpicNaturalByDate
+- name: get_epic_natural_dates
+  description: Available EPIC natural imagery dates
+  source_operation: openapi/nasa-epic-openapi.yml#getEpicNaturalDates
+- name: get_epic_enhanced
+  description: EPIC enhanced color Earth imagery (most recent)
+  source_operation: openapi/nasa-epic-openapi.yml#getEpicEnhanced
+- name: get_epic_enhanced_by_date
+  description: EPIC enhanced color imagery by date
+  source_operation: openapi/nasa-epic-openapi.yml#getEpicEnhancedByDate
+- name: get_rover_photos
+  description: Mars rover photos by sol/date and camera
+  source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getRoverPhotos
+- name: get_latest_rover_photos
+  description: Most recent Mars rover photos
+  source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getLatestRoverPhotos
+- name: get_rover_manifest
+  description: Mars rover mission manifest
+  source_operation: openapi/nasa-mars-rover-photos-openapi.yml#getRoverManifest
+- name: search_media
+  description: Search the NASA Image and Video Library
+  source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#searchMedia
+- name: get_asset
+  description: Get media asset manifest by NASA ID
+  source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getAsset
+- name: get_metadata
+  description: Get media metadata by NASA ID
+  source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getMetadata
+- name: get_captions
+  description: Get video captions by NASA ID
+  source_operation: openapi/nasa-nasa-image-and-video-library-openapi.yml#getCaptions
+- name: get_neo_feed
+  description: Near Earth Object feed by date range
+  source_operation: openapi/nasa-neo-openapi.yml#getNeoFeed
+- name: get_neo_by_id
+  description: Look up a Near Earth Object by asteroid ID
+  source_operation: openapi/nasa-neo-openapi.yml#getNeoById
+- name: browse_neos
+  description: Browse the Near Earth Object dataset
+  source_operation: openapi/nasa-neo-openapi.yml#browseNeos
+deployment:
+  mode: none
+  verified: derived
+  tools: 24
+  checked: '2026-08-12'
+  source: catalog MCP census

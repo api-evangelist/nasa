@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASA Astronomy Picture of the Day (APOD) Asset Metadata API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NASA Get media metadata location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.nasa.gov/metadata/:nasa_id",
+            "params": [
+              {
+                "name": "nasa_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the metadata location for a NASA media asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
