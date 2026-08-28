@@ -14,8 +14,8 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaDonkiApi
-  url: ../openapi/nasa-donki-openapi.yml
+- name: donkiApi
+  url: ../openapi/nasa-donki-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: donki-space-weather-event-chain

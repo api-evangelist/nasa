@@ -13,8 +13,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaMarsRoverPhotosApi
-  url: ../openapi/nasa-mars-rover-photos-openapi.yml
+- name: marsPhotosApi
+  url: ../openapi/nasa-mars-photos-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: mars-rover-photo-harvest

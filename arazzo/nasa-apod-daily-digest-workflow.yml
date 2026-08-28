@@ -14,11 +14,14 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaApodApi
-  url: ../openapi/nasa-apod-openapi.yml
+- name: assetApi
+  url: ../openapi/nasa-asset-api-openapi.yml
   type: openapi
-- name: nasaImageAndVideoLibraryApi
-  url: ../openapi/nasa-nasa-image-and-video-library-openapi.yml
+- name: planetaryApi
+  url: ../openapi/nasa-planetary-api-openapi.yml
+  type: openapi
+- name: searchApi
+  url: ../openapi/nasa-search-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: apod-daily-digest

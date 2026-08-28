@@ -13,8 +13,17 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaImageAndVideoLibraryApi
-  url: ../openapi/nasa-nasa-image-and-video-library-openapi.yml
+- name: assetApi
+  url: ../openapi/nasa-asset-api-openapi.yml
+  type: openapi
+- name: captionsApi
+  url: ../openapi/nasa-captions-api-openapi.yml
+  type: openapi
+- name: metadataApi
+  url: ../openapi/nasa-metadata-api-openapi.yml
+  type: openapi
+- name: searchApi
+  url: ../openapi/nasa-search-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: media-asset-retrieval

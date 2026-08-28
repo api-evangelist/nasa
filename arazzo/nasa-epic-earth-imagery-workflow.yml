@@ -14,8 +14,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaEpicApi
-  url: ../openapi/nasa-epic-openapi.yml
+- name: epicApi
+  url: ../openapi/nasa-epic-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: epic-earth-imagery-retrieval

@@ -13,8 +13,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: nasaNeoApi
-  url: ../openapi/nasa-neo-openapi.yml
+- name: neoApi
+  url: ../openapi/nasa-neo-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: neo-close-approach-analysis
