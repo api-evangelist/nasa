@@ -1,30 +1,45 @@
 {
   "provider": "nasa",
   "sources": [
-    "nasa-asset-api-openapi.yml",
-    "nasa-captions-api-openapi.yml",
-    "nasa-donki-api-openapi.yml",
-    "nasa-epic-api-openapi.yml",
-    "nasa-mars-photos-api-openapi.yml",
-    "nasa-metadata-api-openapi.yml",
-    "nasa-neo-api-openapi.yml",
-    "nasa-planetary-api-openapi.yml",
-    "nasa-search-api-openapi.yml"
+    "_original/nasa-apod-openapi.yml",
+    "_original/nasa-donki-openapi.yml",
+    "_original/nasa-epic-openapi.yml",
+    "_original/nasa-mars-rover-photos-openapi.yml",
+    "_original/nasa-nasa-image-and-video-library-openapi.yml",
+    "_original/nasa-neo-openapi.yml"
   ],
   "outputs": [
-    "nasa-asset-api-openapi.yml",
-    "nasa-captions-api-openapi.yml",
+    "nasa-planetary-api-openapi.yml",
     "nasa-donki-api-openapi.yml",
     "nasa-epic-api-openapi.yml",
     "nasa-mars-photos-api-openapi.yml",
+    "nasa-asset-api-openapi.yml",
+    "nasa-captions-api-openapi.yml",
     "nasa-metadata-api-openapi.yml",
-    "nasa-neo-api-openapi.yml",
-    "nasa-planetary-api-openapi.yml",
-    "nasa-search-api-openapi.yml"
+    "nasa-search-api-openapi.yml",
+    "nasa-neo-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nasa-apod-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nasa-donki-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nasa-epic-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nasa-mars-rover-photos-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nasa-nasa-image-and-video-library-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "nasa-neo-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "nasa-asset-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-captions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-donki-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-epic-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-mars-photos-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-neo-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-planetary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasa-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

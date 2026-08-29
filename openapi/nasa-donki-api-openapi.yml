@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NASA Astronomy Picture of the Day (APOD) Asset DONKI API
-  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
+  title: NASA (Space Weather Database Of Notifications, Knowledge, Information) DONKI API
+  description: The DONKI API provides access to space weather events and notifications from NASA's Space Weather Database Of Notifications, Knowledge, Information. It covers coronal mass ejections, geomagnetic storms, solar flares, solar energetic particles, magnetopause crossings, radiation belt enhancements, high-speed streams, and interplanetary shocks.
   version: 1.0.0
   contact:
     name: NASA API Support
@@ -348,44 +348,6 @@ paths:
       - DONKI
 components:
   schemas:
-    GeomagneticStorm:
-      type: object
-      properties:
-        gstID:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        allKpIndex:
-          type: array
-          items:
-            type: object
-            properties:
-              observedTime:
-                type: string
-                format: date-time
-              kpIndex:
-                type: number
-              source:
-                type: string
-    CmeAnalysis:
-      type: object
-      properties:
-        time21_5:
-          type: string
-          format: date-time
-        latitude:
-          type: number
-        longitude:
-          type: number
-        halfAngle:
-          type: number
-        speed:
-          type: number
-        type:
-          type: string
-        isMostAccurate:
-          type: boolean
     SolarFlare:
       type: object
       properties:
@@ -413,6 +375,26 @@ components:
           type: string
         activeRegionNum:
           type: integer
+    GeomagneticStorm:
+      type: object
+      properties:
+        gstID:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        allKpIndex:
+          type: array
+          items:
+            type: object
+            properties:
+              observedTime:
+                type: string
+                format: date-time
+              kpIndex:
+                type: number
+              source:
+                type: string
     CoronalMassEjection:
       type: object
       properties:
@@ -440,6 +422,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CmeAnalysis'
+    CmeAnalysis:
+      type: object
+      properties:
+        time21_5:
+          type: string
+          format: date-time
+        latitude:
+          type: number
+        longitude:
+          type: number
+        halfAngle:
+          type: number
+        speed:
+          type: number
+        type:
+          type: string
+        isMostAccurate:
+          type: boolean
     SolarEnergeticParticle:
       type: object
       properties:

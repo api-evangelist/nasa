@@ -1,13 +1,13 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NASA Astronomy Picture of the Day (APOD) Asset Search API
-  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
+  title: NASA Image and Video Library Search API
+  description: The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio. Users can search, retrieve metadata, captions, and asset manifests.
   version: 1.0.0
   contact:
     name: NASA API Support
     url: https://api.nasa.gov
 servers:
-- url: https://api.nasa.gov
+- url: https://images-api.nasa.gov
 tags:
 - name: Search
 paths:
@@ -92,6 +92,36 @@ paths:
       - Search
 components:
   schemas:
+    SearchResult:
+      type: object
+      properties:
+        collection:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/MediaItem'
+            metadata:
+              type: object
+              properties:
+                total_hits:
+                  type: integer
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  rel:
+                    type: string
+                  prompt:
+                    type: string
+                  href:
+                    type: string
+                    format: uri
     MediaItem:
       type: object
       properties:
@@ -136,33 +166,3 @@ components:
                 type: string
               render:
                 type: string
-    SearchResult:
-      type: object
-      properties:
-        collection:
-          type: object
-          properties:
-            href:
-              type: string
-              format: uri
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/MediaItem'
-            metadata:
-              type: object
-              properties:
-                total_hits:
-                  type: integer
-            links:
-              type: array
-              items:
-                type: object
-                properties:
-                  rel:
-                    type: string
-                  prompt:
-                    type: string
-                  href:
-                    type: string
-                    format: uri

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NASA Astronomy Picture of the Day (APOD) Asset Neo API
-  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
+  title: NASA NeoWs (Near Earth Object Web Service) Neo API
+  description: NeoWs is a RESTful web service for near-Earth asteroid information. Data is sourced from the NASA JPL Asteroid team. Users can search for asteroids based on closest approach date, look up specific asteroids, and browse the dataset.
   version: 1.0.0
   contact:
     name: NASA API Support
@@ -124,13 +124,6 @@ paths:
       - Neo
 components:
   schemas:
-    DiameterRange:
-      type: object
-      properties:
-        estimated_diameter_min:
-          type: number
-        estimated_diameter_max:
-          type: number
     CloseApproach:
       type: object
       properties:
@@ -164,19 +157,6 @@ components:
               type: string
         orbiting_body:
           type: string
-    NeoFeed:
-      type: object
-      properties:
-        element_count:
-          type: integer
-          description: Total number of NEOs returned.
-        near_earth_objects:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/NearEarthObject'
-          description: NEOs keyed by closest approach date.
     NearEarthObject:
       type: object
       properties:
@@ -210,3 +190,23 @@ components:
             $ref: '#/components/schemas/CloseApproach'
         is_sentry_object:
           type: boolean
+    DiameterRange:
+      type: object
+      properties:
+        estimated_diameter_min:
+          type: number
+        estimated_diameter_max:
+          type: number
+    NeoFeed:
+      type: object
+      properties:
+        element_count:
+          type: integer
+          description: Total number of NEOs returned.
+        near_earth_objects:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/NearEarthObject'
+          description: NEOs keyed by closest approach date.

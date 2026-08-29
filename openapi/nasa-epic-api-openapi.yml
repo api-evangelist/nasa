@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NASA Astronomy Picture of the Day (APOD) Asset EPIC API
-  description: The Astronomy Picture of the Day (APOD) API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with a brief explanation written by a professional astronomer.
+  title: NASA (Earth Polychromatic Imaging Camera) EPIC API
+  description: The EPIC API provides access to imagery from NASA's Earth Polychromatic Imaging Camera onboard the DSCOVR spacecraft. EPIC captures full-disc images of the Earth in multiple wavelengths.
   version: 1.0.0
   contact:
     name: NASA API Support
@@ -140,6 +140,15 @@ paths:
       - EPIC
 components:
   schemas:
+    Position:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        z:
+          type: number
     EpicImage:
       type: object
       properties:
@@ -181,12 +190,3 @@ components:
               type: number
             q3:
               type: number
-    Position:
-      type: object
-      properties:
-        x:
-          type: number
-        y:
-          type: number
-        z:
-          type: number
