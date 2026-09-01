@@ -108,7 +108,7 @@ apis:
   description: The EPIC API from NASA — 5 operation(s) for epic.
   humanURL: https://api.nasa.gov/#apod
   tags:
-  - EPIC
+  - Epic
   tags_raw:
   - EPIC
   properties:
@@ -173,7 +173,7 @@ apis:
   description: The Neo API from NASA — 3 operation(s) for neo.
   humanURL: https://api.nasa.gov/#apod
   tags:
-  - Neo
+  - NEO
   tags_raw:
   - Neo
   properties:
