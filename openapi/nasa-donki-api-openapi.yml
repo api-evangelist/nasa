@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: NASA (Space Weather Database Of Notifications, Knowledge, Information) DONKI API
+  title: NASA (Space Weather Database Of Notifications, Knowledge…
   description: The DONKI API provides access to space weather events and notifications from NASA's Space Weather Database Of Notifications, Knowledge, Information. It covers coronal mass ejections, geomagnetic storms, solar flares, solar energetic particles, magnetopause crossings, radiation belt enhancements, high-speed streams, and interplanetary shocks.
   version: 1.0.0
   contact:
@@ -348,33 +348,6 @@ paths:
       - DONKI
 components:
   schemas:
-    SolarFlare:
-      type: object
-      properties:
-        flrID:
-          type: string
-        instruments:
-          type: array
-          items:
-            type: object
-            properties:
-              displayName:
-                type: string
-        beginTime:
-          type: string
-          format: date-time
-        peakTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        classType:
-          type: string
-        sourceLocation:
-          type: string
-        activeRegionNum:
-          type: integer
     GeomagneticStorm:
       type: object
       properties:
@@ -422,6 +395,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CmeAnalysis'
+    SolarFlare:
+      type: object
+      properties:
+        flrID:
+          type: string
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+        beginTime:
+          type: string
+          format: date-time
+        peakTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        classType:
+          type: string
+        sourceLocation:
+          type: string
+        activeRegionNum:
+          type: integer
+    SolarEnergeticParticle:
+      type: object
+      properties:
+        sepID:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
     CmeAnalysis:
       type: object
       properties:
@@ -440,21 +455,6 @@ components:
           type: string
         isMostAccurate:
           type: boolean
-    SolarEnergeticParticle:
-      type: object
-      properties:
-        sepID:
-          type: string
-        eventTime:
-          type: string
-          format: date-time
-        instruments:
-          type: array
-          items:
-            type: object
-            properties:
-              displayName:
-                type: string
     Notification:
       type: object
       properties:

@@ -124,39 +124,13 @@ paths:
       - Neo
 components:
   schemas:
-    CloseApproach:
+    DiameterRange:
       type: object
       properties:
-        close_approach_date:
-          type: string
-          format: date
-        close_approach_date_full:
-          type: string
-        epoch_date_close_approach:
-          type: integer
-          format: int64
-        relative_velocity:
-          type: object
-          properties:
-            kilometers_per_second:
-              type: string
-            kilometers_per_hour:
-              type: string
-            miles_per_hour:
-              type: string
-        miss_distance:
-          type: object
-          properties:
-            astronomical:
-              type: string
-            lunar:
-              type: string
-            kilometers:
-              type: string
-            miles:
-              type: string
-        orbiting_body:
-          type: string
+        estimated_diameter_min:
+          type: number
+        estimated_diameter_max:
+          type: number
     NearEarthObject:
       type: object
       properties:
@@ -190,13 +164,39 @@ components:
             $ref: '#/components/schemas/CloseApproach'
         is_sentry_object:
           type: boolean
-    DiameterRange:
+    CloseApproach:
       type: object
       properties:
-        estimated_diameter_min:
-          type: number
-        estimated_diameter_max:
-          type: number
+        close_approach_date:
+          type: string
+          format: date
+        close_approach_date_full:
+          type: string
+        epoch_date_close_approach:
+          type: integer
+          format: int64
+        relative_velocity:
+          type: object
+          properties:
+            kilometers_per_second:
+              type: string
+            kilometers_per_hour:
+              type: string
+            miles_per_hour:
+              type: string
+        miss_distance:
+          type: object
+          properties:
+            astronomical:
+              type: string
+            lunar:
+              type: string
+            kilometers:
+              type: string
+            miles:
+              type: string
+        orbiting_body:
+          type: string
     NeoFeed:
       type: object
       properties:

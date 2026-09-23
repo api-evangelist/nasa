@@ -174,24 +174,6 @@ components:
           description: Earth date when the photo was taken.
         rover:
           $ref: '#/components/schemas/Rover'
-    Rover:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        landing_date:
-          type: string
-          format: date
-        launch_date:
-          type: string
-          format: date
-        status:
-          type: string
-          enum:
-          - active
-          - complete
     RoverManifest:
       type: object
       properties:
@@ -228,6 +210,24 @@ components:
                 type: array
                 items:
                   type: string
+    Rover:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        landing_date:
+          type: string
+          format: date
+        launch_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - active
+          - complete
     Camera:
       type: object
       properties:
