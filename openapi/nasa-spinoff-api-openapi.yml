@@ -1,0 +1,48 @@
+openapi: 3.2.0
+info:
+  title: NASA TechTransfer Spinoff API
+  description: 'Structured, searchable developer access to NASA''s patents, software, and Spinoff publications. Patents are
+
+    part of the NASA Technology Transfer Program with the goal of bringing NASA technology down to Earth.'
+  version: '1.0'
+  contact:
+    name: NASA Technology Transfer
+    url: https://technology.nasa.gov/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://api.nasa.gov/techtransfer
+security:
+- ApiKeyAuth: []
+tags:
+- name: Spinoff
+paths:
+  /spinoff:
+    get:
+      summary: Search NASA Spinoff Publications
+      operationId: searchSpinoff
+      tags:
+      - Spinoff
+      parameters:
+      - name: Spinoff
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Matching spinoff publication records.
+components:
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      schema:
+        type: string
+        default: DEMO_KEY
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

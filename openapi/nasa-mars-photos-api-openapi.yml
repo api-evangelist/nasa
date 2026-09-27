@@ -153,27 +153,17 @@ paths:
       - Mars Photos
 components:
   schemas:
-    RoverPhoto:
+    Camera:
       type: object
       properties:
         id:
           type: integer
-          description: Unique identifier for the photo.
-        sol:
+        name:
+          type: string
+        rover_id:
           type: integer
-          description: Martian sol on which the photo was taken.
-        camera:
-          $ref: '#/components/schemas/Camera'
-        img_src:
+        full_name:
           type: string
-          format: uri
-          description: URL of the image.
-        earth_date:
-          type: string
-          format: date
-          description: Earth date when the photo was taken.
-        rover:
-          $ref: '#/components/schemas/Rover'
     RoverManifest:
       type: object
       properties:
@@ -228,14 +218,24 @@ components:
           enum:
           - active
           - complete
-    Camera:
+    RoverPhoto:
       type: object
       properties:
         id:
           type: integer
-        name:
-          type: string
-        rover_id:
+          description: Unique identifier for the photo.
+        sol:
           type: integer
-        full_name:
+          description: Martian sol on which the photo was taken.
+        camera:
+          $ref: '#/components/schemas/Camera'
+        img_src:
           type: string
+          format: uri
+          description: URL of the image.
+        earth_date:
+          type: string
+          format: date
+          description: Earth date when the photo was taken.
+        rover:
+          $ref: '#/components/schemas/Rover'

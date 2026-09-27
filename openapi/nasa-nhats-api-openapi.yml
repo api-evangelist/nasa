@@ -1,0 +1,67 @@
+openapi: 3.2.0
+info:
+  title: NASA SSD/CNEOS NHATS API
+  description: 'Solar System Dynamics (SSD) and Center for Near-Earth Object Studies (CNEOS) APIs at JPL. Provides
+
+    authoritative orbital, physical, and risk data for small bodies including close approach data, small
+
+    body database lookup and query, Sentry impact risk, Fireball atmospheric events, NHATS human-accessible
+
+    targets, mission design, and scout.'
+  version: '1.0'
+  contact:
+    name: JPL Solar System Dynamics
+    url: https://ssd-api.jpl.nasa.gov/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://ssd-api.jpl.nasa.gov
+tags:
+- name: NHATS
+paths:
+  /nhats.api:
+    get:
+      summary: NHATS - Human-Accessible Target Asteroids
+      operationId: nhats
+      tags:
+      - NHATS
+      parameters:
+      - name: spk
+        in: query
+        schema:
+          type: string
+      - name: des
+        in: query
+        schema:
+          type: string
+      - name: dv
+        in: query
+        schema:
+          type: number
+      - name: dur
+        in: query
+        schema:
+          type: integer
+      - name: stay
+        in: query
+        schema:
+          type: integer
+      - name: launch
+        in: query
+        schema:
+          type: string
+      - name: h
+        in: query
+        schema:
+          type: number
+      - name: occ
+        in: query
+        schema:
+          type: integer
+      - name: plot
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: NHATS summary or single-object detail.

@@ -1,0 +1,26 @@
+openapi: 3.2.0
+info:
+  title: NASA EONET (Earth Observatory Natural Event Tracker)……
+  description: 'Curated source of natural events occurring on Earth - wildfires, severe storms, volcanoes, sea/lake ice,
+
+    drought, dust/haze, earthquakes, floods, landslides, manmade, snow, temperature extremes, and water color.'
+  version: '3.0'
+  contact:
+    name: NASA Earth Observatory
+    url: https://eonet.gsfc.nasa.gov/docs/v3
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://eonet.gsfc.nasa.gov/api/v3
+tags:
+- name: Magnitudes
+paths:
+  /magnitudes:
+    get:
+      summary: Get Magnitude Definitions
+      operationId: getMagnitudes
+      tags:
+      - Magnitudes
+      responses:
+        '200':
+          description: Magnitude IDs and units defined by EONET.

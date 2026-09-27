@@ -1,11 +1,8 @@
 openapi: 3.2.0
 info:
-  title: NASA (Space Weather Database Of Notifications, Knowledge…
-  description: The DONKI API provides access to space weather events and notifications from NASA's Space Weather Database Of Notifications, Knowledge, Information. It covers coronal mass ejections, geomagnetic storms, solar flares, solar energetic particles, magnetopause crossings, radiation belt enhancements, high-speed streams, and interplanetary shocks.
-  version: 1.0.0
-  contact:
-    name: NASA API Support
-    url: https://api.nasa.gov
+  title: Nasa DONKI API
+  version: '1.0'
+  description: 'Operations tagged DONKI across 2 of this provider''s published API definitions: nasa-donki-openapi.yml, nasa-gov-donki-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.nasa.gov
 tags:
@@ -48,6 +45,8 @@ paths:
                   $ref: '#/components/schemas/CoronalMassEjection'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/CMEAnalysis:
     get:
       operationId: getCmeAnalysis
@@ -108,6 +107,8 @@ paths:
                   $ref: '#/components/schemas/CmeAnalysis'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/GST:
     get:
       operationId: getGeomagneticStorms
@@ -142,6 +143,8 @@ paths:
                   $ref: '#/components/schemas/GeomagneticStorm'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/FLR:
     get:
       operationId: getSolarFlares
@@ -176,6 +179,8 @@ paths:
                   $ref: '#/components/schemas/SolarFlare'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/SEP:
     get:
       operationId: getSolarEnergeticParticles
@@ -210,6 +215,8 @@ paths:
                   $ref: '#/components/schemas/SolarEnergeticParticle'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/MPC:
     get:
       operationId: getMagnetopauseCrossings
@@ -244,6 +251,8 @@ paths:
                   type: object
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/IPS:
     get:
       operationId: getInterplanetaryShocks
@@ -297,6 +306,8 @@ paths:
                   type: object
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
   /DONKI/notifications:
     get:
       operationId: getDonkiNotifications
@@ -346,27 +357,93 @@ paths:
                   $ref: '#/components/schemas/Notification'
       tags:
       - DONKI
+    servers:
+    - url: https://api.nasa.gov
+  /DONKI/RBE:
+    get:
+      summary: Get Radiation Belt Enhancements
+      operationId: getRBE
+      tags:
+      - DONKI
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Array of radiation belt enhancement records.
+      security:
+      - ApiKeyAuth: []
+    servers:
+    - url: https://api.nasa.gov
+  /DONKI/HSS:
+    get:
+      summary: Get High Speed Streams
+      operationId: getHSS
+      tags:
+      - DONKI
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Array of high speed stream records.
+      security:
+      - ApiKeyAuth: []
+    servers:
+    - url: https://api.nasa.gov
+  /DONKI/WSAEnlilSimulations:
+    get:
+      summary: Get WSA+EnlilSimulations
+      operationId: getWSAEnlilSimulations
+      tags:
+      - DONKI
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Array of WSA+Enlil simulation records.
+      security:
+      - ApiKeyAuth: []
+    servers:
+    - url: https://api.nasa.gov
 components:
   schemas:
-    GeomagneticStorm:
+    CmeAnalysis:
       type: object
       properties:
-        gstID:
-          type: string
-        startTime:
+        time21_5:
           type: string
           format: date-time
-        allKpIndex:
+        latitude:
+          type: number
+        longitude:
+          type: number
+        halfAngle:
+          type: number
+        speed:
+          type: number
+        type:
+          type: string
+        isMostAccurate:
+          type: boolean
+    SolarEnergeticParticle:
+      type: object
+      properties:
+        sepID:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
+        instruments:
           type: array
           items:
             type: object
             properties:
-              observedTime:
-                type: string
-                format: date-time
-              kpIndex:
-                type: number
-              source:
+              displayName:
                 type: string
     CoronalMassEjection:
       type: object
@@ -395,6 +472,41 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CmeAnalysis'
+    Notification:
+      type: object
+      properties:
+        messageType:
+          type: string
+        messageID:
+          type: string
+        messageURL:
+          type: string
+          format: uri
+        messageIssueTime:
+          type: string
+          format: date-time
+        messageBody:
+          type: string
+    GeomagneticStorm:
+      type: object
+      properties:
+        gstID:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        allKpIndex:
+          type: array
+          items:
+            type: object
+            properties:
+              observedTime:
+                type: string
+                format: date-time
+              kpIndex:
+                type: number
+              source:
+                type: string
     SolarFlare:
       type: object
       properties:
@@ -422,51 +534,33 @@ components:
           type: string
         activeRegionNum:
           type: integer
-    SolarEnergeticParticle:
-      type: object
-      properties:
-        sepID:
-          type: string
-        eventTime:
-          type: string
-          format: date-time
-        instruments:
-          type: array
-          items:
-            type: object
-            properties:
-              displayName:
-                type: string
-    CmeAnalysis:
-      type: object
-      properties:
-        time21_5:
-          type: string
-          format: date-time
-        latitude:
-          type: number
-        longitude:
-          type: number
-        halfAngle:
-          type: number
-        speed:
-          type: number
-        type:
-          type: string
-        isMostAccurate:
-          type: boolean
-    Notification:
-      type: object
-      properties:
-        messageType:
-          type: string
-        messageID:
-          type: string
-        messageURL:
-          type: string
-          format: uri
-        messageIssueTime:
-          type: string
-          format: date-time
-        messageBody:
-          type: string
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      schema:
+        type: string
+        default: DEMO_KEY
+    EndDate:
+      name: endDate
+      in: query
+      description: End date (YYYY-MM-DD). Defaults to current UTC time.
+      schema:
+        type: string
+        format: date
+    StartDate:
+      name: startDate
+      in: query
+      description: Start date (YYYY-MM-DD). Defaults to 30 days prior to current UTC time.
+      schema:
+        type: string
+        format: date
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+x-refined-from:
+- nasa-donki-openapi.yml
+- nasa-gov-donki-api-openapi.yml

@@ -1,0 +1,91 @@
+openapi: 3.2.0
+info:
+  title: NASA SSD/CNEOS Fireball API
+  description: 'Solar System Dynamics (SSD) and Center for Near-Earth Object Studies (CNEOS) APIs at JPL. Provides
+
+    authoritative orbital, physical, and risk data for small bodies including close approach data, small
+
+    body database lookup and query, Sentry impact risk, Fireball atmospheric events, NHATS human-accessible
+
+    targets, mission design, and scout.'
+  version: '1.0'
+  contact:
+    name: JPL Solar System Dynamics
+    url: https://ssd-api.jpl.nasa.gov/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://ssd-api.jpl.nasa.gov
+tags:
+- name: Fireball
+paths:
+  /fireball.api:
+    get:
+      summary: Fireball Atmospheric Impact Events
+      operationId: fireball
+      tags:
+      - Fireball
+      parameters:
+      - name: date-min
+        in: query
+        schema:
+          type: string
+      - name: date-max
+        in: query
+        schema:
+          type: string
+      - name: energy-min
+        in: query
+        schema:
+          type: number
+      - name: impact-e-min
+        in: query
+        schema:
+          type: number
+      - name: vel-min
+        in: query
+        schema:
+          type: number
+      - name: vel-max
+        in: query
+        schema:
+          type: number
+      - name: alt-min
+        in: query
+        schema:
+          type: number
+      - name: alt-max
+        in: query
+        schema:
+          type: number
+      - name: req-loc
+        in: query
+        schema:
+          type: boolean
+      - name: req-alt
+        in: query
+        schema:
+          type: boolean
+      - name: req-vel
+        in: query
+        schema:
+          type: boolean
+      - name: req-vel-comp
+        in: query
+        schema:
+          type: boolean
+      - name: vel-comp
+        in: query
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Fireball events table.

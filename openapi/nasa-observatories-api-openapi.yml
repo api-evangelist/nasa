@@ -1,0 +1,28 @@
+openapi: 3.2.0
+info:
+  title: NASA Satellite Situation Center (SSC) Web Services……
+  description: 'System to cast geocentric spacecraft location information into a framework of (empirical) geophysical
+
+    regions and mappings of point locations along the spacecraft trajectory to/from locations of interest
+
+    (e.g. magnetic conjunctions, IMF mappings).'
+  version: '2.0'
+  contact:
+    name: Satellite Situation Center
+    url: https://sscweb.gsfc.nasa.gov/WebServices/REST/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://sscweb.gsfc.nasa.gov/WS/sscr/2
+tags:
+- name: Observatories
+paths:
+  /observatories:
+    get:
+      summary: List Observatories
+      operationId: listObservatories
+      tags:
+      - Observatories
+      responses:
+        '200':
+          description: List of available observatories (spacecraft).

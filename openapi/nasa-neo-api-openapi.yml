@@ -131,39 +131,6 @@ components:
           type: number
         estimated_diameter_max:
           type: number
-    NearEarthObject:
-      type: object
-      properties:
-        id:
-          type: string
-        neo_reference_id:
-          type: string
-        name:
-          type: string
-        nasa_jpl_url:
-          type: string
-          format: uri
-        absolute_magnitude_h:
-          type: number
-        estimated_diameter:
-          type: object
-          properties:
-            kilometers:
-              $ref: '#/components/schemas/DiameterRange'
-            meters:
-              $ref: '#/components/schemas/DiameterRange'
-            miles:
-              $ref: '#/components/schemas/DiameterRange'
-            feet:
-              $ref: '#/components/schemas/DiameterRange'
-        is_potentially_hazardous_asteroid:
-          type: boolean
-        close_approach_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CloseApproach'
-        is_sentry_object:
-          type: boolean
     CloseApproach:
       type: object
       properties:
@@ -197,6 +164,39 @@ components:
               type: string
         orbiting_body:
           type: string
+    NearEarthObject:
+      type: object
+      properties:
+        id:
+          type: string
+        neo_reference_id:
+          type: string
+        name:
+          type: string
+        nasa_jpl_url:
+          type: string
+          format: uri
+        absolute_magnitude_h:
+          type: number
+        estimated_diameter:
+          type: object
+          properties:
+            kilometers:
+              $ref: '#/components/schemas/DiameterRange'
+            meters:
+              $ref: '#/components/schemas/DiameterRange'
+            miles:
+              $ref: '#/components/schemas/DiameterRange'
+            feet:
+              $ref: '#/components/schemas/DiameterRange'
+        is_potentially_hazardous_asteroid:
+          type: boolean
+        close_approach_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CloseApproach'
+        is_sentry_object:
+          type: boolean
     NeoFeed:
       type: object
       properties:

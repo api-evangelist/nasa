@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: NASA SSD/CNEOS Scout API
+  description: 'Solar System Dynamics (SSD) and Center for Near-Earth Object Studies (CNEOS) APIs at JPL. Provides
+
+    authoritative orbital, physical, and risk data for small bodies including close approach data, small
+
+    body database lookup and query, Sentry impact risk, Fireball atmospheric events, NHATS human-accessible
+
+    targets, mission design, and scout.'
+  version: '1.0'
+  contact:
+    name: JPL Solar System Dynamics
+    url: https://ssd-api.jpl.nasa.gov/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://ssd-api.jpl.nasa.gov
+tags:
+- name: Scout
+paths:
+  /scout.api:
+    get:
+      summary: Scout - Near-Real-Time NEO Confirmation
+      operationId: scout
+      tags:
+      - Scout
+      parameters:
+      - name: tdes
+        in: query
+        schema:
+          type: string
+      - name: orbits
+        in: query
+        schema:
+          type: boolean
+      - name: n-orbits
+        in: query
+        schema:
+          type: integer
+      - name: eph-start
+        in: query
+        schema:
+          type: string
+      - name: eph-stop
+        in: query
+        schema:
+          type: string
+      - name: eph-step
+        in: query
+        schema:
+          type: string
+      - name: obs-code
+        in: query
+        schema:
+          type: string
+      - name: fov-diam
+        in: query
+        schema:
+          type: number
+      - name: fov-ra
+        in: query
+        schema:
+          type: string
+      - name: fov-dec
+        in: query
+        schema:
+          type: string
+      - name: fov-vmag
+        in: query
+        schema:
+          type: number
+      - name: plot
+        in: query
+        schema:
+          type: boolean
+      - name: file
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scout summary or per-object detail.

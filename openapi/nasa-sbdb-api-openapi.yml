@@ -1,0 +1,121 @@
+openapi: 3.2.0
+info:
+  title: NASA SSD/CNEOS SBDB API
+  description: 'Solar System Dynamics (SSD) and Center for Near-Earth Object Studies (CNEOS) APIs at JPL. Provides
+
+    authoritative orbital, physical, and risk data for small bodies including close approach data, small
+
+    body database lookup and query, Sentry impact risk, Fireball atmospheric events, NHATS human-accessible
+
+    targets, mission design, and scout.'
+  version: '1.0'
+  contact:
+    name: JPL Solar System Dynamics
+    url: https://ssd-api.jpl.nasa.gov/
+  license:
+    name: US Government Work (Public Domain)
+servers:
+- url: https://ssd-api.jpl.nasa.gov
+tags:
+- name: SBDB
+paths:
+  /sbdb.api:
+    get:
+      summary: Small Body Database Lookup
+      operationId: sbdbLookup
+      tags:
+      - SBDB
+      parameters:
+      - name: sstr
+        in: query
+        schema:
+          type: string
+      - name: spk
+        in: query
+        schema:
+          type: string
+      - name: des
+        in: query
+        schema:
+          type: string
+      - name: full-prec
+        in: query
+        schema:
+          type: boolean
+      - name: phys-par
+        in: query
+        schema:
+          type: boolean
+      - name: discovery
+        in: query
+        schema:
+          type: boolean
+      - name: ca-data
+        in: query
+        schema:
+          type: boolean
+      - name: virtual-impactor
+        in: query
+        schema:
+          type: boolean
+      - name: alt-spk
+        in: query
+        schema:
+          type: boolean
+      - name: alt-des
+        in: query
+        schema:
+          type: boolean
+      - name: alt-orbits
+        in: query
+        schema:
+          type: boolean
+      - name: r-notes
+        in: query
+        schema:
+          type: boolean
+      - name: r-observer
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Small body record.
+  /sbdb_query.api:
+    get:
+      summary: Small Body Database Query
+      operationId: sbdbQuery
+      tags:
+      - SBDB
+      parameters:
+      - name: fields
+        in: query
+        schema:
+          type: string
+      - name: sb-kind
+        in: query
+        schema:
+          type: string
+      - name: sb-group
+        in: query
+        schema:
+          type: string
+      - name: sb-class
+        in: query
+        schema:
+          type: string
+      - name: sb-ns
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: full-prec
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Tabular SBDB query response.
