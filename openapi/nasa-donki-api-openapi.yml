@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Nasa DONKI API
   version: '1.0'
-  description: 'Operations tagged DONKI across 2 of this provider''s published API definitions: nasa-donki-openapi.yml, nasa-gov-donki-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged DONKI across 2 of this provider''s published API definitions: nasa-donki-openapi.yml, nasa-donki-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.nasa.gov
 tags:
@@ -360,6 +360,8 @@ paths:
     servers:
     - url: https://api.nasa.gov
   /DONKI/RBE:
+    servers:
+    - url: https://api.nasa.gov
     get:
       summary: Get Radiation Belt Enhancements
       operationId: getRBE
@@ -374,9 +376,9 @@ paths:
           description: Array of radiation belt enhancement records.
       security:
       - ApiKeyAuth: []
+  /DONKI/HSS:
     servers:
     - url: https://api.nasa.gov
-  /DONKI/HSS:
     get:
       summary: Get High Speed Streams
       operationId: getHSS
@@ -391,9 +393,9 @@ paths:
           description: Array of high speed stream records.
       security:
       - ApiKeyAuth: []
+  /DONKI/WSAEnlilSimulations:
     servers:
     - url: https://api.nasa.gov
-  /DONKI/WSAEnlilSimulations:
     get:
       summary: Get WSA+EnlilSimulations
       operationId: getWSAEnlilSimulations
@@ -408,10 +410,43 @@ paths:
           description: Array of WSA+Enlil simulation records.
       security:
       - ApiKeyAuth: []
-    servers:
-    - url: https://api.nasa.gov
 components:
   schemas:
+    GeomagneticStorm:
+      type: object
+      properties:
+        gstID:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        allKpIndex:
+          type: array
+          items:
+            type: object
+            properties:
+              observedTime:
+                type: string
+                format: date-time
+              kpIndex:
+                type: number
+              source:
+                type: string
+    Notification:
+      type: object
+      properties:
+        messageType:
+          type: string
+        messageID:
+          type: string
+        messageURL:
+          type: string
+          format: uri
+        messageIssueTime:
+          type: string
+          format: date-time
+        messageBody:
+          type: string
     CmeAnalysis:
       type: object
       properties:
@@ -430,6 +465,33 @@ components:
           type: string
         isMostAccurate:
           type: boolean
+    SolarFlare:
+      type: object
+      properties:
+        flrID:
+          type: string
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+        beginTime:
+          type: string
+          format: date-time
+        peakTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        classType:
+          type: string
+        sourceLocation:
+          type: string
+        activeRegionNum:
+          type: integer
     SolarEnergeticParticle:
       type: object
       properties:
@@ -472,83 +534,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CmeAnalysis'
-    Notification:
-      type: object
-      properties:
-        messageType:
-          type: string
-        messageID:
-          type: string
-        messageURL:
-          type: string
-          format: uri
-        messageIssueTime:
-          type: string
-          format: date-time
-        messageBody:
-          type: string
-    GeomagneticStorm:
-      type: object
-      properties:
-        gstID:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        allKpIndex:
-          type: array
-          items:
-            type: object
-            properties:
-              observedTime:
-                type: string
-                format: date-time
-              kpIndex:
-                type: number
-              source:
-                type: string
-    SolarFlare:
-      type: object
-      properties:
-        flrID:
-          type: string
-        instruments:
-          type: array
-          items:
-            type: object
-            properties:
-              displayName:
-                type: string
-        beginTime:
-          type: string
-          format: date-time
-        peakTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        classType:
-          type: string
-        sourceLocation:
-          type: string
-        activeRegionNum:
-          type: integer
   parameters:
-    ApiKey:
-      name: api_key
-      in: query
-      required: true
-      schema:
-        type: string
-        default: DEMO_KEY
-    EndDate:
-      name: endDate
-      in: query
-      description: End date (YYYY-MM-DD). Defaults to current UTC time.
-      schema:
-        type: string
-        format: date
     StartDate:
       name: startDate
       in: query
@@ -556,6 +542,20 @@ components:
       schema:
         type: string
         format: date
+    EndDate:
+      name: endDate
+      in: query
+      description: End date (YYYY-MM-DD). Defaults to current UTC time.
+      schema:
+        type: string
+        format: date
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      schema:
+        type: string
+        default: DEMO_KEY
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
@@ -563,4 +563,4 @@ components:
       name: api_key
 x-refined-from:
 - nasa-donki-openapi.yml
-- nasa-gov-donki-api-openapi.yml
+- nasa-donki-api-openapi.yml

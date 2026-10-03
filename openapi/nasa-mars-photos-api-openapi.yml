@@ -164,42 +164,6 @@ components:
           type: integer
         full_name:
           type: string
-    RoverManifest:
-      type: object
-      properties:
-        name:
-          type: string
-        landing_date:
-          type: string
-          format: date
-        launch_date:
-          type: string
-          format: date
-        status:
-          type: string
-        max_sol:
-          type: integer
-        max_date:
-          type: string
-          format: date
-        total_photos:
-          type: integer
-        photos:
-          type: array
-          items:
-            type: object
-            properties:
-              sol:
-                type: integer
-              earth_date:
-                type: string
-                format: date
-              total_photos:
-                type: integer
-              cameras:
-                type: array
-                items:
-                  type: string
     Rover:
       type: object
       properties:
@@ -239,3 +203,39 @@ components:
           description: Earth date when the photo was taken.
         rover:
           $ref: '#/components/schemas/Rover'
+    RoverManifest:
+      type: object
+      properties:
+        name:
+          type: string
+        landing_date:
+          type: string
+          format: date
+        launch_date:
+          type: string
+          format: date
+        status:
+          type: string
+        max_sol:
+          type: integer
+        max_date:
+          type: string
+          format: date
+        total_photos:
+          type: integer
+        photos:
+          type: array
+          items:
+            type: object
+            properties:
+              sol:
+                type: integer
+              earth_date:
+                type: string
+                format: date
+              total_photos:
+                type: integer
+              cameras:
+                type: array
+                items:
+                  type: string
