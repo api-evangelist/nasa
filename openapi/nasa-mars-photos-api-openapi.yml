@@ -153,35 +153,6 @@ paths:
       - Mars Photos
 components:
   schemas:
-    Camera:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        rover_id:
-          type: integer
-        full_name:
-          type: string
-    Rover:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        landing_date:
-          type: string
-          format: date
-        launch_date:
-          type: string
-          format: date
-        status:
-          type: string
-          enum:
-          - active
-          - complete
     RoverPhoto:
       type: object
       properties:
@@ -239,3 +210,32 @@ components:
                 type: array
                 items:
                   type: string
+    Camera:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        rover_id:
+          type: integer
+        full_name:
+          type: string
+    Rover:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        landing_date:
+          type: string
+          format: date
+        launch_date:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - active
+          - complete

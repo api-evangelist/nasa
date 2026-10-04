@@ -140,6 +140,15 @@ paths:
       - EPIC
 components:
   schemas:
+    Position:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        z:
+          type: number
     EpicImage:
       type: object
       properties:
@@ -181,12 +190,3 @@ components:
               type: number
             q3:
               type: number
-    Position:
-      type: object
-      properties:
-        x:
-          type: number
-        y:
-          type: number
-        z:
-          type: number

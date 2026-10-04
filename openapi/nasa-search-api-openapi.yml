@@ -92,36 +92,6 @@ paths:
       - Search
 components:
   schemas:
-    SearchResult:
-      type: object
-      properties:
-        collection:
-          type: object
-          properties:
-            href:
-              type: string
-              format: uri
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/MediaItem'
-            metadata:
-              type: object
-              properties:
-                total_hits:
-                  type: integer
-            links:
-              type: array
-              items:
-                type: object
-                properties:
-                  rel:
-                    type: string
-                  prompt:
-                    type: string
-                  href:
-                    type: string
-                    format: uri
     MediaItem:
       type: object
       properties:
@@ -166,3 +136,33 @@ components:
                 type: string
               render:
                 type: string
+    SearchResult:
+      type: object
+      properties:
+        collection:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/MediaItem'
+            metadata:
+              type: object
+              properties:
+                total_hits:
+                  type: integer
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  rel:
+                    type: string
+                  prompt:
+                    type: string
+                  href:
+                    type: string
+                    format: uri
