@@ -511,6 +511,8 @@ apis:
   humanURL: https://api.nasa.gov/#apod
   baseURL: https://api.nasa.gov/planetary/apod
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -655,6 +657,8 @@ apis:
   humanURL: https://api.nasa.gov/#apod
   baseURL: https://api.nasa.gov/planetary/apod
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -943,6 +947,8 @@ apis:
   humanURL: https://api.nasa.gov/#apod
   baseURL: https://api.nasa.gov/planetary/apod
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -1279,6 +1285,8 @@ apis:
   humanURL: https://api.nasa.gov/#apod
   baseURL: https://api.nasa.gov/planetary/apod
   tags:
+  - Spin-Off
+  tags_raw:
   - Spinoff
   properties:
   - type: OpenAPI
@@ -1375,6 +1383,8 @@ apis:
   humanURL: https://api.nasa.gov/#apod
   baseURL: https://api.nasa.gov/planetary/apod
   tags:
+  - TAP
+  tags_raw:
   - Tap
   properties:
   - type: OpenAPI
@@ -1562,6 +1572,9 @@ apis:
   - type: Documentation
     url: https://trek.nasa.gov/
 common:
+  - type: CapabilityMap
+    url: capabilities/nasa-capability-edges.yml
+    name: NASA Business Capability Map
   - type: AgenticAccess
     url: agentic-access/nasa-agentic-access.yml
   - type: DomainSecurity
