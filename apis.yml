@@ -1572,6 +1572,12 @@ apis:
   - type: Documentation
     url: https://trek.nasa.gov/
 common:
+  - type: Plans
+    url: plans/nasa-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/nasa-rate-limits.yml
+  - type: FinOps
+    url: finops/nasa-finops.yml
   - type: CapabilityMap
     url: capabilities/nasa-capability-edges.yml
     name: NASA Business Capability Map
