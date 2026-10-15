@@ -22,3 +22,38 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: nasa-open-robotics-ros-package-index
+  label: Open Robotics (ROS package index)
+  partner_name: Open Robotics (ROS package index)
+  category: ROS packages
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/nasa-jpl/dispatcher.git
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ROS 2 rosdistro (repo.ros2.org/rosdistro_cache)
+    spec_file: null
+    standard: ROS 2
+    role: ros-package-maintainer
+    matched_domain: nasa.gov
+    matched_by: domain+name-among-holders
+    source_owner: nasa-jpl
+    distros:
+    - humble
+    - jazzy
+    - kilted
+    - rolling
+    packages: 6
+    sample_packages:
+    - dispatcher
+    - mujoco_3d_lidar
+    - mujoco_ros2_control
+    - mujoco_ros2_control_demos
+    - mujoco_ros2_control_msgs
+    - mujoco_ros2_control_plugins
+    signal_note: 'participation only: packages/distros are context, never read'
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
