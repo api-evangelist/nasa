@@ -124,6 +124,26 @@ paths:
       - Neo
 components:
   schemas:
+    DiameterRange:
+      type: object
+      properties:
+        estimated_diameter_min:
+          type: number
+        estimated_diameter_max:
+          type: number
+    NeoFeed:
+      type: object
+      properties:
+        element_count:
+          type: integer
+          description: Total number of NEOs returned.
+        near_earth_objects:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/NearEarthObject'
+          description: NEOs keyed by closest approach date.
     NearEarthObject:
       type: object
       properties:
@@ -157,13 +177,6 @@ components:
             $ref: '#/components/schemas/CloseApproach'
         is_sentry_object:
           type: boolean
-    DiameterRange:
-      type: object
-      properties:
-        estimated_diameter_min:
-          type: number
-        estimated_diameter_max:
-          type: number
     CloseApproach:
       type: object
       properties:
@@ -197,16 +210,3 @@ components:
               type: string
         orbiting_body:
           type: string
-    NeoFeed:
-      type: object
-      properties:
-        element_count:
-          type: integer
-          description: Total number of NEOs returned.
-        near_earth_objects:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/NearEarthObject'
-          description: NEOs keyed by closest approach date.

@@ -412,21 +412,6 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    SolarEnergeticParticle:
-      type: object
-      properties:
-        sepID:
-          type: string
-        eventTime:
-          type: string
-          format: date-time
-        instruments:
-          type: array
-          items:
-            type: object
-            properties:
-              displayName:
-                type: string
     SolarFlare:
       type: object
       properties:
@@ -454,6 +439,39 @@ components:
           type: string
         activeRegionNum:
           type: integer
+    SolarEnergeticParticle:
+      type: object
+      properties:
+        sepID:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
+        instruments:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+    CmeAnalysis:
+      type: object
+      properties:
+        time21_5:
+          type: string
+          format: date-time
+        latitude:
+          type: number
+        longitude:
+          type: number
+        halfAngle:
+          type: number
+        speed:
+          type: number
+        type:
+          type: string
+        isMostAccurate:
+          type: boolean
     GeomagneticStorm:
       type: object
       properties:
@@ -516,25 +534,14 @@ components:
           format: date-time
         messageBody:
           type: string
-    CmeAnalysis:
-      type: object
-      properties:
-        time21_5:
-          type: string
-          format: date-time
-        latitude:
-          type: number
-        longitude:
-          type: number
-        halfAngle:
-          type: number
-        speed:
-          type: number
-        type:
-          type: string
-        isMostAccurate:
-          type: boolean
   parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      schema:
+        type: string
+        default: DEMO_KEY
     EndDate:
       name: endDate
       in: query
@@ -549,13 +556,6 @@ components:
       schema:
         type: string
         format: date
-    ApiKey:
-      name: api_key
-      in: query
-      required: true
-      schema:
-        type: string
-        default: DEMO_KEY
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
