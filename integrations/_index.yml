@@ -103,3 +103,43 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: nasa-api-data-gov
+  label: api.data.gov
+  partner_name: api.data.gov
+  category: federal API program participation (shared API gateway)
+  type: register
+  channel: standard-directory
+  evidence: https://api.data.gov/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: api.data.gov agency users (github.com/GSA/api.data.gov content/users.csv @ae4c262690; agency list
+      on api.data.gov)
+    standard: api.data.gov (GSA TTS federal API management service)
+    spec_file: null
+    role: api-data-gov-agency
+    registered_name: NASA
+    register_id: nasa.gov
+    matched_domain: nasa.gov
+    matched_by: domain+name-among-holders
+    hosts:
+    - nasa.gov
+    signal_note: 'participation only: the agency serves APIs through the shared federal API gateway (api.data.gov
+      keys, rate limits, analytics). Hosts are context, never counted'
+    detected_by: sweep-us-federal-api-programs.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: nasa-login-gov
+  label: Login.gov
+  partner: login-gov
+  partner_name: Login.gov
+  category: signs the public in through Login.gov
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/GSA-TTS/identity-site/blob/main/content/_partners/index._en.md
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
