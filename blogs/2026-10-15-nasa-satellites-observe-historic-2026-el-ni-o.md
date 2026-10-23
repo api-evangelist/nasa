@@ -1,0 +1,7 @@
+---
+title: "NASA Satellites Observe Historic 2026 El Niño"
+url: "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino/"
+date: "2026-10-15"
+feed_url: "https://www.nasa.gov/feed/"
+---
+A phenomenon rarer than a solar eclipse and more powerful than any single storm system is unfolding this fall, and NASA is tracking it closely. El Niño is a natural climate pattern that emerges roughly every two to seven years marked by warmer-than-normal water temperatures in parts of the equatorial Pacific. NASA scientists are keeping […]
