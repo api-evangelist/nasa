@@ -1,4 +1,4 @@
-# NASA (nasa)
+# NASA
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,211 +66,223 @@
 
 NASA (National Aeronautics and Space Administration) provides a suite of public APIs at api.nasa.gov offering access to space, Earth science, and aeronautics data. Key APIs include Astronomy Picture of the Day (APOD), Mars Rover Photos, Near Earth Object Web Service (NeoWs), DONKI space weather events, EPIC Earth imagery, and the NASA Image and Video Library. All APIs are free and accessible with an API key.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/apis.yml)
+**Areas:** Government · Science · Space · Geospatial · Government Data · Astronomy · Planetary Science · Earth Science · Earth Observation · Open Data
 
-## Scope
+## NASA on APIs.io
 
-- **Type:** Index
+Everything profiled for NASA is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nasa/](https://apis.io/providers/nasa/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (37)
 
-- Government
-- Science
-- Space
+- [NASA Asset API](https://apis.io/apis/nasa/nasa-asset-api/) — The Asset API from NASA — 1 operation(s) for asset.
+- [NASA Captions API](https://apis.io/apis/nasa/nasa-captions-api/) — The Captions API from NASA — 1 operation(s) for captions.
+- [NASA DONKI API](https://apis.io/apis/nasa/nasa-donki-api/) — The DONKI API from NASA — 8 operation(s) for donki.
+- [NASA EPIC API](https://apis.io/apis/nasa/nasa-epic-api/) — The EPIC API from NASA — 5 operation(s) for epic.
+- [NASA Mars Photos API](https://apis.io/apis/nasa/nasa-mars-photos-api/) — The Mars Photos API from NASA — 3 operation(s) for mars photos.
+- [NASA Metadata API](https://apis.io/apis/nasa/nasa-metadata-api/) — The Metadata API from NASA — 1 operation(s) for metadata.
+- [NASA Neo API](https://apis.io/apis/nasa/nasa-neo-api/) — The Neo API from NASA — 3 operation(s) for neo.
+- [NASA Planetary API](https://apis.io/apis/nasa/nasa-planetary-api/) — The Planetary API from NASA — 1 operation(s) for planetary.
+- [NASA Search API](https://apis.io/apis/nasa/nasa-search-api/) — The Search API from NASA — 1 operation(s) for search.
+- [NASA Technology Transfer API](https://apis.io/apis/nasa/nasa-tech-transfer-api/) — The NASA Technology Transfer API provides programmatic access to the NASA patent portfolio, software catalog, and spinoff technologies developed through the…
+- [NASA Album API](https://apis.io/apis/nasa/nasa-album-api/) — The Album API from NASA — 1 operation(s) for album.
+- [NASA CAD API](https://apis.io/apis/nasa/nasa-cad-api/) — The CAD API from NASA — 1 operation(s) for cad.
+- [NASA Categories API](https://apis.io/apis/nasa/nasa-categories-api/) — The Categories API from NASA — 2 operation(s) for categories.
+- [NASA Earth API](https://apis.io/apis/nasa/nasa-earth-api/) — The Earth API from NASA — 2 operation(s) for earth.
+- [NASA Enhanced API](https://apis.io/apis/nasa/nasa-enhanced-api/) — The Enhanced API from NASA — 3 operation(s) for enhanced.
+- [NASA Events API](https://apis.io/apis/nasa/nasa-events-api/) — The Events API from NASA — 1 operation(s) for events.
+- [NASA Fireball API](https://apis.io/apis/nasa/nasa-fireball-api/) — The Fireball API from NASA — 1 operation(s) for fireball.
+- [NASA Layers API](https://apis.io/apis/nasa/nasa-layers-api/) — The Layers API from NASA — 1 operation(s) for layers.
+- [NASA Locations API](https://apis.io/apis/nasa/nasa-locations-api/) — The Locations API from NASA — 1 operation(s) for locations.
+- [NASA Magnitudes API](https://apis.io/apis/nasa/nasa-magnitudes-api/) — The Magnitudes API from NASA — 1 operation(s) for magnitudes.
+- [NASA Natural API](https://apis.io/apis/nasa/nasa-natural-api/) — The Natural API from NASA — 4 operation(s) for natural.
+- [NASA NHATS API](https://apis.io/apis/nasa/nasa-nhats-api/) — The NHATS API from NASA — 1 operation(s) for nhats.
+- [NASA Observatories API](https://apis.io/apis/nasa/nasa-observatories-api/) — The Observatories API from NASA — 1 operation(s) for observatories.
+- [NASA Patents API](https://apis.io/apis/nasa/nasa-patents-api/) — The Patents API from NASA — 2 operation(s) for patents.
+- [NASA Projects API](https://apis.io/apis/nasa/nasa-projects-api/) — The Projects API from NASA — 2 operation(s) for projects.
+- [NASA Rovers API](https://apis.io/apis/nasa/nasa-rovers-api/) — The Rovers API from NASA — 1 operation(s) for rovers.
+- [NASA SBDB API](https://apis.io/apis/nasa/nasa-sbdb-api/) — The SBDB API from NASA — 2 operation(s) for sbdb.
+- [NASA Scout API](https://apis.io/apis/nasa/nasa-scout-api/) — The Scout API from NASA — 1 operation(s) for scout.
+- [NASA Sentry API](https://apis.io/apis/nasa/nasa-sentry-api/) — The Sentry API from NASA — 1 operation(s) for sentry.
+- [NASA Software API](https://apis.io/apis/nasa/nasa-software-api/) — The Software API from NASA — 1 operation(s) for software.
+- [NASA Sources API](https://apis.io/apis/nasa/nasa-sources-api/) — The Sources API from NASA — 1 operation(s) for sources.
+- [NASA Spinoff API](https://apis.io/apis/nasa/nasa-spinoff-api/) — The Spinoff API from NASA — 1 operation(s) for spinoff.
+- [NASA Stations API](https://apis.io/apis/nasa/nasa-stations-api/) — The Stations API from NASA — 1 operation(s) for stations.
+- [NASA Tap API](https://apis.io/apis/nasa/nasa-tap-api/) — The Tap API from NASA — 2 operation(s) for tap.
+- [NASA TLE API](https://apis.io/apis/nasa/nasa-tle-api/) — The TLE API from NASA — 2 operation(s) for tle.
+- [NASA Weather API](https://apis.io/apis/nasa/nasa-weather-api/) — The Weather API from NASA — 1 operation(s) for weather.
+- [NASA WMTS API](https://apis.io/apis/nasa/nasa-wmts-api/) — The WMTS API from NASA — 1 operation(s) for wmts.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (7)
 
-### NASA Astronomy Picture of the Day (APOD) API
+Multi-step workflows that chain operations into a business task.
 
-The Astronomy Picture of the Day API provides access to NASA's popular APOD service, returning the astronomy picture or video of the day along with an explanation written by a professional astronomer.
+- [NASA APOD Daily Digest](https://apis.io/arazzos/nasa/nasa-apod-daily-digest-workflow/)
+- [NASA DONKI Notification Triage](https://apis.io/arazzos/nasa/nasa-donki-notification-triage-workflow/)
+- [NASA DONKI Space Weather Event Chain](https://apis.io/arazzos/nasa/nasa-donki-space-weather-event-chain-workflow/)
+- [NASA EPIC Earth Imagery Retrieval](https://apis.io/arazzos/nasa/nasa-epic-earth-imagery-workflow/)
+- [NASA Mars Rover Photo Harvest](https://apis.io/arazzos/nasa/nasa-mars-rover-photo-harvest-workflow/)
+- [NASA Media Asset Retrieval](https://apis.io/arazzos/nasa/nasa-media-asset-retrieval-workflow/)
+- [NASA Near Earth Object Close Approach Analysis](https://apis.io/arazzos/nasa/nasa-neo-close-approach-analysis-workflow/)
 
-- **Human URL:** [https://api.nasa.gov/#apod](https://api.nasa.gov/#apod)
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Astronomy
-- Images
-- Space
+- [nasa](https://apis.io/servers/nasa/nasa/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://api.nasa.gov/#apod)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-apod-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### NASA Mars Rover Photos API
+- [Nasa Agentic Access](https://apis.io/agentic-access/nasa/nasa-agentic-access/)
 
-The Mars Rover Photos API provides access to images collected by NASA's Curiosity, Opportunity, and Spirit rovers on Mars.
+#### JSON Schema (11)
 
-- **Human URL:** [https://api.nasa.gov/#MarsPhotos](https://api.nasa.gov/#MarsPhotos)
+The data models the API reads and writes.
 
-#### Tags
+- [ApodEntry](https://apis.io/schemas/nasa/apod/)
+- [APOD Image](https://apis.io/schemas/nasa/apod-image/)
+- [Rover Camera](https://apis.io/schemas/nasa/camera/)
+- [Close Approach](https://apis.io/schemas/nasa/close-approach/)
+- [Coronal Mass Ejection](https://apis.io/schemas/nasa/coronal-mass-ejection/)
+- [EPIC Image](https://apis.io/schemas/nasa/epic-image/)
+- [Geomagnetic Storm](https://apis.io/schemas/nasa/geomagnetic-storm/)
+- [Near Earth Object](https://apis.io/schemas/nasa/near-earth-object/)
+- [Mars Rover](https://apis.io/schemas/nasa/rover/)
+- [Mars Rover Photo](https://apis.io/schemas/nasa/rover-photo/)
+- [Solar Flare](https://apis.io/schemas/nasa/solar-flare/)
 
-- Images
-- Mars
-- Rovers
-- Space
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://api.nasa.gov/#MarsPhotos)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-mars-rover-photos-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Nasa Context](https://apis.io/jsonld/nasa/nasa-context/)
 
-### NASA NeoWs (Near Earth Object Web Service) API
+#### Collections (15)
 
-NeoWs is a RESTful web service for near-Earth asteroid information sourced from the NASA JPL Asteroid team.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://api.nasa.gov/#NeoWS](https://api.nasa.gov/#NeoWS)
+- [NASA Astronomy Picture of the Day (APOD) API](https://apis.io/collections/nasa/open-nasa-apod/)
+- [NASA Astronomy Picture of the Day (APOD) Asset API](https://apis.io/collections/nasa/open-nasa-asset-api/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Captions API](https://apis.io/collections/nasa/open-nasa-captions-api/)
+- [NASA DONKI (Space Weather Database Of Notifications, Knowledge, Information) API](https://apis.io/collections/nasa/open-nasa-donki/)
+- [NASA Astronomy Picture of the Day (APOD) Asset DONKI API](https://apis.io/collections/nasa/open-nasa-donki-api/)
+- [NASA EPIC (Earth Polychromatic Imaging Camera) API](https://apis.io/collections/nasa/open-nasa-epic/)
+- [NASA Astronomy Picture of the Day (APOD) Asset EPIC API](https://apis.io/collections/nasa/open-nasa-epic-api/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Mars Photos API](https://apis.io/collections/nasa/open-nasa-mars-photos-api/)
+- [NASA Mars Rover Photos API](https://apis.io/collections/nasa/open-nasa-mars-rover-photos/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Metadata API](https://apis.io/collections/nasa/open-nasa-metadata-api/)
+- [NASA Image and Video Library API](https://apis.io/collections/nasa/open-nasa-nasa-image-and-video-library/)
+- [NASA NeoWs (Near Earth Object Web Service) API](https://apis.io/collections/nasa/open-nasa-neo/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Neo API](https://apis.io/collections/nasa/open-nasa-neo-api/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Planetary API](https://apis.io/collections/nasa/open-nasa-planetary-api/)
+- [NASA Astronomy Picture of the Day (APOD) Asset Search API](https://apis.io/collections/nasa/open-nasa-search-api/)
 
-#### Tags
+#### Overlays (6)
 
-- Asteroids
-- Near Earth Objects
-- Space
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Properties
+- [Nasa Apod Overlay](https://apis.io/overlays/nasa/nasa-apod-overlay/)
+- [Nasa Donki Overlay](https://apis.io/overlays/nasa/nasa-donki-overlay/)
+- [Nasa Epic Overlay](https://apis.io/overlays/nasa/nasa-epic-overlay/)
+- [Nasa Mars Rover Photos Overlay](https://apis.io/overlays/nasa/nasa-mars-rover-photos-overlay/)
+- [Nasa Nasa Image And Video Library Overlay](https://apis.io/overlays/nasa/nasa-nasa-image-and-video-library-overlay/)
+- [Nasa Neo Overlay](https://apis.io/overlays/nasa/nasa-neo-overlay/)
 
-- [Documentation](https://api.nasa.gov/#NeoWS)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-neo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (1)
 
-### NASA DONKI (Space Weather) API
+Spectral rulesets for the provider's contracts.
 
-The DONKI API provides access to space weather events and notifications from NASA's Space Weather Database Of Notifications, Knowledge, Information.
+- [NASA — jsonschema rules](https://apis.io/rules/nasa/nasa-jsonschema-spectral-rules/)
 
-- **Human URL:** [https://api.nasa.gov/#DONKI](https://api.nasa.gov/#DONKI)
+#### Security (3)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Solar
-- Space
-- Space Weather
+- [Nasa Authentication](https://apis.io/security/nasa/nasa-authentication/)
+- [Nasa Domain Security](https://apis.io/security/nasa/nasa-domain-security/)
+- [Nasa Vulnerability Disclosure](https://apis.io/security/nasa/nasa-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://api.nasa.gov/#DONKI)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-donki-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### NASA EPIC (Earth Polychromatic Imaging Camera) API
+- [Nasa Plans Pricing](https://apis.io/plans/nasa/nasa-plans-pricing/)
 
-The EPIC API provides access to imagery from NASA's Earth Polychromatic Imaging Camera onboard the DSCOVR spacecraft.
+#### Rate limits (1)
 
-- **Human URL:** [https://api.nasa.gov/#EPIC](https://api.nasa.gov/#EPIC)
+Published request limits.
 
-#### Tags
+- [Nasa Rate Limits](https://apis.io/rate-limits/nasa/nasa-rate-limits/)
 
-- Earth
-- Images
-- Space
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://api.nasa.gov/#EPIC)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-epic-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Nasa Finops](https://apis.io/finops/nasa/nasa-finops/)
 
-### NASA Image and Video Library API
+## Where to find this API
 
-The NASA Image and Video Library API provides access to NASA's media archive including images, videos, and audio.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://api.nasa.gov/#Images](https://api.nasa.gov/#Images)
-
-#### Tags
-
-- Images
-- Media
-- Space
-- Video
-
-#### Properties
-
-- [Documentation](https://api.nasa.gov/#Images)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/nasa/refs/heads/main/openapi/nasa-nasa-image-and-video-library-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasa-apod.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-apod.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-donki.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-donki.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-epic.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-epic.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-mars-rover-photos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-mars-rover-photos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-nasa-image-and-video-library.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-nasa-image-and-video-library.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/nasa-neo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasa-neo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/nasa)
-- [Portal](https://api.nasa.gov)
 - [Website](https://www.nasa.gov)
 - [Documentation](https://data.nasa.gov)
-- [GitHub Organization](https://github.com/nasa)
-- [Integrations](https://www.nasa.gov/apps/)
+- [Blog](https://www.nasa.gov/feed/)
+- [GitHub](https://github.com/nasa)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 50.3 |
+| Contract governance | 14.4 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 7.9 |
+
+**Agent readiness 18.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nasa/](https://apis.io/providers/nasa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NASA: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nasa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
